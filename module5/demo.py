@@ -3,7 +3,8 @@
 CLI demo for the AAC Noisy Input Correction Engine.
 
 This script provides a command-line interface for demonstrating the
-noisy channel corrector on the AACConversations dataset.
+noisy channel corrector on the AACConversations dataset or using module1's
+noise simulator.
 """
 
 import os
@@ -37,6 +38,13 @@ from module5.utils import (
     NOISE_LEVELS,
 )
 
+# Import module1 utilities
+from module5.module1_utils import (
+    add_noise,
+    generate_noisy_pairs,
+    load_wordlist,
+)
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -48,6 +56,19 @@ def parse_args():
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(
         description="CLI demo for the AAC Noisy Input Correction Engine."
+    )
+
+    # Source selection
+    parser.add_argument(
+        "--use-module1",
+        action="store_true",
+        help="Use module1's noise simulator instead of the Hugging Face dataset",
+    )
+    parser.add_argument(
+        "--wordlist",
+        type=str,
+        default="../data/wordlist.txt",
+        help="Path to the wordlist file for module1's noise simulator",
     )
 
     # Dataset arguments
@@ -229,6 +250,79 @@ def process_examples(
     return results
 
 
+def process_module1_examples(
+    corrector: NoisyChannelCorrector, args
+) -> List[Dict[str, Any]]:
+    """Process examples using module1's noise simulator."""
+    results = []
+
+    # Load the wordlist
+    words = load_wordlist(args.wordlist)
+    if not words:
+        logger.error(f"No words loaded from {args.wordlist}. Exiting.")
+        return []
+
+    # Set random seed if provided
+    if args.seed is not None:
+        random.seed(args.seed)
+
+    # Sample random words
+    if len(words) > args.num_examples:
+        sampled_words = random.sample(words, args.num_examples)
+    else:
+        sampled_words = words
+
+    logger.info(f"Sampled {len(sampled_words)} words from {args.wordlist}")
+
+    # Generate noisy pairs
+    noisy_pairs = generate_noisy_pairs(
+        sampled_words, args.noise_type, args.noise_level, num_variants=1
+    )
+
+    logger.info(f"Generated {len(noisy_pairs)} noisy pairs")
+
+    # Process each pair
+    for pair in noisy_pairs:
+        intended = pair["intended"]
+        noisy = pair["noisy"]
+
+        # Skip if noisy is the same as intended (no noise)
+        if noisy == intended:
+            continue
+
+        # Correct the noisy utterance
+        corrections = corrector.correct(
+            noisy,
+            max_edit_distance=args.max_edit_distance,
+            use_keyboard_adjacency=not args.no_keyboard_adjacency,
+        )
+
+        # Print the results
+        print("\n" + "=" * 80)
+        print(f"Original: {intended}")
+        print(f"Noisy ({args.noise_type}, {args.noise_level}): {noisy}")
+        print("\nCorrections:")
+        for i, (correction, score) in enumerate(corrections):
+            print(f"  {i+1}. {correction} (score: {score:.4f})")
+
+        # Add to results
+        results.append(
+            {
+                "intended": intended,
+                "noisy": noisy,
+                "corrections": [
+                    {"correction": corr, "score": score} for corr, score in corrections
+                ],
+                "noise_type": args.noise_type,
+                "noise_level": args.noise_level,
+                "correct_at_1": corrections[0][0] == intended if corrections else False,
+                "correct_at_n": any(corr == intended for corr, _ in corrections),
+            }
+        )
+
+    return results
+
+
 def main():
     """Main function."""
     # Parse command-line arguments
@@ -251,19 +345,24 @@ def main():
         interactive_mode(corrector, args)
         return
 
-    # Load the dataset
-    dataset = load_aac_conversations(
-        split=args.dataset_split,
-        cache_dir=args.cache_dir,
-        use_auth_token=not args.no_token,
-    )
+    # Use module1's noise simulator if requested
+    if args.use_module1:
+        logger.info("Using module1's noise simulator")
+        results = process_module1_examples(corrector, args)
+    else:
+        # Load the dataset
+        dataset = load_aac_conversations(
+            split=args.dataset_split,
+            cache_dir=args.cache_dir,
+            use_auth_token=not args.no_token,
+        )
 
-    if dataset is None:
-        logger.error("Failed to load dataset. Exiting.")
-        return
+        if dataset is None:
+            logger.error("Failed to load dataset. Exiting.")
+            return
 
-    # Process examples
-    results = process_examples(dataset, corrector, args)
+        # Process examples
+        results = process_examples(dataset, corrector, args)
 
     # Save results if requested
     if args.output and results:
