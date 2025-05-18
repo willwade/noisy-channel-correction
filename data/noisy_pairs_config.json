@@ -1,0 +1,882 @@
+[
+  {
+    "clean": "hello",
+    "noisy": "HELLO"
+  },
+  {
+    "clean": "world",
+    "noisy": "WORLD"
+  },
+  {
+    "clean": "testing",
+    "noisy": "TESTFG"
+  },
+  {
+    "clean": "computer",
+    "noisy": "COMPUER"
+  },
+  {
+    "clean": "keyboard",
+    "noisy": "KELOARD"
+  },
+  {
+    "clean": "language",
+    "noisy": "LAGUAGE"
+  },
+  {
+    "clean": "communication",
+    "noisy": "COMMUNIATION"
+  },
+  {
+    "clean": "augmentative",
+    "noisy": "AKGMENTATIVE"
+  },
+  {
+    "clean": "alternative",
+    "noisy": "ALTERNATIVE"
+  },
+  {
+    "clean": "system",
+    "noisy": "SYSSEEM"
+  },
+  {
+    "clean": "input",
+    "noisy": "INPUT"
+  },
+  {
+    "clean": "output",
+    "noisy": "OUTPUT"
+  },
+  {
+    "clean": "error",
+    "noisy": "ERRO"
+  },
+  {
+    "clean": "correction",
+    "noisy": "CORRECTION"
+  },
+  {
+    "clean": "model",
+    "noisy": "MODEL"
+  },
+  {
+    "clean": "prediction",
+    "noisy": "PRSDCTION"
+  },
+  {
+    "clean": "typing",
+    "noisy": "TYPING"
+  },
+  {
+    "clean": "scanning",
+    "noisy": "SCNANNGG"
+  },
+  {
+    "clean": "eyegaze",
+    "noisy": "EYEGAAZ"
+  },
+  {
+    "clean": "switch",
+    "noisy": "SWITCH"
+  },
+  {
+    "clean": "access",
+    "noisy": "ACCESS"
+  },
+  {
+    "clean": "device",
+    "noisy": "DEVICE"
+  },
+  {
+    "clean": "interface",
+    "noisy": "INTERFACE"
+  },
+  {
+    "clean": "user",
+    "noisy": "UE"
+  },
+  {
+    "clean": "experience",
+    "noisy": "EXPERIENCE"
+  },
+  {
+    "clean": "design",
+    "noisy": "DESIGN"
+  },
+  {
+    "clean": "development",
+    "noisy": "DEVELOPMENT"
+  },
+  {
+    "clean": "implementation",
+    "noisy": "IMPLEMENTATIN"
+  },
+  {
+    "clean": "algorithm",
+    "noisy": "ALGORITHM"
+  },
+  {
+    "clean": "probability",
+    "noisy": "PROBABILITY"
+  },
+  {
+    "clean": "frequency",
+    "noisy": "FREQUENCY"
+  },
+  {
+    "clean": "context",
+    "noisy": "CONTECT"
+  },
+  {
+    "clean": "word",
+    "noisy": "WORD"
+  },
+  {
+    "clean": "letter",
+    "noisy": "LETTER"
+  },
+  {
+    "clean": "character",
+    "noisy": "CHHARACCTER"
+  },
+  {
+    "clean": "symbol",
+    "noisy": "SYMBOO"
+  },
+  {
+    "clean": "space",
+    "noisy": "SPACE"
+  },
+  {
+    "clean": "punctuation",
+    "noisy": "PUNCGUATION"
+  },
+  {
+    "clean": "sentence",
+    "noisy": "SENTENCE"
+  },
+  {
+    "clean": "phrase",
+    "noisy": "PHRRASE"
+  },
+  {
+    "clean": "text",
+    "noisy": "TEXT"
+  },
+  {
+    "clean": "message",
+    "noisy": "MESSAGE"
+  },
+  {
+    "clean": "conversation",
+    "noisy": "CONVERSSATION"
+  },
+  {
+    "clean": "dialogue",
+    "noisy": "DIALOGUE"
+  },
+  {
+    "clean": "speech",
+    "noisy": "SPEECCH"
+  },
+  {
+    "clean": "voice",
+    "noisy": "VOICE"
+  },
+  {
+    "clean": "recognition",
+    "noisy": "ECOGNITIION"
+  },
+  {
+    "clean": "synthesis",
+    "noisy": "SYNTHESIS"
+  },
+  {
+    "clean": "assistive",
+    "noisy": "SSSISTIVE"
+  },
+  {
+    "clean": "technology",
+    "noisy": "TEECNOLGY"
+  },
+  {
+    "clean": "disability",
+    "noisy": "DIABILITYY"
+  },
+  {
+    "clean": "inclusion",
+    "noisy": "INCLSION"
+  },
+  {
+    "clean": "accessibility",
+    "noisy": "ACCESSIIITY"
+  },
+  {
+    "clean": "support",
+    "noisy": "SUPPRT"
+  },
+  {
+    "clean": "help",
+    "noisy": "HELP"
+  },
+  {
+    "clean": "learn",
+    "noisy": "LEARN"
+  },
+  {
+    "clean": "adapt",
+    "noisy": "ADDAPT"
+  },
+  {
+    "clean": "customize",
+    "noisy": "USTOMIZE"
+  },
+  {
+    "clean": "configure",
+    "noisy": "CONFIGURE"
+  },
+  {
+    "clean": "setting",
+    "noisy": "STING"
+  },
+  {
+    "clean": "option",
+    "noisy": "OPPTIN"
+  },
+  {
+    "clean": "feature",
+    "noisy": "FEATURE"
+  },
+  {
+    "clean": "function",
+    "noisy": "FUNNCION"
+  },
+  {
+    "clean": "module",
+    "noisy": "MODL"
+  },
+  {
+    "clean": "component",
+    "noisy": "CMPONENT"
+  },
+  {
+    "clean": "integration",
+    "noisy": "INTEGRATION"
+  },
+  {
+    "clean": "interaction",
+    "noisy": "INTERAACTION"
+  },
+  {
+    "clean": "feedback",
+    "noisy": "FEEDBACK"
+  },
+  {
+    "clean": "response",
+    "noisy": "RESPONSE"
+  },
+  {
+    "clean": "display",
+    "noisy": "DISLAY"
+  },
+  {
+    "clean": "screen",
+    "noisy": "SCREEN"
+  },
+  {
+    "clean": "button",
+    "noisy": "NUTT"
+  },
+  {
+    "clean": "control",
+    "noisy": "CONTTOL"
+  },
+  {
+    "clean": "navigation",
+    "noisy": "NNAIIGTION"
+  },
+  {
+    "clean": "selection",
+    "noisy": "SELECTLN"
+  },
+  {
+    "clean": "confirmation",
+    "noisy": "CONFIIRMATION"
+  },
+  {
+    "clean": "cancellation",
+    "noisy": "CANCLLION"
+  },
+  {
+    "clean": "undo",
+    "noisy": "UNDDO"
+  },
+  {
+    "clean": "redo",
+    "noisy": "REDDOO"
+  },
+  {
+    "clean": "save",
+    "noisy": "AVE"
+  },
+  {
+    "clean": "load",
+    "noisy": "LOAD"
+  },
+  {
+    "clean": "export",
+    "noisy": "EPORT"
+  },
+  {
+    "clean": "import",
+    "noisy": "IMPORT"
+  },
+  {
+    "clean": "data",
+    "noisy": "DATA"
+  },
+  {
+    "clean": "information",
+    "noisy": "INFORMATION"
+  },
+  {
+    "clean": "knowledge",
+    "noisy": "KNOWLEDG"
+  },
+  {
+    "clean": "understanding",
+    "noisy": "KNDRSSTANDING"
+  },
+  {
+    "clean": "meaning",
+    "noisy": "MEANING"
+  },
+  {
+    "clean": "intent",
+    "noisy": "INTENT"
+  },
+  {
+    "clean": "purpose",
+    "noisy": "PRPOE"
+  },
+  {
+    "clean": "goal",
+    "noisy": "GOAL"
+  },
+  {
+    "clean": "task",
+    "noisy": "TASK"
+  },
+  {
+    "clean": "activity",
+    "noisy": "ACTVITY"
+  },
+  {
+    "clean": "performance",
+    "noisy": "PRFOHANC"
+  },
+  {
+    "clean": "efficiency",
+    "noisy": "EFFICIENY"
+  },
+  {
+    "clean": "accuracy",
+    "noisy": "ACCRUACCY"
+  },
+  {
+    "clean": "speed",
+    "noisy": "SPED"
+  },
+  {
+    "clean": "rate",
+    "noisy": "RATE"
+  },
+  {
+    "clean": "time",
+    "noisy": "TIME"
+  },
+  {
+    "clean": "duration",
+    "noisy": "URATION"
+  },
+  {
+    "clean": "session",
+    "noisy": "ESSSSION"
+  },
+  {
+    "clean": "profile",
+    "noisy": "PROFIE"
+  },
+  {
+    "clean": "account",
+    "noisy": "CCOUNT"
+  },
+  {
+    "clean": "user",
+    "noisy": "USER"
+  },
+  {
+    "clean": "person",
+    "noisy": "PPERSON"
+  },
+  {
+    "clean": "individual",
+    "noisy": "INNDIVIDUAL"
+  },
+  {
+    "clean": "group",
+    "noisy": "GROUP"
+  },
+  {
+    "clean": "community",
+    "noisy": "OMMUNIY"
+  },
+  {
+    "clean": "society",
+    "noisy": "SOCEIY"
+  },
+  {
+    "clean": "world",
+    "noisy": "WORLD"
+  },
+  {
+    "clean": "global",
+    "noisy": "GLOBAL"
+  },
+  {
+    "clean": "local",
+    "noisy": "LOCAL"
+  },
+  {
+    "clean": "regional",
+    "noisy": "REEGIONAL"
+  },
+  {
+    "clean": "national",
+    "noisy": "NATIIONAL"
+  },
+  {
+    "clean": "international",
+    "noisy": "ITERNATIOA"
+  },
+  {
+    "clean": "standard",
+    "noisy": "STNADARD"
+  },
+  {
+    "clean": "protocol",
+    "noisy": "ROTCOOL"
+  },
+  {
+    "clean": "format",
+    "noisy": "FORMTA"
+  },
+  {
+    "clean": "structure",
+    "noisy": "STRUCTURE"
+  },
+  {
+    "clean": "organization",
+    "noisy": "ORGNIZATLON"
+  },
+  {
+    "clean": "management",
+    "noisy": "MANAGEMENTT"
+  },
+  {
+    "clean": "administration",
+    "noisy": "ADINISTRATION"
+  },
+  {
+    "clean": "configuration",
+    "noisy": "COIGURATION"
+  },
+  {
+    "clean": "installation",
+    "noisy": "INSTALATION"
+  },
+  {
+    "clean": "setup",
+    "noisy": "SETPU"
+  },
+  {
+    "clean": "maintenance",
+    "noisy": "MAINTEAANCE"
+  },
+  {
+    "clean": "update",
+    "noisy": "UPDATE"
+  },
+  {
+    "clean": "upgrade",
+    "noisy": "UPRGRAFE"
+  },
+  {
+    "clean": "version",
+    "noisy": "EVRSIO"
+  },
+  {
+    "clean": "release",
+    "noisy": "RELASE"
+  },
+  {
+    "clean": "build",
+    "noisy": "BUILD"
+  },
+  {
+    "clean": "development",
+    "noisy": "DEVELOPMNT"
+  },
+  {
+    "clean": "testing",
+    "noisy": "TESTNG"
+  },
+  {
+    "clean": "validation",
+    "noisy": "VLIDATION"
+  },
+  {
+    "clean": "verification",
+    "noisy": "VERIFICATION"
+  },
+  {
+    "clean": "evaluation",
+    "noisy": "EVALUATOON"
+  },
+  {
+    "clean": "assessment",
+    "noisy": "ASSESSMENT"
+  },
+  {
+    "clean": "analysis",
+    "noisy": "ANALYSIS"
+  },
+  {
+    "clean": "research",
+    "noisy": "RESEARCH"
+  },
+  {
+    "clean": "study",
+    "noisy": "SUDY"
+  },
+  {
+    "clean": "experiment",
+    "noisy": "EXPFIRMENT"
+  },
+  {
+    "clean": "result",
+    "noisy": "RESUT"
+  },
+  {
+    "clean": "outcome",
+    "noisy": "OUTTCOME"
+  },
+  {
+    "clean": "conclusion",
+    "noisy": "CONCLUSION"
+  },
+  {
+    "clean": "recommendation",
+    "noisy": "RECOMMENDATION"
+  },
+  {
+    "clean": "suggestion",
+    "noisy": "SUGGESTION"
+  },
+  {
+    "clean": "advice",
+    "noisy": "ADVICE"
+  },
+  {
+    "clean": "guidance",
+    "noisy": "GUIDANCE"
+  },
+  {
+    "clean": "instruction",
+    "noisy": "INNSTRUCTION"
+  },
+  {
+    "clean": "direction",
+    "noisy": "DIRECTION"
+  },
+  {
+    "clean": "orientation",
+    "noisy": "OIRENNTATION"
+  },
+  {
+    "clean": "position",
+    "noisy": "POSITION"
+  },
+  {
+    "clean": "location",
+    "noisy": "LOCATON"
+  },
+  {
+    "clean": "movement",
+    "noisy": "MOVEMENT"
+  },
+  {
+    "clean": "action",
+    "noisy": "ACTION"
+  },
+  {
+    "clean": "behavior",
+    "noisy": "BHAVIOR"
+  },
+  {
+    "clean": "response",
+    "noisy": "RESPPONNSE"
+  },
+  {
+    "clean": "reaction",
+    "noisy": "REACTION"
+  },
+  {
+    "clean": "stimulus",
+    "noisy": "STIMULUS"
+  },
+  {
+    "clean": "input",
+    "noisy": "NPU"
+  },
+  {
+    "clean": "output",
+    "noisy": "UTPUT"
+  },
+  {
+    "clean": "process",
+    "noisy": "PROCES"
+  },
+  {
+    "clean": "procedure",
+    "noisy": "PROCEDURE"
+  },
+  {
+    "clean": "method",
+    "noisy": "MTHOD"
+  },
+  {
+    "clean": "technique",
+    "noisy": "TECHNIQUE"
+  },
+  {
+    "clean": "approach",
+    "noisy": "APPRACH"
+  },
+  {
+    "clean": "strategy",
+    "noisy": "STRATEGY"
+  },
+  {
+    "clean": "plan",
+    "noisy": "PLAN"
+  },
+  {
+    "clean": "design",
+    "noisy": "DESIGG"
+  },
+  {
+    "clean": "architecture",
+    "noisy": "ARCHITTCTTUURE"
+  },
+  {
+    "clean": "framework",
+    "noisy": "FRAMEWORK"
+  },
+  {
+    "clean": "structure",
+    "noisy": "STUCTUER"
+  },
+  {
+    "clean": "pattern",
+    "noisy": "PATERN"
+  },
+  {
+    "clean": "template",
+    "noisy": "TEMPLATE"
+  },
+  {
+    "clean": "model",
+    "noisy": "MOEL"
+  },
+  {
+    "clean": "example",
+    "noisy": "EAXMPLE"
+  },
+  {
+    "clean": "sample",
+    "noisy": "SAMPLE"
+  },
+  {
+    "clean": "instance",
+    "noisy": "INSTAHCE"
+  },
+  {
+    "clean": "case",
+    "noisy": "CCAS"
+  },
+  {
+    "clean": "scenario",
+    "noisy": "SENARIO"
+  },
+  {
+    "clean": "situation",
+    "noisy": "SITUATIOM"
+  },
+  {
+    "clean": "condition",
+    "noisy": "CONDITION"
+  },
+  {
+    "clean": "state",
+    "noisy": "STATE"
+  },
+  {
+    "clean": "status",
+    "noisy": "STATU"
+  },
+  {
+    "clean": "mode",
+    "noisy": "MOODE"
+  },
+  {
+    "clean": "level",
+    "noisy": "LEVEL"
+  },
+  {
+    "clean": "degree",
+    "noisy": "DEGREE"
+  },
+  {
+    "clean": "extent",
+    "noisy": "EXTENT"
+  },
+  {
+    "clean": "amount",
+    "noisy": "AOUNT"
+  },
+  {
+    "clean": "quantity",
+    "noisy": "QUANTITY"
+  },
+  {
+    "clean": "quality",
+    "noisy": "QUALITY"
+  },
+  {
+    "clean": "attribute",
+    "noisy": "ATTRIIBUTE"
+  },
+  {
+    "clean": "property",
+    "noisy": "PROPERTY"
+  },
+  {
+    "clean": "characteristic",
+    "noisy": "CHARACTERISUC"
+  },
+  {
+    "clean": "feature",
+    "noisy": "FEATUREE"
+  },
+  {
+    "clean": "aspect",
+    "noisy": "ASPECT"
+  },
+  {
+    "clean": "dimension",
+    "noisy": "DIMENSION"
+  },
+  {
+    "clean": "factor",
+    "noisy": "FACTOR"
+  },
+  {
+    "clean": "variable",
+    "noisy": "VARIABL"
+  },
+  {
+    "clean": "parameter",
+    "noisy": "PRAMETERR"
+  },
+  {
+    "clean": "constraint",
+    "noisy": "CONSTRAINT"
+  },
+  {
+    "clean": "limitation",
+    "noisy": "LIMITATION"
+  },
+  {
+    "clean": "restriction",
+    "noisy": "RESTRIICTTION"
+  },
+  {
+    "clean": "requirement",
+    "noisy": "REQUIREMENT"
+  },
+  {
+    "clean": "specification",
+    "noisy": "SPEECIFFICATION"
+  },
+  {
+    "clean": "definition",
+    "noisy": "DEFINITION"
+  },
+  {
+    "clean": "description",
+    "noisy": "SCRPTION"
+  },
+  {
+    "clean": "explanation",
+    "noisy": "EXPLANATION"
+  },
+  {
+    "clean": "clarification",
+    "noisy": "CLAIFIICATION"
+  },
+  {
+    "clean": "illustration",
+    "noisy": "IILUSTRATION"
+  },
+  {
+    "clean": "demonstration",
+    "noisy": "DEMONSTRAION"
+  },
+  {
+    "clean": "presentation",
+    "noisy": "PRESETATIO"
+  },
+  {
+    "clean": "visualization",
+    "noisy": "VISUALIZATIN"
+  },
+  {
+    "clean": "representation",
+    "noisy": "REPRENTATION"
+  },
+  {
+    "clean": "abstraction",
+    "noisy": "ABSTRACTIOON"
+  },
+  {
+    "clean": "conceptualization",
+    "noisy": "CNEEPTALIZATION"
+  },
+  {
+    "clean": "formulation",
+    "noisy": "FORMULATION"
+  },
+  {
+    "clean": "articulation",
+    "noisy": "ARTICULATION"
+  },
+  {
+    "clean": "expression",
+    "noisy": "EXPPRESSION"
+  },
+  {
+    "clean": "communication",
+    "noisy": "COMMUNICATION"
+  }
+]
