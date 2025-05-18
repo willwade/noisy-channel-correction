@@ -1,0 +1,14 @@
+# Core dependencies
+numpy>=1.19.0
+python-Levenshtein>=0.12.0
+
+# Hugging Face datasets
+datasets>=2.0.0
+huggingface_hub>=0.0.19
+
+# For PPM model
+pylm>=0.1.0
+
+# For visualization (optional)
+matplotlib>=3.3.0
+seaborn>=0.11.0
