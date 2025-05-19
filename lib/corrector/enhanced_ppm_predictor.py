@@ -13,7 +13,7 @@ import logging
 import re
 import time
 import math
-from typing import List, Dict, Tuple, Optional
+from typing import List, Dict, Tuple
 from collections import Counter, defaultdict
 
 # Configure logging
