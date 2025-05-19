@@ -138,17 +138,30 @@ class ConversationEvaluator:
             if not noisy:
                 noisy = intended
 
+            # We'll use minimally_corrected as the primary target for evaluation
+            # falling back to intended if not available
+
             # Correct with context
-            corrections = self.corrector.correct(
-                noisy, context=context, max_edit_distance=2
-            )
+            try:
+                corrections = self.corrector.correct(
+                    noisy, context=context, max_edit_distance=2
+                )
+            except Exception as e:
+                logger.error(f"Error correcting '{noisy}': {e}")
+                corrections = [(noisy, 1.0)]
 
             # Update context with the corrected utterance
             top_correction = corrections[0][0] if corrections else noisy
 
             if self.use_gold_context:
                 # Use the fully corrected utterance for future context (oracle setting)
-                context.append(fully_corrected if fully_corrected else intended)
+                # Prefer fully_corrected, then minimally_corrected, then intended
+                if fully_corrected:
+                    context.append(fully_corrected)
+                elif minimally_corrected:
+                    context.append(minimally_corrected)
+                else:
+                    context.append(intended)
             else:
                 # Use the top correction for future context (realistic setting)
                 context.append(top_correction)
@@ -157,7 +170,7 @@ class ConversationEvaluator:
             context = context[-self.context_window_size :]
 
             # Calculate turn-level metrics for different reference texts
-            # 1. Using intended utterance
+            # Using intended utterance (for backward compatibility)
             correct_at_1_intended = top_correction.lower() == intended.lower()
             correct_at_n_intended = any(
                 corr.lower() == intended.lower() for corr, _ in corrections
@@ -190,7 +203,8 @@ class ConversationEvaluator:
                 else correct_at_n_intended
             )
 
-            # Find the rank of the correct answer (using minimally corrected as primary reference)
+            # Find the rank of the correct answer
+            # Using minimally corrected as primary reference
             correct_rank = -1
             for j, (corr, _) in enumerate(corrections):
                 reference = minimally_corrected if minimally_corrected else intended
@@ -412,9 +426,8 @@ class ConversationEvaluator:
         # Print overall metrics
         print(f"\nOverall Accuracy: {results['metrics']['overall_accuracy']:.4f}")
         print(f"Number of Conversations: {len(results['conversations'])}")
-        print(
-            f"Total Turns: {sum(len(conv['turns']) for conv in results['conversations'])}"
-        )
+        total_turns = sum(len(conv["turns"]) for conv in results["conversations"])
+        print(f"Total Turns: {total_turns}")
 
         # Print accuracy by position
         print("\nAccuracy by Position:")
@@ -508,7 +521,7 @@ def main():
     parser.add_argument(
         "--use-gold-context",
         action="store_true",
-        help="Use gold standard context (intended utterances) instead of corrected utterances",
+        help="Use gold standard context instead of corrected utterances",
     )
 
     parser.add_argument(
@@ -598,9 +611,7 @@ def main():
                 corrector.load_confusion_model(
                     keyboard_matrix_path, args.keyboard_layout
                 )
-                logger.info(
-                    f"Loaded keyboard-specific confusion matrix from {keyboard_matrix_path}"
-                )
+                logger.info(f"Loaded keyboard matrix from {keyboard_matrix_path}")
             else:
                 # Fall back to standard confusion matrix
                 corrector.load_confusion_model(confusion_path, args.keyboard_layout)
@@ -633,7 +644,7 @@ def main():
         logger.info("Corrector models are ready")
     else:
         logger.warning(
-            "Corrector models are not fully initialized. Evaluation results may be inaccurate."
+            "Corrector models not fully initialized. Results may be inaccurate."
         )
         logger.warning(
             "Make sure both PPM model and confusion matrix are properly loaded."

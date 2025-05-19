@@ -3,7 +3,7 @@
 CLI demo for the AAC Noisy Input Correction Engine.
 
 This script provides a command-line interface for demonstrating the
-noisy channel corrector on the AACConversations dataset or using module1's
+noisy channel corrector on the AACConversations dataset or using the
 noise simulator.
 """
 
@@ -20,7 +20,7 @@ sys.path.append(parent_dir)
 
 # Import the corrector
 from lib.corrector.corrector import NoisyChannelCorrector
-from lib.evaluation.utils import (
+from scripts.evaluation.utils import (
     load_aac_conversations,
     get_noisy_utterance,
     get_random_examples,
@@ -32,7 +32,7 @@ from lib.evaluation.utils import (
 )
 
 # Import noise simulator utilities
-from lib.noise_model.utils import (
+from scripts.evaluation.noise_simulator_utils import (
     generate_noisy_pairs,
     load_wordlist,
 )
@@ -52,15 +52,15 @@ def parse_args():
 
     # Source selection
     parser.add_argument(
-        "--use-module1",
+        "--use-noise-simulator",
         action="store_true",
-        help="Use module1's noise simulator instead of the Hugging Face dataset",
+        help="Use the noise simulator instead of the Hugging Face dataset",
     )
     parser.add_argument(
         "--wordlist",
         type=str,
-        default="../data/wordlist.txt",
-        help="Path to the wordlist file for module1's noise simulator",
+        default="data/wordlist.txt",
+        help="Path to the wordlist file for the noise simulator",
     )
 
     # Dataset arguments
@@ -261,10 +261,10 @@ def process_examples(
     return results
 
 
-def process_module1_examples(
+def process_noise_simulator_examples(
     corrector: NoisyChannelCorrector, args
 ) -> List[Dict[str, Any]]:
-    """Process examples using module1's noise simulator."""
+    """Process examples using the noise simulator."""
     results = []
 
     # Load the wordlist
@@ -357,10 +357,10 @@ def main():
         interactive_mode(corrector, args)
         return
 
-    # Use module1's noise simulator if requested
-    if args.use_module1:
-        logger.info("Using module1's noise simulator")
-        results = process_module1_examples(corrector, args)
+    # Use the noise simulator if requested
+    if args.use_noise_simulator:
+        logger.info("Using the noise simulator")
+        results = process_noise_simulator_examples(corrector, args)
     else:
         # Load the dataset
         dataset = load_aac_conversations(

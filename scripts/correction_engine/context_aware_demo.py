@@ -60,7 +60,9 @@ def load_sample_conversation(file_path: str) -> List[Dict[str, Any]]:
         return []
 
 
-def add_noise_to_conversation(conversation: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def add_noise_to_conversation(
+    conversation: List[Dict[str, Any]],
+) -> List[Dict[str, Any]]:
     """
     Add noise to a conversation.
 
@@ -71,7 +73,35 @@ def add_noise_to_conversation(conversation: List[Dict[str, Any]]) -> List[Dict[s
         List of conversation turns with noise added
     """
     import random
-    from lib.noise_simulator.noise_simulator import add_noise
+
+    # Try to import from lib.noise_simulator first
+    try:
+        from lib.noise_simulator.noise_simulator import add_noise
+
+        logger.info("Using lib.noise_simulator for noise generation")
+    except ImportError:
+        # Fallback to a simple noise generator if the module is not available
+        logger.warning("lib.noise_simulator not found, using simple noise generator")
+
+        def add_noise(text, noise_level=0.3, keyboard_layout=None, seed=None):
+            """Simple fallback noise generator."""
+            if seed is not None:
+                random.seed(seed)
+
+            chars = list(text)
+            # Randomly modify some characters
+            for i in range(len(chars)):
+                if random.random() < noise_level:
+                    # 33% chance to replace with adjacent character
+                    if random.random() < 0.33:
+                        chars[i] = random.choice("abcdefghijklmnopqrstuvwxyz")
+                    # 33% chance to delete
+                    elif random.random() < 0.5:
+                        chars[i] = ""
+                    # 33% chance to insert
+                    else:
+                        chars.insert(i, random.choice("abcdefghijklmnopqrstuvwxyz"))
+            return "".join(chars)
 
     noisy_conversation = []
 
@@ -83,20 +113,22 @@ def add_noise_to_conversation(conversation: List[Dict[str, Any]]) -> List[Dict[s
         if speaker.lower() in ["user", "aac user"]:
             # Add noise with a moderate level
             noisy_utterance = add_noise(
-                utterance, 
-                noise_level=0.3, 
+                utterance,
+                noise_level=0.3,
                 keyboard_layout="qwerty",
-                seed=random.randint(1, 1000)
+                seed=random.randint(1, 1000),
             )
         else:
             # No noise for non-user utterances
             noisy_utterance = utterance
 
-        noisy_conversation.append({
-            "speaker": speaker,
-            "utterance": utterance,  # Original utterance
-            "noisy_utterance": noisy_utterance  # Noisy version
-        })
+        noisy_conversation.append(
+            {
+                "speaker": speaker,
+                "utterance": utterance,  # Original utterance
+                "noisy_utterance": noisy_utterance,  # Noisy version
+            }
+        )
 
     return noisy_conversation
 
@@ -131,9 +163,7 @@ def process_conversation(
         if speaker.lower() in ["user", "aac user"]:
             # Correct with context
             corrections = corrector.correct(
-                noisy_utterance, 
-                context=context,
-                max_edit_distance=2
+                noisy_utterance, context=context, max_edit_distance=2
             )
 
             # Get the top correction
@@ -204,21 +234,23 @@ def print_processed_conversation(processed_conversation: List[Dict[str, Any]]) -
         correct = turn["correct"]
 
         print(f"Turn {i+1} - {speaker}:")
-        
+
         if speaker.lower() in ["user", "aac user"]:
             print(f"  Original: {original}")
             print(f"  Noisy:    {noisy}")
             print(f"  Corrected: {corrected} (Score: {score:.4f})")
             print(f"  Correct:  {'✓' if correct else '✗'}")
-            
+
             # Print alternative corrections
             if len(turn["corrections"]) > 1:
                 print("  Alternatives:")
-                for j, corr in enumerate(turn["corrections"][1:4]):  # Show top 3 alternatives
+                for j, corr in enumerate(
+                    turn["corrections"][1:4]
+                ):  # Show top 3 alternatives
                     print(f"    {j+2}. {corr['text']} (Score: {corr['score']:.4f})")
         else:
             print(f"  {original}")
-            
+
         print()
 
 
@@ -332,9 +364,18 @@ def main():
         conversation = [
             {"speaker": "System", "utterance": "Hello! How can I help you today?"},
             {"speaker": "User", "utterance": "I would like to order a pizza please"},
-            {"speaker": "System", "utterance": "Sure, what kind of pizza would you like?"},
-            {"speaker": "User", "utterance": "I want a pepperoni pizza with extra cheese"},
-            {"speaker": "System", "utterance": "Great choice! What size would you like?"},
+            {
+                "speaker": "System",
+                "utterance": "Sure, what kind of pizza would you like?",
+            },
+            {
+                "speaker": "User",
+                "utterance": "I want a pepperoni pizza with extra cheese",
+            },
+            {
+                "speaker": "System",
+                "utterance": "Great choice! What size would you like?",
+            },
             {"speaker": "User", "utterance": "Medium size is good for me"},
             {"speaker": "System", "utterance": "Would you like any drinks with that?"},
             {"speaker": "User", "utterance": "Yes a bottle of cola please"},
@@ -355,15 +396,23 @@ def main():
     print_processed_conversation(processed_conversation)
 
     # Print summary
-    correct_count = sum(1 for turn in processed_conversation 
-                       if turn["speaker"].lower() in ["user", "aac user"] and turn["correct"])
-    total_count = sum(1 for turn in processed_conversation 
-                     if turn["speaker"].lower() in ["user", "aac user"])
-    
+    correct_count = sum(
+        1
+        for turn in processed_conversation
+        if turn["speaker"].lower() in ["user", "aac user"] and turn["correct"]
+    )
+    total_count = sum(
+        1
+        for turn in processed_conversation
+        if turn["speaker"].lower() in ["user", "aac user"]
+    )
+
     print("\n=== Summary ===\n")
     print(f"Conversation turns: {len(processed_conversation)}")
     print(f"User turns: {total_count}")
-    print(f"Correctly corrected: {correct_count}/{total_count} ({correct_count/total_count*100:.1f}%)")
+    print(
+        f"Correctly corrected: {correct_count}/{total_count} ({correct_count/total_count*100:.1f}%)"
+    )
     print(f"Using conversation context: {not args.no_conversation_context}")
     print(f"Using adaptive context weighting: {not args.no_adaptive_weighting}")
 

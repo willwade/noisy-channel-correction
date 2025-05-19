@@ -489,33 +489,116 @@ class NoisyChannelCorrector:
         # Calculate character-level probability using the PPM model
         char_prob = self._language_probability(candidate)
 
+        # Initialize context probability and confidence
+        context_prob = 0.0
+        context_confidence = 0.0
+
         # If context is available and the word n-gram model is ready, use it
         if context and self.context_aware:
-            # If using adaptive context weighting, calculate confidence
+            # Get probability and confidence from the word n-gram model
+            ngram_prob, ngram_confidence = (
+                self.word_ngram_model.probability_with_confidence(candidate, context)
+            )
+
+            # Calculate context-based probability using the PPM model as well
+            ppm_context_prob = self.ppm_model.calculate_word_probability(
+                candidate, context
+            )
+
+            # Determine confidence for PPM context prediction based on multiple factors
+            # 1. Word presence in vocabulary
+            vocab_factor = (
+                0.7 if candidate.lower() in self.ppm_model.word_frequencies else 0.3
+            )
+
+            # 2. Context relevance - how many context words are in the PPM model's vocabulary
+            context_words_in_vocab = sum(
+                1 for word in context if word.lower() in self.ppm_model.word_frequencies
+            )
+            context_relevance = min(context_words_in_vocab / max(1, len(context)), 1.0)
+
+            # 3. Word frequency - more frequent words get higher confidence
+            word_freq = self.ppm_model.word_frequencies.get(candidate.lower(), 0)
+            max_freq = (
+                max(self.ppm_model.word_frequencies.values())
+                if self.ppm_model.word_frequencies
+                else 1
+            )
+            freq_factor = min(word_freq / max(1, max_freq), 1.0)
+
+            # Combine factors for overall PPM confidence
+            ppm_confidence = (
+                0.4 * vocab_factor + 0.3 * context_relevance + 0.3 * freq_factor
+            )
+
+            # Combine the context probabilities from both models
+            # Weight by their respective confidences
+            if ngram_confidence + ppm_confidence > 0:
+                # Enhanced integration: use a weighted combination of both models
+                # with weights determined by their confidence scores
+                context_prob = (
+                    (ngram_prob * ngram_confidence)
+                    + (ppm_context_prob * ppm_confidence)
+                ) / (ngram_confidence + ppm_confidence)
+
+                # Calculate a combined confidence score
+                # We use a weighted average rather than just the maximum
+                context_confidence = (ngram_confidence * 0.6) + (ppm_confidence * 0.4)
+            else:
+                context_prob = 0.0
+                context_confidence = 0.0
+
+            # If using adaptive context weighting, adjust based on multiple factors
             if self.adaptive_context_weighting:
-                # Get probability and confidence from the word n-gram model
-                context_prob, confidence = (
-                    self.word_ngram_model.probability_with_confidence(
-                        candidate, context
+                # 1. Context length factor - longer context is more reliable
+                context_length_factor = min(len(context) / 5.0, 1.0)
+
+                # 2. Context coherence - are the context words related?
+                # This is approximated by checking if context words appear together in training data
+                coherence_score = 0.5  # Default medium coherence
+                if len(context) > 1:
+                    # Check if adjacent context words appear together in bigrams
+                    bigram_matches = 0
+                    for i in range(len(context) - 1):
+                        if (
+                            context[i] in self.ppm_model.bigrams
+                            and context[i + 1] in self.ppm_model.bigrams[context[i]]
+                        ):
+                            bigram_matches += 1
+
+                    coherence_score = min(
+                        bigram_matches / max(1, len(context) - 1), 1.0
                     )
+
+                # 3. Candidate quality - is this a common word or rare?
+                candidate_quality = min(
+                    self.ppm_model.word_frequencies.get(candidate.lower(), 0)
+                    / max(1, max(self.ppm_model.word_frequencies.values()) / 100),
+                    1.0,
                 )
 
-                # Adjust context weight based on confidence
-                # Higher confidence means more weight on context
-                adjusted_weight = self.context_weight * confidence
+                # Combine all factors for the final weight adjustment
+                adjusted_weight = self.context_weight * (
+                    0.4 * context_confidence
+                    + 0.3 * context_length_factor
+                    + 0.2 * coherence_score
+                    + 0.1 * candidate_quality
+                )
+
+                # Ensure weight is within bounds
+                adjusted_weight = max(0.1, min(adjusted_weight, 0.9))
 
                 # Combine the probabilities using the adjusted weight
                 return (adjusted_weight * context_prob) + (
                     (1 - adjusted_weight) * char_prob
                 )
             else:
-                # Calculate context-based probability using the word n-gram model
-                context_prob = self._language_probability_with_context(
-                    candidate, context
-                )
+                # For non-adaptive weighting, still use both models but with fixed weights
+                # This is an improvement over the original which only used the n-gram model
+                combined_context_prob = (0.7 * context_prob) + (0.3 * ppm_context_prob)
 
                 # Combine the probabilities using the fixed context weight
-                return (self.context_weight * context_prob) + (
+                return (self.context_weight * combined_context_prob) + (
                     (1 - self.context_weight) * char_prob
                 )
 

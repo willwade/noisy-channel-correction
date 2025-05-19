@@ -72,7 +72,7 @@ def test_context_aware_correction(
     corrector: NoisyChannelCorrector,
     noisy_input: str,
     context: Optional[Union[str, List[str]]] = None,
-    max_candidates: int = 5,
+    max_edit_distance: int = 2,
 ) -> None:
     """
     Test context-aware correction.
@@ -81,7 +81,7 @@ def test_context_aware_correction(
         corrector: The corrector to use
         noisy_input: The noisy input text
         context: Optional context for correction
-        max_candidates: Maximum number of candidates to return
+        max_edit_distance: Maximum edit distance for candidate generation
     """
     print(f"\nNoisy input: '{noisy_input}'")
 
@@ -95,12 +95,12 @@ def test_context_aware_correction(
 
     # Correct without context
     no_context_corrections = corrector.correct(
-        noisy_input, context=None, max_candidates=max_candidates
+        noisy_input, context=None, max_edit_distance=max_edit_distance
     )
 
     # Correct with context
     with_context_corrections = corrector.correct(
-        noisy_input, context=context, max_candidates=max_candidates
+        noisy_input, context=context, max_edit_distance=max_edit_distance
     )
 
     # Print the results
