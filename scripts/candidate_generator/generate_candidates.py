@@ -29,11 +29,12 @@ def main():
     parser = argparse.ArgumentParser(
         description="Generate candidates for a noisy input."
     )
+    parser.add_argument("--input", type=str, required=True, help="The noisy input text")
     parser.add_argument(
-        "--input", type=str, required=True, help="The noisy input text"
-    )
-    parser.add_argument(
-        "--lexicon", type=str, default="../data/wordlist.txt", help="Path to the lexicon file"
+        "--lexicon",
+        type=str,
+        default="data/wordlist.txt",
+        help="Path to the lexicon file",
     )
     parser.add_argument(
         "--max-edit-distance",

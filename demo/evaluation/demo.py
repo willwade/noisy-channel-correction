@@ -110,11 +110,30 @@ def parse_args():
     )
 
     # Model arguments
-    parser.add_argument("--ppm-model", type=str, help="Path to the PPM model file")
     parser.add_argument(
-        "--confusion-matrix", type=str, help="Path to the confusion matrix file"
+        "--ppm-model",
+        type=str,
+        default="models/ppm_model.pkl",
+        help="Path to the PPM model file",
     )
-    parser.add_argument("--lexicon", type=str, help="Path to the lexicon file")
+    parser.add_argument(
+        "--confusion-matrix",
+        type=str,
+        default="models/confusion_matrix.json",
+        help="Path to the confusion matrix file",
+    )
+    parser.add_argument(
+        "--word-ngram-model",
+        type=str,
+        default="models/word_ngram_model.pkl",
+        help="Path to the word n-gram model file",
+    )
+    parser.add_argument(
+        "--lexicon",
+        type=str,
+        default="data/wordlist.txt",
+        help="Path to the lexicon file",
+    )
 
     # Correction parameters
     parser.add_argument(
@@ -333,6 +352,7 @@ def main():
     corrector = load_corrector(
         ppm_model_path=args.ppm_model,
         confusion_matrix_path=args.confusion_matrix,
+        word_ngram_model_path=args.word_ngram_model,
         lexicon_path=args.lexicon,
         max_candidates=args.max_candidates,
     )

@@ -218,6 +218,7 @@ def prepare_conversation_for_evaluation(
 def load_corrector(
     ppm_model_path: Optional[str] = None,
     confusion_matrix_path: Optional[str] = None,
+    word_ngram_model_path: Optional[str] = None,
     lexicon_path: Optional[str] = None,
     max_candidates: int = 5,
 ) -> NoisyChannelCorrector:
@@ -227,6 +228,7 @@ def load_corrector(
     Args:
         ppm_model_path: Path to the PPM model file
         confusion_matrix_path: Path to the confusion matrix file
+        word_ngram_model_path: Path to the word n-gram model file
         lexicon_path: Path to the lexicon file
         max_candidates: Maximum number of candidates to return
 
@@ -250,6 +252,15 @@ def load_corrector(
         if not success:
             logger.warning(
                 f"Failed to load confusion matrix from {confusion_matrix_path}"
+            )
+
+    # Load the word n-gram model if provided
+    if word_ngram_model_path:
+        logger.info(f"Loading word n-gram model from {word_ngram_model_path}")
+        success = corrector.load_word_ngram_model(word_ngram_model_path)
+        if not success:
+            logger.warning(
+                f"Failed to load word n-gram model from {word_ngram_model_path}"
             )
 
     # Load the lexicon if provided
