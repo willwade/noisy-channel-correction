@@ -13,7 +13,7 @@ import logging
 import re
 import time
 import math
-from typing import List, Dict
+from typing import List, Dict, Tuple, Optional
 from collections import Counter, defaultdict
 
 # Configure logging
@@ -556,3 +556,156 @@ class EnhancedPPMPredictor:
             "word_completions": word_completions,
             "next_words": next_words,
         }
+
+    def predict_with_word_boundaries(
+        self, text: str, num_predictions: int = 5
+    ) -> List[Tuple[str, float]]:
+        """Predict next words with awareness of word boundaries.
+
+        This method enhances prediction by giving special consideration to word boundaries,
+        which improves integration with word-level models.
+
+        Args:
+            text: The text typed so far
+            num_predictions: Number of predictions to return
+
+        Returns:
+            List of (word, score) tuples
+        """
+        # Check if the model is ready
+        if not self.model_ready:
+            logger.warning("Enhanced PPM model not ready. Cannot predict.")
+            return []
+
+        try:
+            # Split text into words
+            words = self._tokenize(text)
+
+            # If no words, return most common words
+            if not words:
+                return [
+                    (word, count / max(1, sum(self.word_frequencies.values())))
+                    for word, count in self.word_frequencies.most_common(
+                        num_predictions
+                    )
+                ]
+
+            # Get the last word
+            last_word = words[-1]
+
+            # Get the second last word if available
+            second_last_word = words[-2] if len(words) > 1 else None
+
+            # Combine different prediction methods with weights
+            predictions = {}
+
+            # 1. Trigram predictions (highest weight)
+            if second_last_word and last_word:
+                if (
+                    second_last_word in self.trigrams
+                    and last_word in self.trigrams[second_last_word]
+                ):
+                    for word, count in self.trigrams[second_last_word][
+                        last_word
+                    ].items():
+                        # Calculate a normalized score
+                        total = sum(self.trigrams[second_last_word][last_word].values())
+                        score = count / total if total > 0 else 0
+                        predictions[word] = (
+                            predictions.get(word, 0) + score * 0.6
+                        )  # 60% weight
+
+            # 2. Bigram predictions (medium weight)
+            if last_word:
+                total = sum(self.bigrams[last_word].values())
+                for word, count in self.bigrams[last_word].items():
+                    score = count / total if total > 0 else 0
+                    predictions[word] = (
+                        predictions.get(word, 0) + score * 0.3
+                    )  # 30% weight
+
+            # 3. Unigram predictions (low weight)
+            total = sum(self.word_frequencies.values())
+            for word, count in self.word_frequencies.most_common(20):
+                score = count / total if total > 0 else 0
+                predictions[word] = predictions.get(word, 0) + score * 0.1  # 10% weight
+
+            # Sort predictions by score
+            sorted_predictions = sorted(
+                predictions.items(), key=lambda x: x[1], reverse=True
+            )
+
+            # Return top predictions
+            return sorted_predictions[:num_predictions]
+        except Exception as e:
+            logger.error(f"Error predicting with word boundaries: {e}")
+            return []
+
+    def calculate_word_probability(self, word: str, context: List[str] = None) -> float:
+        """Calculate the probability of a word given its context.
+
+        This method calculates the probability of a word using a combination of
+        character-level and word-level information.
+
+        Args:
+            word: The word to calculate probability for
+            context: Optional list of previous words for context
+
+        Returns:
+            Probability of the word
+        """
+        if not self.model_ready:
+            return 0.01  # Return a small default probability
+
+        try:
+            # If no context provided, use unigram probability
+            if not context:
+                # Get word frequency
+                freq = self.word_frequencies.get(word.lower(), 0)
+
+                # Add smoothing to avoid zero probabilities
+                total_words = sum(self.word_frequencies.values())
+                return (freq + 1) / (total_words + len(self.word_frequencies))
+
+            # If context is provided, use n-gram probabilities
+            context_words = [w.lower() for w in context]
+            word = word.lower()
+
+            # Try trigram first
+            if len(context_words) >= 2:
+                second_last = context_words[-2]
+                last = context_words[-1]
+
+                if (
+                    second_last in self.trigrams
+                    and last in self.trigrams[second_last]
+                    and word in self.trigrams[second_last][last]
+                ):
+
+                    count = self.trigrams[second_last][last][word]
+                    total = sum(self.trigrams[second_last][last].values())
+
+                    if total > 0:
+                        # Use trigram probability with high weight
+                        return count / total
+
+            # Try bigram next
+            if context_words:
+                last = context_words[-1]
+
+                if last in self.bigrams and word in self.bigrams[last]:
+                    count = self.bigrams[last][word]
+                    total = sum(self.bigrams[last].values())
+
+                    if total > 0:
+                        # Use bigram probability with medium weight
+                        return count / total
+
+            # Fall back to unigram
+            freq = self.word_frequencies.get(word, 0)
+            total_words = sum(self.word_frequencies.values())
+            return (freq + 1) / (total_words + len(self.word_frequencies))
+
+        except Exception as e:
+            logger.error(f"Error calculating word probability: {e}")
+            return 0.01  # Return a small default probability

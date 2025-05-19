@@ -6,7 +6,6 @@ for the PPM model, which will be used for word prediction.
 """
 
 import json
-import os
 import argparse
 import random
 from typing import List, Dict, Any

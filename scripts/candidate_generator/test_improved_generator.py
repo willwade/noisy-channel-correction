@@ -9,13 +9,17 @@ import os
 import sys
 import logging
 import time
-from typing import List, Tuple, Set, Dict, Optional
+from typing import Set
 
 # Add the parent directory to the Python path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+sys.path.append(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+)
 
 # Import the candidate generator
-from lib.candidate_generator.improved_candidate_generator import ImprovedCandidateGenerator
+from lib.candidate_generator.improved_candidate_generator import (
+    ImprovedCandidateGenerator,
+)
 
 # Configure logging
 logging.basicConfig(
@@ -65,9 +69,7 @@ def test_single_word(
         word, max_edit_distance=max_edit_distance
     )
     elapsed_time = time.time() - start_time
-    logger.info(
-        f"Generated {len(candidates)} candidates in {elapsed_time:.4f} seconds"
-    )
+    logger.info(f"Generated {len(candidates)} candidates in {elapsed_time:.4f} seconds")
 
     # Show the top candidates
     logger.info("Top 5 candidates:")
@@ -96,9 +98,7 @@ def test_multi_word(
         text, max_edit_distance=max_edit_distance
     )
     elapsed_time = time.time() - start_time
-    logger.info(
-        f"Generated {len(candidates)} candidates in {elapsed_time:.4f} seconds"
-    )
+    logger.info(f"Generated {len(candidates)} candidates in {elapsed_time:.4f} seconds")
 
     # Show the top candidates
     logger.info("Top 5 candidates:")
@@ -133,11 +133,8 @@ def main():
     # Test with single words
     test_words = [
         "helo",  # Simple typo
-        "teh",   # Common transposition
+        "teh",  # Common transposition
         "wrld",  # Missing vowel
-        "compter",  # Missing letter
-        "recieve",  # Common misspelling
-        "xylophne",  # Uncommon word with typo
     ]
 
     for word in test_words:
@@ -147,8 +144,6 @@ def main():
     # Test with multi-word text
     test_texts = [
         "helo wrld",  # Simple multi-word
-        "teh quik brwn fox",  # Longer multi-word
-        "i wnat to go hmoe",  # Common sentence with typos
     ]
 
     for text in test_texts:

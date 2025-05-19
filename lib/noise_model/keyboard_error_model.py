@@ -15,7 +15,7 @@ keyboard layouts, supporting multiple languages and input methods.
 
 import random
 import numpy as np
-from typing import List, Dict, Tuple, Optional, Union, Set
+from typing import List, Dict, Tuple, Optional
 import math
 import os
 import sys
@@ -26,8 +26,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # Import keyboard layouts from language_keyboards.py
 from lib.noise_model.language_keyboards import (
     get_keyboard_layout,
-    KEYBOARD_LAYOUTS,
-    LANGUAGE_NAMES,
 )
 
 # Error types

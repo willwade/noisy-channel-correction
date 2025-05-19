@@ -16,7 +16,7 @@ The main components are:
 
 import random
 import json
-from typing import List, Dict, Tuple, Optional, Union, Set, Any
+from typing import List, Dict, Tuple, Any
 import os
 import sys
 import logging
@@ -25,7 +25,7 @@ import logging
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import the keyboard error model
-from lib.noise_model.keyboard_error_model import KeyboardErrorModel, KeyboardLayoutModel
+from lib.noise_model.keyboard_error_model import KeyboardErrorModel
 
 # Configure logging
 logging.basicConfig(

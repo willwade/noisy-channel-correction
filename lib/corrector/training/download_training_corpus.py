@@ -9,7 +9,7 @@ import os
 import re
 import argparse
 import requests
-from typing import List, Optional
+from typing import Optional
 
 # Project Gutenberg URLs for some small books
 GUTENBERG_BOOKS = {

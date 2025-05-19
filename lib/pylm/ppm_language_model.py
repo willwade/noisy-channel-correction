@@ -261,7 +261,6 @@ class PPMLanguageModel:
                 print("Invalid symbol ID.")
             return
 
-        current_node = context.head
         found = False
 
         # Traverse the trie to find or create the needed node

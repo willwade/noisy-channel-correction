@@ -17,9 +17,7 @@ import sys
 import json
 import logging
 import math
-import numpy as np
-from collections import defaultdict
-from typing import Dict, List, Tuple, Optional, Union, Set, Any
+from typing import Dict, List, Tuple, Any
 
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -28,11 +26,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from lib.confusion_matrix.confusion_matrix import ConfusionMatrix, EPSILON, PHI
 
 # Import keyboard layouts
-from lib.noise_model.language_keyboards import (
-    get_keyboard_layout,
-    KEYBOARD_LAYOUTS,
-    LANGUAGE_NAMES,
-)
 
 # Import keyboard layout model
 from lib.noise_model.keyboard_error_model import KeyboardLayoutModel

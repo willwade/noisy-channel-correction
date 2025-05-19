@@ -10,13 +10,12 @@ import os
 import sys
 import argparse
 import logging
-from typing import List, Tuple, Optional
 
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import the corrector
-from lib.corrector.corrector import NoisyChannelCorrector, correct
+from lib.corrector.corrector import NoisyChannelCorrector
 
 # Configure logging
 logging.basicConfig(

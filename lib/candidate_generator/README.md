@@ -1,6 +1,8 @@
-# Module 3: Candidate Generator
+# Candidate Generator
 
 This module provides functionality to generate plausible candidates for a given noisy input. It uses edit distance, keyboard adjacency, and lexicon-based filtering to generate and rank candidates.
+
+The main implementation is the `ImprovedCandidateGenerator` class, which combines the best features from all previous versions.
 
 ## Overview
 
@@ -31,34 +33,57 @@ candidates = generator.generate_candidates("helo")
 ### Loading a Lexicon from a File
 
 ```python
-from module3.candidate_generator import CandidateGenerator
+from lib.candidate_generator.improved_candidate_generator import ImprovedCandidateGenerator
 
 # Create a candidate generator
-generator = CandidateGenerator()
+generator = ImprovedCandidateGenerator()
 
 # Load a lexicon from a file
-generator.load_lexicon_from_file("data/wordlist.txt")
+with open("data/wordlist.txt", "r") as f:
+    lexicon = set(line.strip().lower() for line in f if line.strip())
+generator.lexicon = lexicon
+
+# Generate candidates for a noisy input
+candidates = generator.generate_candidates("helo")
+
+# Print the top candidates
+for candidate, score in candidates[:5]:
+    print(f"{candidate}: {score:.4f}")
+```
+
+### Using the Base Class
+
+```python
+from lib.candidate_generator.candidate_generator import CandidateGenerator
+
+# Create a basic candidate generator
+generator = CandidateGenerator(lexicon={"hello", "help", "world", "test"})
 
 # Generate candidates for a noisy input
 candidates = generator.generate_candidates("helo")
 ```
 
-### Using the Convenience Function
-
-```python
-from module3.candidate_generator import generate_candidates
-
-# Generate candidates for a noisy input
-candidates = generate_candidates("helo", lexicon={"hello", "world", "test"})
-```
-
 ## API Reference
 
-### `CandidateGenerator` Class
+### `ImprovedCandidateGenerator` Class
+
+#### `__init__(lexicon=None, max_candidates=30, max_edits=20000, keyboard_boost=0.3, strict_filtering=True, smart_filtering=True, use_frequency_info=True)`
+
+Initialize an improved candidate generator.
+
+- `lexicon`: Set of valid words to use for filtering candidates
+- `max_candidates`: Maximum number of candidates to return
+- `max_edits`: Maximum number of edit candidates to generate
+- `keyboard_boost`: Boost factor for keyboard-adjacent substitutions
+- `strict_filtering`: Whether to strictly filter candidates by lexicon
+- `smart_filtering`: Whether to use smart filtering for candidates
+- `use_frequency_info`: Whether to use word frequency information
+
+### `CandidateGenerator` Class (Base Class)
 
 #### `__init__(lexicon=None, max_candidates=10)`
 
-Initialize a candidate generator.
+Initialize a basic candidate generator.
 
 - `lexicon`: Set of valid words to use for filtering candidates
 - `max_candidates`: Maximum number of candidates to return

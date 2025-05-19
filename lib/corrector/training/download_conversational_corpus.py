@@ -6,15 +6,11 @@ and processes it for use as training data for the PPM model.
 """
 
 import os
-import re
 import argparse
 import requests
-import zipfile
-import io
 import json
 import random
-from typing import List, Dict, Any, Optional, Tuple
-from pathlib import Path
+from typing import Optional
 
 # Sources of conversational text
 CONVERSATIONAL_CORPORA = {

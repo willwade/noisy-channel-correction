@@ -14,7 +14,9 @@ import logging
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import the candidate generator
-from lib.candidate_generator.candidate_generator import CandidateGenerator
+from lib.candidate_generator.improved_candidate_generator import (
+    ImprovedCandidateGenerator,
+)
 
 # Configure logging
 logging.basicConfig(
@@ -56,7 +58,7 @@ def main():
     args = parser.parse_args()
 
     # Create a candidate generator
-    generator = CandidateGenerator(max_candidates=args.max_candidates)
+    generator = ImprovedCandidateGenerator(max_candidates=args.max_candidates)
 
     # Load the lexicon
     lexicon_path = os.path.abspath(args.lexicon)

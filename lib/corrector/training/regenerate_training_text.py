@@ -5,7 +5,6 @@ This script downloads a book, regenerates the training text,
 and restarts the app with the new training text.
 """
 
-import os
 import argparse
 import subprocess
 import time

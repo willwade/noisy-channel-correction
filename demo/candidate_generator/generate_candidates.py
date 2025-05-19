@@ -14,7 +14,9 @@ import logging
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import the candidate generator
-from lib.candidate_generator.candidate_generator import CandidateGenerator
+from lib.candidate_generator.improved_candidate_generator import (
+    ImprovedCandidateGenerator,
+)
 
 # Configure logging
 logging.basicConfig(
@@ -29,11 +31,12 @@ def main():
     parser = argparse.ArgumentParser(
         description="Generate candidates for a noisy input."
     )
+    parser.add_argument("--input", type=str, required=True, help="The noisy input text")
     parser.add_argument(
-        "--input", type=str, required=True, help="The noisy input text"
-    )
-    parser.add_argument(
-        "--lexicon", type=str, default="../data/wordlist.txt", help="Path to the lexicon file"
+        "--lexicon",
+        type=str,
+        default="../data/wordlist.txt",
+        help="Path to the lexicon file",
     )
     parser.add_argument(
         "--max-edit-distance",
@@ -55,7 +58,7 @@ def main():
     args = parser.parse_args()
 
     # Create a candidate generator
-    generator = CandidateGenerator(max_candidates=args.max_candidates)
+    generator = ImprovedCandidateGenerator(max_candidates=args.max_candidates)
 
     # Load the lexicon
     lexicon_path = os.path.abspath(args.lexicon)

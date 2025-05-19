@@ -18,7 +18,7 @@ import os
 import sys
 import logging
 import math
-from typing import List, Tuple, Set, Optional, Union
+from typing import List, Tuple, Set, Optional, Union, Dict, Any
 
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -28,6 +28,9 @@ from lib.corrector.enhanced_ppm_predictor import EnhancedPPMPredictor
 
 # Import the word n-gram model
 from lib.corrector.word_ngram_model import WordNGramModel
+
+# Import the conversation context manager
+from lib.corrector.conversation_context import ConversationContext
 
 # Import the confusion matrices
 from lib.confusion_matrix.confusion_matrix import ConfusionMatrix, get_error_probability
@@ -72,6 +75,8 @@ class NoisyChannelCorrector:
         context_window_size: int = 2,
         context_weight: float = 0.5,
         keyboard_layout: str = "qwerty",
+        use_conversation_context: bool = True,
+        adaptive_context_weighting: bool = True,
     ):
         """
         Initialize a noisy channel corrector.
@@ -85,6 +90,8 @@ class NoisyChannelCorrector:
             context_window_size: Number of previous words to use as context
             context_weight: Weight of context-based probability (0-1)
             keyboard_layout: Keyboard layout to use ('qwerty', 'abc', 'frequency')
+            use_conversation_context: Whether to use conversation-level context
+            adaptive_context_weighting: Whether to dynamically adjust context weight
         """
         # Initialize the PPM model
         self.ppm_model = ppm_model if ppm_model is not None else EnhancedPPMPredictor()
@@ -117,6 +124,20 @@ class NoisyChannelCorrector:
         # Context parameters
         self.context_window_size = context_window_size
         self.context_weight = context_weight
+        self.use_conversation_context = use_conversation_context
+        self.adaptive_context_weighting = adaptive_context_weighting
+
+        # Initialize conversation context manager if enabled
+        self.conversation_context = (
+            ConversationContext(
+                max_history=10,
+                recency_weight=0.8,
+                speaker_specific=True,
+                topic_aware=True,
+            )
+            if use_conversation_context
+            else None
+        )
 
         # Keyboard layout
         self.keyboard_layout = keyboard_layout
@@ -342,19 +363,38 @@ class NoisyChannelCorrector:
             List of context words
         """
         if context is None:
+            # If conversation context is enabled and has content, use it
+            if self.use_conversation_context and self.conversation_context:
+                return self.conversation_context.get_context_for_correction(
+                    max_words=self.context_window_size * 3
+                )
             return []
 
         # If context is a string, split it into words
         if isinstance(context, str):
             # Simple tokenization by splitting on whitespace
-            return [
+            processed_context = [
                 word.strip(".,;:!?\"'()[]{}")
                 for word in context.lower().split()
                 if word.strip(".,;:!?\"'()[]{}")
             ]
+        else:
+            # If context is already a list, ensure all items are strings
+            processed_context = [str(word).lower() for word in context]
 
-        # If context is already a list, ensure all items are strings
-        return [str(word).lower() for word in context]
+        # If conversation context is enabled, enhance with topic keywords
+        if self.use_conversation_context and self.conversation_context:
+            # Get topic keywords
+            topic_keywords = self.conversation_context.get_topic_keywords(
+                max_keywords=5
+            )
+
+            # Add topic keywords to the context if they're not already there
+            for keyword in topic_keywords:
+                if keyword not in processed_context:
+                    processed_context.append(keyword)
+
+        return processed_context
 
     def _score_candidates(
         self,
@@ -434,13 +474,33 @@ class NoisyChannelCorrector:
 
         # If context is available and the word n-gram model is ready, use it
         if context and self.context_aware:
-            # Calculate context-based probability using the word n-gram model
-            context_prob = self._language_probability_with_context(candidate, context)
+            # If using adaptive context weighting, calculate confidence
+            if self.adaptive_context_weighting:
+                # Get probability and confidence from the word n-gram model
+                context_prob, confidence = (
+                    self.word_ngram_model.probability_with_confidence(
+                        candidate, context
+                    )
+                )
 
-            # Combine the probabilities using the context weight
-            return (self.context_weight * context_prob) + (
-                (1 - self.context_weight) * char_prob
-            )
+                # Adjust context weight based on confidence
+                # Higher confidence means more weight on context
+                adjusted_weight = self.context_weight * confidence
+
+                # Combine the probabilities using the adjusted weight
+                return (adjusted_weight * context_prob) + (
+                    (1 - adjusted_weight) * char_prob
+                )
+            else:
+                # Calculate context-based probability using the word n-gram model
+                context_prob = self._language_probability_with_context(
+                    candidate, context
+                )
+
+                # Combine the probabilities using the fixed context weight
+                return (self.context_weight * context_prob) + (
+                    (1 - self.context_weight) * char_prob
+                )
 
         # If no context or model not ready, use only character-level probability
         return char_prob
@@ -497,6 +557,31 @@ class NoisyChannelCorrector:
         # Calculate the probability using the word n-gram model
         return self.word_ngram_model.probability(word, context)
 
+    def update_conversation_context(
+        self, utterance: str, speaker: str = "user", timestamp: Optional[float] = None
+    ) -> bool:
+        """
+        Update the conversation context with a new utterance.
+
+        Args:
+            utterance: The utterance text
+            speaker: The speaker identifier
+            timestamp: Optional timestamp (defaults to current time)
+
+        Returns:
+            True if successful, False otherwise
+        """
+        if not self.use_conversation_context or self.conversation_context is None:
+            return False
+
+        try:
+            # Add the utterance to the conversation context
+            self.conversation_context.add_utterance(utterance, speaker, timestamp)
+            return True
+        except Exception as e:
+            logger.error(f"Error updating conversation context: {e}")
+            return False
+
     def _get_p_noisy_given_intended(self, noisy: str, intended: str) -> float:
         """
         Calculate P(noisy | intended) using the confusion matrix.
@@ -542,6 +627,10 @@ def correct(
     context_weight: float = 0.5,
     keyboard_layout: str = "qwerty",
     use_keyboard_specific_matrices: bool = True,
+    use_conversation_context: bool = True,
+    adaptive_context_weighting: bool = True,
+    speaker: str = "user",
+    update_context: bool = True,
 ) -> List[Tuple[str, float]]:
     """
     Correct a noisy input using the noisy channel model.
@@ -561,6 +650,10 @@ def correct(
         context_weight: Weight of context-based probability (0-1)
         keyboard_layout: Keyboard layout to use for confusion matrix
         use_keyboard_specific_matrices: Whether to use keyboard-specific matrices
+        use_conversation_context: Whether to use conversation-level context
+        adaptive_context_weighting: Whether to dynamically adjust context weight
+        speaker: Speaker identifier for conversation context
+        update_context: Whether to update conversation context with correction
 
     Returns:
         List of (correction, score) tuples, sorted by score (highest first)
@@ -571,6 +664,8 @@ def correct(
         context_window_size=context_window_size,
         context_weight=context_weight,
         keyboard_layout=keyboard_layout,
+        use_conversation_context=use_conversation_context,
+        adaptive_context_weighting=adaptive_context_weighting,
     )
 
     # Load the PPM model if provided
@@ -603,4 +698,12 @@ def correct(
         corrector.load_lexicon_from_file(lexicon_path)
 
     # Correct the input
-    return corrector.correct(noisy_input, context=context)
+    corrections = corrector.correct(noisy_input, context=context)
+
+    # Update conversation context if enabled
+    if update_context and use_conversation_context and corrections:
+        # Use the top correction for the context update
+        top_correction = corrections[0][0]
+        corrector.update_conversation_context(top_correction, speaker)
+
+    return corrections
