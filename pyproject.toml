@@ -1,0 +1,18 @@
+[project]
+name = "noisy-channel-correction"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "datasets>=2.0.0",
+    "huggingface-hub>=0.0.19",
+    "matplotlib>=3.4.0",
+    "nltk>=3.6.0",
+    "numpy>=1.20.0",
+    "pandas>=1.3.0",
+    "python-levenshtein>=0.12.2",
+    "scikit-learn>=0.24.0",
+    "streamlit>=1.0.0",
+    "tqdm>=4.62.0",
+]

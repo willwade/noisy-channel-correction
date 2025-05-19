@@ -1,0 +1,666 @@
+{
+  "conversations": [
+    {
+      "conversation_id": 189,
+      "noise_type": "qwerty",
+      "noise_level": "moderate",
+      "turns": [
+        {
+          "turn_number": 1,
+          "speaker": "AAC User",
+          "intended": "Expressing positive feeling",
+          "noisy": "Feelingjgood thanks",
+          "reference": "Feeling good thanks.",
+          "corrections": [
+            {
+              "correction": "Feelingjgood thanks",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Feelingjgood thanks"
+          ]
+        },
+        {
+          "turn_number": 3,
+          "speaker": "AAC User",
+          "intended": "Giving opinion about story and acting quality",
+          "noisy": "Interstin story gokdz qyctkng",
+          "reference": "Interesting story good acting.",
+          "corrections": [
+            {
+              "correction": "Interstin story gokdz qyctkng",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Feelingjgood thanks",
+            "Interstin story gokdz qyctkng"
+          ]
+        }
+      ],
+      "metrics": {
+        "accuracy": 0.0,
+        "turn_level_accuracy": [
+          false,
+          false
+        ],
+        "accuracy_by_position": {
+          "1": 0.0,
+          "3": 0.0
+        },
+        "accuracy_by_speaker": {
+          "AAC User": 0.0
+        },
+        "accuracy_trend": [
+          0.0
+        ]
+      }
+    },
+    {
+      "conversation_id": 50,
+      "noise_type": "qwerty",
+      "noise_level": "moderate",
+      "turns": [
+        {
+          "turn_number": 1,
+          "speaker": "AAC User",
+          "intended": "Greeting and requesting to review daily care plan",
+          "noisy": "foow morning! Ib hope you slenpt qwll. Could we leasye revied my daily care pian utogrthe tno pensure evqerytin uds inp order?",
+          "reference": "Good morning! I hope you slept well. Could we please review my daily care plan together to ensure everything is in order?",
+          "corrections": [
+            {
+              "correction": "foow morning! Ib hope you slenpt qwll. Could we leasye revied my daily care pian utogrthe tno pensure evqerytin uds inp order?",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "foow morning! Ib hope you slenpt qwll. Could we leasye revied my daily care pian utogrthe tno pensure evqerytin uds inp order?"
+          ]
+        },
+        {
+          "turn_number": 2,
+          "speaker": "AAC User",
+          "intended": "Requesting assistance with personal hygiene routine",
+          "noisy": "rdhanhyozu.k wuld apprerciate kqt if you oulwd assis me dith my prsonalf hygie routinre, partivulagly ethmbrusinh my teeth and aasinbe nj face.f I desl these tasks are cnrucialkfor startng tqheg dy ftew ans confoortable.",
+          "reference": "Thank you. I would appreciate it if you could assist me with my personal hygiene routine, particularly with brushing my teeth and washing my face. I feel these tasks are crucial for starting the day fresh and comfortable.",
+          "corrections": [
+            {
+              "correction": "rdhanhyozu.k wuld apprerciate kqt if you oulwd assis me dith my prsonalf hygie routinre, partivulagly ethmbrusinh my teeth and aasinbe nj face.f I desl these tasks are cnrucialkfor startng tqheg dy ftew ans confoortable.",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "foow morning! Ib hope you slenpt qwll. Could we leasye revied my daily care pian utogrthe tno pensure evqerytin uds inp order?",
+            "rdhanhyozu.k wuld apprerciate kqt if you oulwd assis me dith my prsonalf hygie routinre, partivulagly ethmbrusinh my teeth and aasinbe nj face.f I desl these tasks are cnrucialkfor startng tqheg dy ftew ans confoortable."
+          ]
+        },
+        {
+          "turn_number": 3,
+          "speaker": "AAC User",
+          "intended": "Yes, very unfair",
+          "noisy": "es, very .unfxqir",
+          "reference": "Yes, very unfair.",
+          "corrections": [
+            {
+              "correction": "es, very .unfxqir",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "foow morning! Ib hope you slenpt qwll. Could we leasye revied my daily care pian utogrthe tno pensure evqerytin uds inp order?",
+            "rdhanhyozu.k wuld apprerciate kqt if you oulwd assis me dith my prsonalf hygie routinre, partivulagly ethmbrusinh my teeth and aasinbe nj face.f I desl these tasks are cnrucialkfor startng tqheg dy ftew ans confoortable.",
+            "es, very .unfxqir"
+          ]
+        },
+        {
+          "turn_number": 4,
+          "speaker": "AAC User",
+          "intended": "Acknowledging support and concluding morning care discussion",
+          "noisy": "At te moment,k thatmczvzes veytyiun imortant fr y morng routins. Ialpreciatemyour supzort;kit mak_exoaasiglnifica dtifferencr ii my dau.",
+          "reference": "At the moment, that covers everything important for my morning routine. I appreciate your support; it makes a significant difference in my day.",
+          "corrections": [
+            {
+              "correction": "At te moment,k thatmczvzes veytyiun imortant fr y morng routins. Ialpreciatemyour supzort;kit mak_exoaasiglnifica dtifferencr ii my dau.",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "rdhanhyozu.k wuld apprerciate kqt if you oulwd assis me dith my prsonalf hygie routinre, partivulagly ethmbrusinh my teeth and aasinbe nj face.f I desl these tasks are cnrucialkfor startng tqheg dy ftew ans confoortable.",
+            "es, very .unfxqir",
+            "At te moment,k thatmczvzes veytyiun imortant fr y morng routins. Ialpreciatemyour supzort;kit mak_exoaasiglnifica dtifferencr ii my dau."
+          ]
+        },
+        {
+          "turn_number": 5,
+          "speaker": "AAC User",
+          "intended": "Yes, please",
+          "noisy": "Yes, ptleaf",
+          "reference": "Yes, please.",
+          "corrections": [
+            {
+              "correction": "Yes, ptleaf",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "es, very .unfxqir",
+            "At te moment,k thatmczvzes veytyiun imortant fr y morng routins. Ialpreciatemyour supzort;kit mak_exoaasiglnifica dtifferencr ii my dau.",
+            "Yes, ptleaf"
+          ]
+        }
+      ],
+      "metrics": {
+        "accuracy": 0.0,
+        "turn_level_accuracy": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "accuracy_by_position": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0
+        },
+        "accuracy_by_speaker": {
+          "AAC User": 0.0
+        },
+        "accuracy_trend": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "conversation_id": 11,
+      "noise_type": "qwerty",
+      "noise_level": "moderate",
+      "turns": [
+        {
+          "turn_number": 3,
+          "speaker": "AAC User",
+          "intended": "Olivia hungry. Needs it.",
+          "noisy": "Oliva hungry. Nrfdsjg.",
+          "reference": "Olivia hungry. Needs it.",
+          "corrections": [
+            {
+              "correction": "Oliva hungry. Nrfdsjg.",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Oliva hungry. Nrfdsjg."
+          ]
+        }
+      ],
+      "metrics": {
+        "accuracy": 0.0,
+        "turn_level_accuracy": [
+          false
+        ],
+        "accuracy_by_position": {
+          "3": 0.0
+        },
+        "accuracy_by_speaker": {
+          "AAC User": 0.0
+        },
+        "accuracy_trend": [
+          0.0
+        ]
+      }
+    },
+    {
+      "conversation_id": 96,
+      "noise_type": "qwerty",
+      "noise_level": "moderate",
+      "turns": [
+        {
+          "turn_number": 2,
+          "speaker": "AAC User",
+          "intended": "I hear many different voices and languages.",
+          "noisy": "Differentq voice_s",
+          "reference": "Different voices.",
+          "corrections": [
+            {
+              "correction": "Differentq voice_s",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Differentq voice_s"
+          ]
+        },
+        {
+          "turn_number": 3,
+          "speaker": "AAC User",
+          "intended": "The night market is lively and full of cultural expressions.",
+          "noisy": "Nigt mcdkcehaive",
+          "reference": "Night market alive.",
+          "corrections": [
+            {
+              "correction": "Nigt mcdkcehaive",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Differentq voice_s",
+            "Nigt mcdkcehaive"
+          ]
+        }
+      ],
+      "metrics": {
+        "accuracy": 0.0,
+        "turn_level_accuracy": [
+          false,
+          false
+        ],
+        "accuracy_by_position": {
+          "2": 0.0,
+          "3": 0.0
+        },
+        "accuracy_by_speaker": {
+          "AAC User": 0.0
+        },
+        "accuracy_trend": [
+          0.0
+        ]
+      }
+    },
+    {
+      "conversation_id": 80,
+      "noise_type": "qwerty",
+      "noise_level": "moderate",
+      "turns": [
+        {
+          "turn_number": 1,
+          "speaker": "AAC User",
+          "intended": "Doctors here speak many languages, it\u2019s funny!",
+          "noisy": "Doctors speajv may anguages",
+          "reference": "Doctors speak many languages.",
+          "corrections": [
+            {
+              "correction": "Doctors speajv may anguages",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Doctors speajv may anguages"
+          ]
+        },
+        {
+          "turn_number": 2,
+          "speaker": "AAC User",
+          "intended": "The temple feels like a big school for life.",
+          "noisy": "Tempie is bib qcheoop",
+          "reference": "Temple is big school.",
+          "corrections": [
+            {
+              "correction": "Tempie is bib qcheoop",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Doctors speajv may anguages",
+            "Tempie is bib qcheoop"
+          ]
+        }
+      ],
+      "metrics": {
+        "accuracy": 0.0,
+        "turn_level_accuracy": [
+          false,
+          false
+        ],
+        "accuracy_by_position": {
+          "1": 0.0,
+          "2": 0.0
+        },
+        "accuracy_by_speaker": {
+          "AAC User": 0.0
+        },
+        "accuracy_trend": []
+      }
+    },
+    {
+      "conversation_id": 110,
+      "noise_type": "qwerty",
+      "noise_level": "moderate",
+      "turns": [],
+      "metrics": {
+        "accuracy": 0.0,
+        "turn_level_accuracy": [],
+        "accuracy_by_position": {},
+        "accuracy_by_speaker": {},
+        "accuracy_trend": []
+      }
+    },
+    {
+      "conversation_id": 106,
+      "noise_type": "qwerty",
+      "noise_level": "moderate",
+      "turns": [],
+      "metrics": {
+        "accuracy": 0.0,
+        "turn_level_accuracy": [],
+        "accuracy_by_position": {},
+        "accuracy_by_speaker": {},
+        "accuracy_trend": []
+      }
+    },
+    {
+      "conversation_id": 118,
+      "noise_type": "qwerty",
+      "noise_level": "moderate",
+      "turns": [
+        {
+          "turn_number": 1,
+          "speaker": "AAC User",
+          "intended": "I miss my dog so much today.",
+          "noisy": "Mijss dog so uch todxy",
+          "reference": "Miss dog so much today.",
+          "corrections": [
+            {
+              "correction": "Mijss dog so uch todxy",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Mijss dog so uch todxy"
+          ]
+        },
+        {
+          "turn_number": 2,
+          "speaker": "AAC User",
+          "intended": "Yes, she was always such a loyal dog.",
+          "noisy": "Yes, alwaysso loyaljdor",
+          "reference": "Yes, always so loyal dog.",
+          "corrections": [
+            {
+              "correction": "Yes, alwaysso loyaljdor",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Mijss dog so uch todxy",
+            "Yes, alwaysso loyaljdor"
+          ]
+        },
+        {
+          "turn_number": 3,
+          "speaker": "AAC User",
+          "intended": "That thought really makes me smile.",
+          "noisy": "Tha thoughtc makesa me isngile",
+          "reference": "That thought makes me smile.",
+          "corrections": [
+            {
+              "correction": "Tha thoughtc makesa me isngile",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Mijss dog so uch todxy",
+            "Yes, alwaysso loyaljdor",
+            "Tha thoughtc makesa me isngile"
+          ]
+        },
+        {
+          "turn_number": 4,
+          "speaker": "AAC User",
+          "intended": "I would love that very much.",
+          "noisy": "Would iopve dtat v_edy mug",
+          "reference": "Would love that very much.",
+          "corrections": [
+            {
+              "correction": "Would iopve dtat v_edy mug",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Yes, alwaysso loyaljdor",
+            "Tha thoughtc makesa me isngile",
+            "Would iopve dtat v_edy mug"
+          ]
+        }
+      ],
+      "metrics": {
+        "accuracy": 0.0,
+        "turn_level_accuracy": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "accuracy_by_position": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "accuracy_by_speaker": {
+          "AAC User": 0.0
+        },
+        "accuracy_trend": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "conversation_id": 172,
+      "noise_type": "qwerty",
+      "noise_level": "moderate",
+      "turns": [
+        {
+          "turn_number": 4,
+          "speaker": "AAC User",
+          "intended": "Try it. You might like it.",
+          "noisy": "Trgjk. You mignt likey it.",
+          "reference": "Try it. You might like it.",
+          "corrections": [
+            {
+              "correction": "Trgjk. You mignt likey it.",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Trgjk. You mignt likey it."
+          ]
+        }
+      ],
+      "metrics": {
+        "accuracy": 0.0,
+        "turn_level_accuracy": [
+          false
+        ],
+        "accuracy_by_position": {
+          "4": 0.0
+        },
+        "accuracy_by_speaker": {
+          "AAC User": 0.0
+        },
+        "accuracy_trend": [
+          0.0
+        ]
+      }
+    },
+    {
+      "conversation_id": 76,
+      "noise_type": "qwerty",
+      "noise_level": "moderate",
+      "turns": [
+        {
+          "turn_number": 1,
+          "speaker": "AAC User",
+          "intended": "I find the mix of music and culture quite interesting, don't you?",
+          "noisy": "Muigc. Culnture. Itewsttzingjmtixx,kyes?",
+          "reference": "Music. Culture. Interesting mix, yes?",
+          "corrections": [
+            {
+              "correction": "Muigc. Culnture. Itewsttzingjmtixx,kyes?",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Muigc. Culnture. Itewsttzingjmtixx,kyes?"
+          ]
+        },
+        {
+          "turn_number": 2,
+          "speaker": "AAC User",
+          "intended": "Talked about spices and recipes. So interesting!",
+          "noisy": "Tlkfd abaout sgplces and recipds. So kibteepstongw!",
+          "reference": "Talked about spices and recipes. So interesting!",
+          "corrections": [
+            {
+              "correction": "Tlkfd abaout sgplces and recipds. So kibteepstongw!",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Muigc. Culnture. Itewsttzingjmtixx,kyes?",
+            "Tlkfd abaout sgplces and recipds. So kibteepstongw!"
+          ]
+        },
+        {
+          "turn_number": 3,
+          "speaker": "AAC User",
+          "intended": "Deal. Coffee and salsa finger dancing is the best combination of culture!",
+          "noisy": "Desl. Coffee sndkaalsa fibjgersBest cuzuturale cpmbo!",
+          "reference": "Deal. Coffee and salsa fingers. Best cultural combo!",
+          "corrections": [
+            {
+              "correction": "Desl. Coffee sndkaalsa fibjgersBest cuzuturale cpmbo!",
+              "score": 1.0
+            }
+          ],
+          "correct_at_1": false,
+          "correct_at_n": false,
+          "correct_rank": -1,
+          "context": [
+            "Muigc. Culnture. Itewsttzingjmtixx,kyes?",
+            "Tlkfd abaout sgplces and recipds. So kibteepstongw!",
+            "Desl. Coffee sndkaalsa fibjgersBest cuzuturale cpmbo!"
+          ]
+        }
+      ],
+      "metrics": {
+        "accuracy": 0.0,
+        "turn_level_accuracy": [
+          false,
+          false,
+          false
+        ],
+        "accuracy_by_position": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0
+        },
+        "accuracy_by_speaker": {
+          "AAC User": 0.0
+        },
+        "accuracy_trend": [
+          0.0
+        ]
+      }
+    }
+  ],
+  "metrics": {
+    "overall_accuracy": 0.0,
+    "conversation_accuracies": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "accuracy_by_position": {
+      "1": 0.0,
+      "3": 0.0,
+      "2": 0.0,
+      "4": 0.0,
+      "5": 0.0
+    },
+    "accuracy_by_speaker": {
+      "AAC User": 0.0
+    },
+    "accuracy_trend": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

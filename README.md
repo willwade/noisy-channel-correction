@@ -16,14 +16,33 @@ AAC users often make input errors due to physical or interface constraints. This
 
 The system is modular and easy to customize or expand:
 
-aac-corrector/
-├── module1_noise_simulator/      # Simulates noisy input from clean data
-├── module2_confusion_matrix/     # Builds a character-level error model
-├── module3_candidate_generator/  # Suggests candidate corrections for a noisy input
-├── module4_corrector/            # Combines PPM and error model to select the best correction
-├── demo/                         # CLI or simple UI for testing and visualization
-├── data/                         # Sample wordlists and simulated datasets
-└── README.md
+```
+noisy-channel-correction/
+├── lib/                      # Shared library code
+│   ├── noise_model/          # Noise simulation
+│   ├── confusion_matrix/     # Confusion matrix generation
+│   ├── candidate_generator/  # Candidate generation
+│   ├── corrector/            # Correction engine
+│   ├── pylm/                 # Language model code
+│   └── models/               # Model files
+├── data/                     # Data files
+│   ├── conversational_corpora/  # Training corpus data
+│   ├── evaluation_results/      # Evaluation results
+│   └── visualizations/          # Visualization outputs
+├── scripts/                  # Utility scripts
+│   ├── noise_simulator/         # Noise simulator scripts
+│   ├── confusion_matrix_builder/# Confusion matrix builder scripts
+│   ├── candidate_generator/     # Candidate generator scripts
+│   ├── correction_engine/       # Correction engine scripts
+│   └── evaluation/              # Evaluation scripts
+├── tests/                    # Test files
+└── demo/                     # Demo applications
+    ├── noise_simulator/         # Noise simulator demos
+    ├── confusion_matrix_builder/# Confusion matrix builder demos
+    ├── candidate_generator/     # Candidate generator demos
+    ├── correction_engine/       # Correction engine demos
+    └── evaluation/              # Evaluation demos
+```
 
 Each module is standalone and reusable in other AAC or correction projects.
 
@@ -58,19 +77,37 @@ pip install -r requirements.txt
 
 ⸻
 
-🚀 Usage
+## 🚀 Usage
 
 1. Simulate Errors
 
-python module1_noise_simulator/simulate.py --input data/wordlist.txt --output data/noisy_pairs.json
+```bash
+python scripts/noise_simulator/simulate.py --input data/wordlist.txt --output data/noisy_pairs.json
+```
 
 2. Build Confusion Matrix
 
-python module2_confusion_matrix/build.py --input data/noisy_pairs.json --output data/confusion_matrix.json
+```bash
+python scripts/confusion_matrix_builder/build_matrix.py --input data/noisy_pairs.json --output data/confusion_matrix.json
+```
 
-3. Run Correction
+3. Generate Candidates
 
-python module4_corrector/correct.py --input "thes is a tst" --output corrected.txt
+```bash
+python scripts/candidate_generator/generate_candidates.py --input "thes is a tst" --lexicon data/comprehensive_lexicon.txt
+```
+
+4. Run Correction
+
+```bash
+python scripts/correction_engine/correct.py --input "thes is a tst" --output corrected.txt
+```
+
+5. Run Demo
+
+```bash
+python scripts/evaluation/demo.py
+```
 
 
 ⸻
