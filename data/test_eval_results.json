@@ -3,26 +3,26 @@
     "accuracy@1": 0.0,
     "accuracy@n": 0.0,
     "total_examples": 738,
-    "avg_time_ms": 0.00824353236169996
+    "avg_time_ms": 0.008450614081488715
   },
   "by_noise_type": {
     "qwerty": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 241,
-      "avg_time_ms": 0.008102274534613265
+      "avg_time_ms": 0.008393125415342971
     },
     "abc": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 269,
-      "avg_time_ms": 0.008075210684737308
+      "avg_time_ms": 0.008029122334873809
     },
     "frequency": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 228,
-      "avg_time_ms": 0.008591434411835252
+      "avg_time_ms": 0.009008666925262986
     }
   },
   "by_noise_level": {
@@ -30,25 +30,25 @@
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 96,
-      "avg_time_ms": 0.008384386698404947
+      "avg_time_ms": 0.008905927340189615
     },
     "light": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 172,
-      "avg_time_ms": 0.00824623329694881
+      "avg_time_ms": 0.008000883945198945
     },
     "moderate": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 219,
-      "avg_time_ms": 0.008019138144575841
+      "avg_time_ms": 0.00848399994035834
     },
     "severe": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 251,
-      "avg_time_ms": 0.008383595136057333
+      "avg_time_ms": 0.008555522477959257
     }
   },
   "by_noise_type_and_level": {
@@ -56,73 +56,73 @@
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 29,
-      "avg_time_ms": 0.008739274123619342
+      "avg_time_ms": 0.010959033308358028
     },
     "qwerty_light": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 55,
-      "avg_time_ms": 0.008500706065784801
+      "avg_time_ms": 0.00813657587224787
     },
     "qwerty_moderate": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 69,
-      "avg_time_ms": 0.007905821869338768
+      "avg_time_ms": 0.00805785690528759
     },
     "qwerty_severe": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 88,
-      "avg_time_ms": 0.007797371257435192
+      "avg_time_ms": 0.007970766587690874
     },
     "abc_minimal": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 36,
-      "avg_time_ms": 0.007847944895426432
+      "avg_time_ms": 0.007993645138210721
     },
     "abc_light": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 64,
-      "avg_time_ms": 0.007897615432739258
+      "avg_time_ms": 0.007916241884231567
     },
     "abc_moderate": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 79,
-      "avg_time_ms": 0.00785574128356161
+      "avg_time_ms": 0.007919118374208861
     },
     "abc_severe": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 90,
-      "avg_time_ms": 0.008485052320692275
+      "avg_time_ms": 0.008220142788357206
     },
     "frequency_minimal": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 31,
-      "avg_time_ms": 0.008675359910534274
+      "avg_time_ms": 0.00804470431420111
     },
     "frequency_light": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 53,
-      "avg_time_ms": 0.00840313029739092
+      "avg_time_ms": 0.00796228084924086
     },
     "frequency_moderate": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 71,
-      "avg_time_ms": 0.008311070186991088
+      "avg_time_ms": 0.00952666913959342
     },
     "frequency_severe": {
       "accuracy@1": 0.0,
       "accuracy@n": 0.0,
       "total_examples": 73,
-      "avg_time_ms": 0.008965191775805329
+      "avg_time_ms": 0.009673915497244221
     }
   },
   "examples": [
@@ -139,7 +139,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.014066696166992188
+      "time_ms": 0.01621246337890625
     },
     {
       "intended": "customize",
@@ -154,7 +154,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.013113021850585938
+      "time_ms": 0.011920928955078125
     },
     {
       "intended": "development",
@@ -199,7 +199,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "articulation",
@@ -214,7 +214,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "conclusion",
@@ -244,7 +244,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.009775161743164062
     },
     {
       "intended": "explanation",
@@ -274,7 +274,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "orientation",
@@ -289,7 +289,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "constraint",
@@ -304,7 +304,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "speed",
@@ -319,7 +319,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "access",
@@ -334,7 +334,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "confirmation",
@@ -349,7 +349,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "activity",
@@ -364,7 +364,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009298324584960938
     },
     {
       "intended": "guidance",
@@ -379,7 +379,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.06890296936035156
     },
     {
       "intended": "plan",
@@ -394,7 +394,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "configure",
@@ -409,7 +409,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "selection",
@@ -424,7 +424,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "parameter",
@@ -499,7 +499,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "dialogue",
@@ -529,7 +529,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "requirement",
@@ -574,7 +574,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009775161743164062
+      "time_ms": 0.010967254638671875
     },
     {
       "intended": "quantity",
@@ -589,7 +589,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010967254638671875
     },
     {
       "intended": "screen",
@@ -604,7 +604,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "amount",
@@ -634,7 +634,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "interface",
@@ -679,7 +679,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "augmentative",
@@ -694,7 +694,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "user",
@@ -709,7 +709,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "setting",
@@ -724,7 +724,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "action",
@@ -739,7 +739,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "conclusion",
@@ -754,7 +754,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "disability",
@@ -799,7 +799,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "scenario",
@@ -814,7 +814,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "community",
@@ -829,7 +829,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "international",
@@ -859,7 +859,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "text",
@@ -874,7 +874,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "case",
@@ -904,7 +904,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "meaning",
@@ -919,7 +919,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "level",
@@ -949,7 +949,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "understanding",
@@ -964,7 +964,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "demonstration",
@@ -979,7 +979,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "experience",
@@ -994,7 +994,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "factor",
@@ -1009,7 +1009,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "analysis",
@@ -1024,7 +1024,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "context",
@@ -1039,7 +1039,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "confirmation",
@@ -1054,7 +1054,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "stimulus",
@@ -1069,7 +1069,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "activity",
@@ -1084,7 +1084,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "scanning",
@@ -1099,7 +1099,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "plan",
@@ -1114,7 +1114,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "configure",
@@ -1129,7 +1129,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "selection",
@@ -1144,7 +1144,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "procedure",
@@ -1159,7 +1159,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "parameter",
@@ -1174,7 +1174,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "design",
@@ -1189,7 +1189,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "attribute",
@@ -1204,7 +1204,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "performance",
@@ -1219,7 +1219,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "message",
@@ -1234,7 +1234,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "support",
@@ -1249,7 +1249,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "response",
@@ -1264,7 +1264,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "abstraction",
@@ -1279,7 +1279,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "structure",
@@ -1294,7 +1294,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "instruction",
@@ -1309,7 +1309,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "presentation",
@@ -1354,7 +1354,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "user",
@@ -1369,7 +1369,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "upgrade",
@@ -1384,7 +1384,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "method",
@@ -1399,7 +1399,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.011920928955078125
     },
     {
       "intended": "algorithm",
@@ -1414,7 +1414,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010967254638671875
     },
     {
       "intended": "communication",
@@ -1429,7 +1429,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "function",
@@ -1444,7 +1444,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "customize",
@@ -1474,7 +1474,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "template",
@@ -1489,7 +1489,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "formulation",
@@ -1504,7 +1504,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "interface",
@@ -1519,7 +1519,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "position",
@@ -1534,7 +1534,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "alternative",
@@ -1549,7 +1549,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "user",
@@ -1564,7 +1564,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "learn",
@@ -1579,7 +1579,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "release",
@@ -1609,7 +1609,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "articulation",
@@ -1624,7 +1624,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "conclusion",
@@ -1639,7 +1639,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "disability",
@@ -1654,7 +1654,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "status",
@@ -1669,7 +1669,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "strategy",
@@ -1684,7 +1684,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "scenario",
@@ -1699,7 +1699,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "explanation",
@@ -1714,7 +1714,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "community",
@@ -1744,7 +1744,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "button",
@@ -1759,7 +1759,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "specification",
@@ -1774,7 +1774,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0073909759521484375
     },
     {
       "intended": "level",
@@ -1789,7 +1789,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "phrase",
@@ -1804,7 +1804,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "constraint",
@@ -1819,7 +1819,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "demonstration",
@@ -1894,7 +1894,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "feedback",
@@ -1909,7 +1909,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "format",
@@ -1924,7 +1924,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "analysis",
@@ -1939,7 +1939,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "speed",
@@ -1954,7 +1954,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "access",
@@ -1969,7 +1969,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "confirmation",
@@ -1999,7 +1999,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "activity",
@@ -2014,7 +2014,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "guidance",
@@ -2029,7 +2029,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "technology",
@@ -2044,7 +2044,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "scanning",
@@ -2089,7 +2089,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "parameter",
@@ -2104,7 +2104,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "illustration",
@@ -2134,7 +2134,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "protocol",
@@ -2149,7 +2149,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.013113021850585938
     },
     {
       "intended": "performance",
@@ -2164,7 +2164,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "message",
@@ -2209,7 +2209,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "assessment",
@@ -2224,7 +2224,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "abstraction",
@@ -2239,7 +2239,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "recommendation",
@@ -2269,7 +2269,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "instruction",
@@ -2314,7 +2314,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "movement",
@@ -2329,7 +2329,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "user",
@@ -2344,7 +2344,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "characteristic",
@@ -2359,7 +2359,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "character",
@@ -2374,7 +2374,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "upgrade",
@@ -2389,7 +2389,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "implementation",
@@ -2419,7 +2419,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "method",
@@ -2434,7 +2434,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010967254638671875
+      "time_ms": 0.011205673217773438
     },
     {
       "intended": "algorithm",
@@ -2449,7 +2449,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "communication",
@@ -2494,7 +2494,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "function",
@@ -2509,7 +2509,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "customize",
@@ -2524,7 +2524,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "symbol",
@@ -2539,7 +2539,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "amount",
@@ -2554,7 +2554,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "development",
@@ -2584,7 +2584,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "formulation",
@@ -2599,7 +2599,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "study",
@@ -2629,7 +2629,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "position",
@@ -2644,7 +2644,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "society",
@@ -2659,7 +2659,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "alternative",
@@ -2674,7 +2674,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "augmentative",
@@ -2704,7 +2704,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "setting",
@@ -2719,7 +2719,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "release",
@@ -2749,7 +2749,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.00667572021484375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "articulation",
@@ -2764,7 +2764,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "conclusion",
@@ -2779,7 +2779,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "disability",
@@ -2794,7 +2794,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "status",
@@ -2809,7 +2809,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "strategy",
@@ -2839,7 +2839,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "explanation",
@@ -2854,7 +2854,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "community",
@@ -2869,7 +2869,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "adapt",
@@ -2884,7 +2884,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "orientation",
@@ -2899,7 +2899,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "button",
@@ -2914,7 +2914,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "world",
@@ -2929,7 +2929,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "case",
@@ -2959,7 +2959,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "level",
@@ -2974,7 +2974,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "constraint",
@@ -2989,7 +2989,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "understanding",
@@ -3019,7 +3019,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "limitation",
@@ -3034,7 +3034,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "experience",
@@ -3064,7 +3064,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "feedback",
@@ -3079,7 +3079,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "output",
@@ -3124,7 +3124,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "speed",
@@ -3139,7 +3139,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "access",
@@ -3154,7 +3154,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "result",
@@ -3169,7 +3169,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "confirmation",
@@ -3214,7 +3214,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "guidance",
@@ -3229,7 +3229,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "technology",
@@ -3244,7 +3244,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "scanning",
@@ -3259,7 +3259,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0073909759521484375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "plan",
@@ -3274,7 +3274,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "configure",
@@ -3304,7 +3304,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "procedure",
@@ -3334,7 +3334,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "design",
@@ -3349,7 +3349,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "illustration",
@@ -3364,7 +3364,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "attribute",
@@ -3379,7 +3379,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "protocol",
@@ -3394,7 +3394,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "performance",
@@ -3439,7 +3439,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "goal",
@@ -3454,7 +3454,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "support",
@@ -3469,7 +3469,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "response",
@@ -3484,7 +3484,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "eyegaze",
@@ -3499,7 +3499,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "assessment",
@@ -3514,7 +3514,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "abstraction",
@@ -3529,7 +3529,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "recommendation",
@@ -3574,7 +3574,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "display",
@@ -3589,7 +3589,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009775161743164062
     },
     {
       "intended": "presentation",
@@ -3604,7 +3604,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "model",
@@ -3619,7 +3619,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.00667572021484375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "movement",
@@ -3634,7 +3634,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "requirement",
@@ -3664,7 +3664,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "inclusion",
@@ -3679,7 +3679,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "character",
@@ -3694,7 +3694,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "upgrade",
@@ -3709,7 +3709,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "implementation",
@@ -3724,7 +3724,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "advice",
@@ -3739,7 +3739,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "method",
@@ -3754,7 +3754,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010967254638671875
     },
     {
       "intended": "communication",
@@ -3769,7 +3769,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "customize",
@@ -3814,7 +3814,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "formulation",
@@ -3874,7 +3874,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "release",
@@ -3889,7 +3889,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "action",
@@ -3904,7 +3904,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "international",
@@ -3919,7 +3919,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "world",
@@ -3934,7 +3934,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "specification",
@@ -3949,7 +3949,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "meaning",
@@ -3964,7 +3964,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "constraint",
@@ -3994,7 +3994,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "limitation",
@@ -4024,7 +4024,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "task",
@@ -4039,7 +4039,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "factor",
@@ -4054,7 +4054,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "feedback",
@@ -4069,7 +4069,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "access",
@@ -4129,7 +4129,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "illustration",
@@ -4144,7 +4144,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "protocol",
@@ -4174,7 +4174,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "assessment",
@@ -4189,7 +4189,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "recommendation",
@@ -4219,7 +4219,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "movement",
@@ -4264,7 +4264,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "implementation",
@@ -4279,7 +4279,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "method",
@@ -4309,7 +4309,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "screen",
@@ -4324,7 +4324,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "function",
@@ -4339,7 +4339,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "customize",
@@ -4354,7 +4354,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "amount",
@@ -4384,7 +4384,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "template",
@@ -4399,7 +4399,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "formulation",
@@ -4459,7 +4459,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "setting",
@@ -4474,7 +4474,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "release",
@@ -4504,7 +4504,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "articulation",
@@ -4519,7 +4519,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "conclusion",
@@ -4534,7 +4534,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "disability",
@@ -4549,7 +4549,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "explanation",
@@ -4564,7 +4564,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "community",
@@ -4579,7 +4579,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "international",
@@ -4594,7 +4594,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "orientation",
@@ -4609,7 +4609,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "button",
@@ -4624,7 +4624,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "world",
@@ -4639,7 +4639,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "case",
@@ -4654,7 +4654,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "specification",
@@ -4669,7 +4669,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "level",
@@ -4684,7 +4684,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0073909759521484375
     },
     {
       "intended": "constraint",
@@ -4699,7 +4699,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "limitation",
@@ -4729,7 +4729,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "experience",
@@ -4744,7 +4744,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "factor",
@@ -4759,7 +4759,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "format",
@@ -4774,7 +4774,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "analysis",
@@ -4789,7 +4789,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "context",
@@ -4804,7 +4804,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "access",
@@ -4819,7 +4819,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "result",
@@ -4849,7 +4849,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "activity",
@@ -4879,7 +4879,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "configure",
@@ -4909,7 +4909,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "design",
@@ -4924,7 +4924,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "illustration",
@@ -4939,7 +4939,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "attribute",
@@ -4969,7 +4969,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "goal",
@@ -4984,7 +4984,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "support",
@@ -4999,7 +4999,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "response",
@@ -5014,7 +5014,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "eyegaze",
@@ -5059,7 +5059,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "abstraction",
@@ -5089,7 +5089,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "display",
@@ -5104,7 +5104,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "model",
@@ -5119,7 +5119,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "movement",
@@ -5134,7 +5134,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "requirement",
@@ -5164,7 +5164,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "inclusion",
@@ -5179,7 +5179,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "character",
@@ -5194,7 +5194,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "upgrade",
@@ -5209,7 +5209,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "implementation",
@@ -5224,7 +5224,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "advice",
@@ -5239,7 +5239,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "algorithm",
@@ -5254,7 +5254,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.011205673217773438
+      "time_ms": 0.010967254638671875
     },
     {
       "intended": "communication",
@@ -5269,7 +5269,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "quantity",
@@ -5299,7 +5299,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "function",
@@ -5329,7 +5329,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "symbol",
@@ -5344,7 +5344,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "amount",
@@ -5359,7 +5359,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "development",
@@ -5389,7 +5389,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "study",
@@ -5404,7 +5404,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "interface",
@@ -5419,7 +5419,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "position",
@@ -5434,7 +5434,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "society",
@@ -5449,7 +5449,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "alternative",
@@ -5464,7 +5464,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "augmentative",
@@ -5479,7 +5479,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "learn",
@@ -5524,7 +5524,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "articulation",
@@ -5539,7 +5539,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "conclusion",
@@ -5554,7 +5554,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "disability",
@@ -5584,7 +5584,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "scenario",
@@ -5614,7 +5614,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "community",
@@ -5629,7 +5629,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "international",
@@ -5659,7 +5659,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "world",
@@ -5674,7 +5674,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "case",
@@ -5689,7 +5689,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "specification",
@@ -5719,7 +5719,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "level",
@@ -5734,7 +5734,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "phrase",
@@ -5764,7 +5764,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "understanding",
@@ -5794,7 +5794,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "limitation",
@@ -5809,7 +5809,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "rate",
@@ -5824,7 +5824,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "experience",
@@ -5839,7 +5839,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "task",
@@ -5854,7 +5854,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "intent",
@@ -5869,7 +5869,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "factor",
@@ -5884,7 +5884,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "feedback",
@@ -5899,7 +5899,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "output",
@@ -5914,7 +5914,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "context",
@@ -5929,7 +5929,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "confirmation",
@@ -5959,7 +5959,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "activity",
@@ -5974,7 +5974,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "guidance",
@@ -6019,7 +6019,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "plan",
@@ -6049,7 +6049,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "selection",
@@ -6064,7 +6064,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "procedure",
@@ -6079,7 +6079,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "parameter",
@@ -6124,7 +6124,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "attribute",
@@ -6139,7 +6139,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "performance",
@@ -6154,7 +6154,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "message",
@@ -6169,7 +6169,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "efficiency",
@@ -6184,7 +6184,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "goal",
@@ -6199,7 +6199,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "support",
@@ -6214,7 +6214,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "response",
@@ -6229,7 +6229,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "eyegaze",
@@ -6259,7 +6259,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "assessment",
@@ -6274,7 +6274,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "recommendation",
@@ -6304,7 +6304,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0073909759521484375
     },
     {
       "intended": "instruction",
@@ -6319,7 +6319,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "display",
@@ -6334,7 +6334,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "presentation",
@@ -6349,7 +6349,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "movement",
@@ -6364,7 +6364,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007152557373046875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "requirement",
@@ -6409,7 +6409,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "implementation",
@@ -6424,7 +6424,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "algorithm",
@@ -6439,7 +6439,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.013828277587890625
+      "time_ms": 0.011920928955078125
     },
     {
       "intended": "communication",
@@ -6454,7 +6454,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010967254638671875
     },
     {
       "intended": "quantity",
@@ -6469,7 +6469,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "screen",
@@ -6514,7 +6514,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "development",
@@ -6529,7 +6529,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "formulation",
@@ -6544,7 +6544,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "study",
@@ -6589,7 +6589,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "society",
@@ -6604,7 +6604,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "alternative",
@@ -6634,7 +6634,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "user",
@@ -6649,7 +6649,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "learn",
@@ -6664,7 +6664,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "setting",
@@ -6679,7 +6679,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "release",
@@ -6694,7 +6694,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "action",
@@ -6709,7 +6709,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "articulation",
@@ -6754,7 +6754,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "status",
@@ -6784,7 +6784,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "scenario",
@@ -6829,7 +6829,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "international",
@@ -6844,7 +6844,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "orientation",
@@ -6874,7 +6874,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "world",
@@ -6889,7 +6889,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "text",
@@ -6904,7 +6904,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "case",
@@ -6919,7 +6919,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "specification",
@@ -6934,7 +6934,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "meaning",
@@ -6949,7 +6949,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "level",
@@ -6964,7 +6964,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.013828277587890625
     },
     {
       "intended": "phrase",
@@ -6979,7 +6979,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "constraint",
@@ -6994,7 +6994,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "understanding",
@@ -7009,7 +7009,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "demonstration",
@@ -7024,7 +7024,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "limitation",
@@ -7054,7 +7054,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "task",
@@ -7069,7 +7069,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "intent",
@@ -7084,7 +7084,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "factor",
@@ -7099,7 +7099,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "feedback",
@@ -7114,7 +7114,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "output",
@@ -7129,7 +7129,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "format",
@@ -7144,7 +7144,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "analysis",
@@ -7159,7 +7159,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "context",
@@ -7174,7 +7174,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "speed",
@@ -7189,7 +7189,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "result",
@@ -7219,7 +7219,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "stimulus",
@@ -7249,7 +7249,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "guidance",
@@ -7264,7 +7264,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "technology",
@@ -7309,7 +7309,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "selection",
@@ -7324,7 +7324,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "parameter",
@@ -7369,7 +7369,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "attribute",
@@ -7384,7 +7384,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "protocol",
@@ -7399,7 +7399,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "performance",
@@ -7414,7 +7414,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "message",
@@ -7429,7 +7429,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "efficiency",
@@ -7474,7 +7474,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "response",
@@ -7489,7 +7489,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "eyegaze",
@@ -7504,7 +7504,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "dialogue",
@@ -7534,7 +7534,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "abstraction",
@@ -7564,7 +7564,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "structure",
@@ -7594,7 +7594,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "display",
@@ -7609,7 +7609,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "presentation",
@@ -7624,7 +7624,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "data",
@@ -7654,7 +7654,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "movement",
@@ -7669,7 +7669,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "requirement",
@@ -7684,7 +7684,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "user",
@@ -7699,7 +7699,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "characteristic",
@@ -7714,7 +7714,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "character",
@@ -7729,7 +7729,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "upgrade",
@@ -7744,7 +7744,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "implementation",
@@ -7759,7 +7759,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.02574920654296875
     },
     {
       "intended": "advice",
@@ -7774,7 +7774,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "study",
@@ -7789,7 +7789,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.011920928955078125
+      "time_ms": 0.011205673217773438
     },
     {
       "intended": "interface",
@@ -7804,7 +7804,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "position",
@@ -7819,7 +7819,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "setting",
@@ -7849,7 +7849,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "conclusion",
@@ -7864,7 +7864,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "disability",
@@ -7879,7 +7879,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "explanation",
@@ -7894,7 +7894,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "orientation",
@@ -7909,7 +7909,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "case",
@@ -7924,7 +7924,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "meaning",
@@ -7954,7 +7954,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "demonstration",
@@ -7984,7 +7984,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "output",
@@ -7999,7 +7999,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "confirmation",
@@ -8014,7 +8014,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "activity",
@@ -8029,7 +8029,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "technology",
@@ -8044,7 +8044,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "scanning",
@@ -8059,7 +8059,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "procedure",
@@ -8074,7 +8074,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "parameter",
@@ -8089,7 +8089,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "attribute",
@@ -8104,7 +8104,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "performance",
@@ -8134,7 +8134,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "dialogue",
@@ -8149,7 +8149,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "assessment",
@@ -8164,7 +8164,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "recommendation",
@@ -8179,7 +8179,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "structure",
@@ -8209,7 +8209,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "requirement",
@@ -8224,7 +8224,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "advice",
@@ -8239,7 +8239,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "algorithm",
@@ -8254,7 +8254,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010967254638671875
+      "time_ms": 0.011205673217773438
     },
     {
       "intended": "quantity",
@@ -8269,7 +8269,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.0069141387939453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "screen",
@@ -8299,7 +8299,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "amount",
@@ -8314,7 +8314,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "template",
@@ -8329,7 +8329,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "study",
@@ -8344,7 +8344,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "interface",
@@ -8359,7 +8359,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "release",
@@ -8374,7 +8374,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "conclusion",
@@ -8389,7 +8389,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "disability",
@@ -8404,7 +8404,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "strategy",
@@ -8419,7 +8419,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "explanation",
@@ -8434,7 +8434,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "community",
@@ -8449,7 +8449,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "international",
@@ -8464,7 +8464,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "orientation",
@@ -8479,7 +8479,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "world",
@@ -8494,7 +8494,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "text",
@@ -8509,7 +8509,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "case",
@@ -8524,7 +8524,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "specification",
@@ -8539,7 +8539,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "meaning",
@@ -8554,7 +8554,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "level",
@@ -8569,7 +8569,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "constraint",
@@ -8584,7 +8584,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "demonstration",
@@ -8614,7 +8614,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "feedback",
@@ -8629,7 +8629,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "output",
@@ -8659,7 +8659,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "access",
@@ -8674,7 +8674,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "confirmation",
@@ -8689,7 +8689,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "stimulus",
@@ -8704,7 +8704,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "activity",
@@ -8719,7 +8719,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "guidance",
@@ -8734,7 +8734,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "technology",
@@ -8749,7 +8749,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "scanning",
@@ -8779,7 +8779,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "selection",
@@ -8794,7 +8794,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.008344650268554688
     },
     {
       "intended": "procedure",
@@ -8824,7 +8824,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "attribute",
@@ -8839,7 +8839,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "performance",
@@ -8869,7 +8869,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "eyegaze",
@@ -8884,7 +8884,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "dialogue",
@@ -8899,7 +8899,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "assessment",
@@ -8914,7 +8914,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "abstraction",
@@ -8929,7 +8929,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "structure",
@@ -8944,7 +8944,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "instruction",
@@ -8959,7 +8959,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "display",
@@ -8974,7 +8974,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "requirement",
@@ -8989,7 +8989,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "characteristic",
@@ -9004,7 +9004,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "character",
@@ -9019,7 +9019,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "implementation",
@@ -9034,7 +9034,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "algorithm",
@@ -9049,7 +9049,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.011920928955078125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "communication",
@@ -9064,7 +9064,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.009775161743164062
     },
     {
       "intended": "quantity",
@@ -9079,7 +9079,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "function",
@@ -9094,7 +9094,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.011205673217773438
     },
     {
       "intended": "customize",
@@ -9109,7 +9109,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "symbol",
@@ -9124,7 +9124,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "development",
@@ -9139,7 +9139,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010251998901367188
     },
     {
       "intended": "template",
@@ -9154,7 +9154,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "formulation",
@@ -9169,7 +9169,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "study",
@@ -9184,7 +9184,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "position",
@@ -9199,7 +9199,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "society",
@@ -9214,7 +9214,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "augmentative",
@@ -9244,7 +9244,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.009775161743164062
     },
     {
       "intended": "articulation",
@@ -9259,7 +9259,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "conclusion",
@@ -9274,7 +9274,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009775161743164062
     },
     {
       "intended": "disability",
@@ -9289,7 +9289,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "strategy",
@@ -9304,7 +9304,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "explanation",
@@ -9319,7 +9319,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009775161743164062
     },
     {
       "intended": "community",
@@ -9334,7 +9334,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "adapt",
@@ -9349,7 +9349,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "international",
@@ -9364,7 +9364,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "orientation",
@@ -9394,7 +9394,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "world",
@@ -9409,7 +9409,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "text",
@@ -9424,7 +9424,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "case",
@@ -9454,7 +9454,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "phrase",
@@ -9469,7 +9469,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.009775161743164062
     },
     {
       "intended": "constraint",
@@ -9484,7 +9484,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "demonstration",
@@ -9499,7 +9499,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "experience",
@@ -9514,7 +9514,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "factor",
@@ -9529,7 +9529,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "feedback",
@@ -9544,7 +9544,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "format",
@@ -9559,7 +9559,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "analysis",
@@ -9589,7 +9589,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "speed",
@@ -9604,7 +9604,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "result",
@@ -9619,7 +9619,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "confirmation",
@@ -9634,7 +9634,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "stimulus",
@@ -9649,7 +9649,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "activity",
@@ -9664,7 +9664,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "guidance",
@@ -9679,7 +9679,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "technology",
@@ -9694,7 +9694,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "configure",
@@ -9709,7 +9709,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "selection",
@@ -9724,7 +9724,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010967254638671875
     },
     {
       "intended": "parameter",
@@ -9739,7 +9739,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010967254638671875
     },
     {
       "intended": "design",
@@ -9769,7 +9769,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "attribute",
@@ -9784,7 +9784,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "protocol",
@@ -9799,7 +9799,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "performance",
@@ -9814,7 +9814,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.009298324584960938
     },
     {
       "intended": "efficiency",
@@ -9829,7 +9829,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.010251998901367188
     },
     {
       "intended": "goal",
@@ -9844,7 +9844,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.011920928955078125
     },
     {
       "intended": "support",
@@ -9859,7 +9859,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "dialogue",
@@ -9874,7 +9874,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "assessment",
@@ -9889,7 +9889,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "abstraction",
@@ -9904,7 +9904,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "recommendation",
@@ -9919,7 +9919,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.011205673217773438
     },
     {
       "intended": "structure",
@@ -9934,7 +9934,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009298324584960938
     },
     {
       "intended": "instruction",
@@ -9949,7 +9949,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "presentation",
@@ -9964,7 +9964,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "data",
@@ -9979,7 +9979,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.007152557373046875
     },
     {
       "intended": "model",
@@ -9994,7 +9994,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "movement",
@@ -10009,7 +10009,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "requirement",
@@ -10024,7 +10024,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.011205673217773438
     },
     {
       "intended": "user",
@@ -10039,7 +10039,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "characteristic",
@@ -10054,7 +10054,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "character",
@@ -10069,7 +10069,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "upgrade",
@@ -10084,7 +10084,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "implementation",
@@ -10099,7 +10099,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010967254638671875
     },
     {
       "intended": "algorithm",
@@ -10114,7 +10114,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010967254638671875
+      "time_ms": 0.011205673217773438
     },
     {
       "intended": "communication",
@@ -10144,7 +10144,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008821487426757812
+      "time_ms": 0.010967254638671875
     },
     {
       "intended": "function",
@@ -10159,7 +10159,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "customize",
@@ -10174,7 +10174,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "symbol",
@@ -10189,7 +10189,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009775161743164062
     },
     {
       "intended": "amount",
@@ -10204,7 +10204,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "development",
@@ -10219,7 +10219,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.011205673217773438
     },
     {
       "intended": "template",
@@ -10234,7 +10234,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "study",
@@ -10249,7 +10249,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.014781951904296875
     },
     {
       "intended": "interface",
@@ -10264,7 +10264,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "position",
@@ -10279,7 +10279,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "augmentative",
@@ -10294,7 +10294,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "user",
@@ -10309,7 +10309,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "release",
@@ -10324,7 +10324,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "action",
@@ -10354,7 +10354,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010251998901367188
     },
     {
       "intended": "conclusion",
@@ -10369,7 +10369,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.012874603271484375
     },
     {
       "intended": "disability",
@@ -10384,7 +10384,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "strategy",
@@ -10414,7 +10414,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "explanation",
@@ -10429,7 +10429,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "community",
@@ -10444,7 +10444,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "international",
@@ -10459,7 +10459,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009298324584960938
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "orientation",
@@ -10474,7 +10474,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "world",
@@ -10489,7 +10489,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "meaning",
@@ -10504,7 +10504,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "constraint",
@@ -10519,7 +10519,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "understanding",
@@ -10534,7 +10534,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "demonstration",
@@ -10549,7 +10549,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "limitation",
@@ -10564,7 +10564,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "rate",
@@ -10579,7 +10579,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "experience",
@@ -10594,7 +10594,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "task",
@@ -10609,7 +10609,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "intent",
@@ -10624,7 +10624,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.009775161743164062
     },
     {
       "intended": "factor",
@@ -10654,7 +10654,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "format",
@@ -10669,7 +10669,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "speed",
@@ -10684,7 +10684,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "access",
@@ -10699,7 +10699,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "confirmation",
@@ -10714,7 +10714,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "stimulus",
@@ -10729,7 +10729,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "activity",
@@ -10744,7 +10744,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.009298324584960938
     },
     {
       "intended": "guidance",
@@ -10759,7 +10759,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.009298324584960938
     },
     {
       "intended": "technology",
@@ -10789,7 +10789,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "plan",
@@ -10804,7 +10804,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "selection",
@@ -10819,7 +10819,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "procedure",
@@ -10834,7 +10834,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.007867813110351562
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "parameter",
@@ -10849,7 +10849,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010967254638671875
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "design",
@@ -10864,7 +10864,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.011205673217773438
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "illustration",
@@ -10879,7 +10879,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.008106231689453125
     },
     {
       "intended": "attribute",
@@ -10894,7 +10894,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.009059906005859375
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "protocol",
@@ -10909,7 +10909,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008344650268554688
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "performance",
@@ -10924,7 +10924,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010967254638671875
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "efficiency",
@@ -10939,7 +10939,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.0069141387939453125
     },
     {
       "intended": "support",
@@ -10954,7 +10954,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010967254638671875
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "response",
@@ -10984,7 +10984,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.011205673217773438
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "assessment",
@@ -11014,7 +11014,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "structure",
@@ -11029,7 +11029,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.009059906005859375
     },
     {
       "intended": "instruction",
@@ -11044,7 +11044,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010967254638671875
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "display",
@@ -11074,7 +11074,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.008106231689453125
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "model",
@@ -11089,7 +11089,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010967254638671875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "movement",
@@ -11104,7 +11104,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010967254638671875
+      "time_ms": 0.010013580322265625
     },
     {
       "intended": "requirement",
@@ -11134,7 +11134,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.008821487426757812
     },
     {
       "intended": "characteristic",
@@ -11149,7 +11149,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010967254638671875
+      "time_ms": 0.007867813110351562
     },
     {
       "intended": "character",
@@ -11194,7 +11194,7 @@
       ],
       "correct_at_1": false,
       "correct_at_n": false,
-      "time_ms": 0.010013580322265625
+      "time_ms": 0.026941299438476562
     }
   ]
 }

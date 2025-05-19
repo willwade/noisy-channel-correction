@@ -22,6 +22,8 @@ from lib.confusion_matrix.keyboard_confusion_matrix import (
 )
 
 # Import the keyboard noise model
+from lib.noise_model.noise_model import KeyboardNoiseModel
+from lib.corrector.corrector import NoisyChannelCorrector
 
 # Configure logging
 logging.basicConfig(
@@ -98,7 +100,7 @@ def generate_test_data(num_samples: int = 10) -> Dict[str, List[Tuple[str, str]]
 
     # Create keyboard error models for different layouts
     keyboard_models = {
-        "qwerty": KeyboardErrorModel(
+        "qwerty": KeyboardNoiseModel(
             layout_name="en",
             error_rates={
                 "proximity": 0.1,
@@ -107,7 +109,7 @@ def generate_test_data(num_samples: int = 10) -> Dict[str, List[Tuple[str, str]]
                 "transposition": 0.02,
             },
         ),
-        "abc": KeyboardErrorModel(
+        "abc": KeyboardNoiseModel(
             layout_name="abc",
             error_rates={
                 "proximity": 0.1,
@@ -116,7 +118,7 @@ def generate_test_data(num_samples: int = 10) -> Dict[str, List[Tuple[str, str]]
                 "transposition": 0.02,
             },
         ),
-        "frequency": KeyboardErrorModel(
+        "frequency": KeyboardNoiseModel(
             layout_name="frequency",
             error_rates={
                 "proximity": 0.1,

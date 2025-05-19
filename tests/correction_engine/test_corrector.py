@@ -15,7 +15,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import the module to test
 from lib.corrector.corrector import NoisyChannelCorrector, correct
-from module4.ppm.enhanced_ppm_predictor import EnhancedPPMPredictor
+from lib.corrector.enhanced_ppm_predictor import EnhancedPPMPredictor
 from lib.confusion_matrix.confusion_matrix import build_confusion_matrix
 
 
@@ -122,13 +122,11 @@ class TestNoisyChannelCorrector(unittest.TestCase):
     def test_convenience_function(self):
         """Test the convenience function."""
         # Create temporary files for the models
-        with tempfile.NamedTemporaryFile(
-            suffix=".pkl"
-        ) as ppm_file, tempfile.NamedTemporaryFile(
-            suffix=".json"
-        ) as confusion_file, tempfile.NamedTemporaryFile(
-            suffix=".txt"
-        ) as lexicon_file:
+        with (
+            tempfile.NamedTemporaryFile(suffix=".pkl") as ppm_file,
+            tempfile.NamedTemporaryFile(suffix=".json") as confusion_file,
+            tempfile.NamedTemporaryFile(suffix=".txt") as lexicon_file,
+        ):
 
             # Save the PPM model
             self.ppm_model._save_model = lambda model_path: True  # Mock the save method
