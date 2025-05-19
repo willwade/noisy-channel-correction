@@ -195,7 +195,7 @@ python scripts/correction_engine/demo.py --keyboard-layout qwerty --use-keyboard
 - Access-specific confusion models (eyegaze vs touch vs switch)
 - Word-level confusion matrices
 - Beam search decoding
-- Integration with AAC systems or TTS pipelines
+- Integration with AAC systems
 
 ---
 
