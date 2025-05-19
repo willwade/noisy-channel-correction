@@ -17,15 +17,10 @@ import random
 # Add the parent directory to the Python path
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(parent_dir)
-# Also add module4 and its subdirectories to the path
-module4_dir = os.path.join(parent_dir, "module4")
-sys.path.append(module4_dir)
-sys.path.append(os.path.join(module4_dir, "ppm"))
-sys.path.append(os.path.join(module4_dir, "pylm"))
 
 # Import the corrector
 from lib.corrector.corrector import NoisyChannelCorrector
-from module5.utils import (
+from lib.evaluation.utils import (
     load_aac_conversations,
     get_noisy_utterance,
     get_random_examples,
@@ -36,8 +31,8 @@ from module5.utils import (
     NOISE_LEVELS,
 )
 
-# Import module1 utilities
-from module5.module1_utils import (
+# Import noise simulator utilities
+from lib.noise_model.utils import (
     generate_noisy_pairs,
     load_wordlist,
 )
