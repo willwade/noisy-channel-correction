@@ -185,7 +185,7 @@ def generate_synthetic_data(num_pairs: int = 1000) -> List[Tuple[str, str]]:
             },
         ),
         "abc": KeyboardNoiseModel(
-            layout_name="en",  # Use "en" as fallback for "abc"
+            layout_name="abc",  # Use the ABC layout
             error_rates={
                 "proximity": 0.05,
                 "deletion": 0.03,
@@ -194,7 +194,7 @@ def generate_synthetic_data(num_pairs: int = 1000) -> List[Tuple[str, str]]:
             },
         ),
         "frequency": KeyboardNoiseModel(
-            layout_name="en",  # Use "en" as fallback for "frequency"
+            layout_name="frequency",  # Use the frequency layout
             error_rates={
                 "proximity": 0.05,
                 "deletion": 0.03,
