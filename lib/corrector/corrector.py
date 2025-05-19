@@ -437,15 +437,32 @@ class NoisyChannelCorrector:
             score = log_p_intended + log_p_noisy_given_intended
 
             # For display purposes, we'll use a normalized score between 0 and 1
-            # We'll use the log score directly, but normalize it to a reasonable range
+            # We need to map the log score to a more readable range
             # This avoids the extremely small numbers that are hard to display
 
-            # Use a normalized score for display
-            # We'll use a simple normalization that maps the log score to [0,1]
-            # A score of -10 or better will map to values above 0.5
-            normalized_score = (
-                1.0 / (1.0 + math.exp(-score - 10)) if score != -float("inf") else 0.0
-            )
+            # Improved normalization function:
+            # 1. Shift the log score to a more reasonable range (-20 to 0)
+            # 2. Apply a sigmoid function to map to (0,1)
+            # 3. Scale to ensure better distribution of values
+
+            if score == -float("inf"):
+                normalized_score = 0.0
+            else:
+                # Shift and scale the log score
+                # Most log scores will be between -30 and 0
+                # Shift by +15 to center around -15
+                shifted_score = score + 15
+
+                # Apply sigmoid function: 1 / (1 + e^-x)
+                # This maps any real number to (0,1)
+                sigmoid = 1.0 / (1.0 + math.exp(-shifted_score))
+
+                # Scale to spread out the values more (0.01 to 0.99)
+                # This helps avoid all scores looking like 0.0000
+                normalized_score = (sigmoid - 0.01) * 0.98 / 0.98
+
+                # Ensure the score is between 0 and 1
+                normalized_score = max(0.0, min(1.0, normalized_score))
 
             # Add to the list of scored candidates
             scored_candidates.append((candidate, normalized_score))

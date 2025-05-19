@@ -109,9 +109,11 @@ class ConversationEvaluator:
 
         # Process each turn
         for i, turn in enumerate(prepared_conversation):
-            # Get the noisy utterance
+            # Get the noisy utterance and reference texts
             noisy = turn.get("noisy_utterance", "")
             intended = turn.get("utterance_intended", "")
+            minimally_corrected = turn.get("minimally_corrected", "")
+            fully_corrected = turn.get("fully_corrected", "")
             speaker = turn.get("speaker", "Unknown")
 
             # If no noisy utterance, use the intended utterance
@@ -127,8 +129,8 @@ class ConversationEvaluator:
             top_correction = corrections[0][0] if corrections else noisy
 
             if self.use_gold_context:
-                # Use the intended utterance for future context (oracle setting)
-                context.append(intended)
+                # Use the fully corrected utterance for future context (oracle setting)
+                context.append(fully_corrected if fully_corrected else intended)
             else:
                 # Use the top correction for future context (realistic setting)
                 context.append(top_correction)
@@ -136,16 +138,45 @@ class ConversationEvaluator:
             # Limit context size
             context = context[-self.context_window_size :]
 
-            # Calculate turn-level metrics
-            correct_at_1 = top_correction.lower() == intended.lower()
-            correct_at_n = any(
+            # Calculate turn-level metrics for different reference texts
+            # 1. Using intended utterance
+            correct_at_1_intended = top_correction.lower() == intended.lower()
+            correct_at_n_intended = any(
                 corr.lower() == intended.lower() for corr, _ in corrections
             )
 
-            # Find the rank of the correct answer
+            # 2. Using minimally corrected utterance (primary evaluation target)
+            correct_at_1_minimal = (
+                top_correction.lower() == minimally_corrected.lower()
+                if minimally_corrected
+                else correct_at_1_intended
+            )
+            correct_at_n_minimal = (
+                any(
+                    corr.lower() == minimally_corrected.lower()
+                    for corr, _ in corrections
+                )
+                if minimally_corrected
+                else correct_at_n_intended
+            )
+
+            # 3. Using fully corrected utterance
+            correct_at_1_full = (
+                top_correction.lower() == fully_corrected.lower()
+                if fully_corrected
+                else correct_at_1_intended
+            )
+            correct_at_n_full = (
+                any(corr.lower() == fully_corrected.lower() for corr, _ in corrections)
+                if fully_corrected
+                else correct_at_n_intended
+            )
+
+            # Find the rank of the correct answer (using minimally corrected as primary reference)
             correct_rank = -1
             for j, (corr, _) in enumerate(corrections):
-                if corr.lower() == intended.lower():
+                reference = minimally_corrected if minimally_corrected else intended
+                if corr.lower() == reference.lower():
                     correct_rank = j + 1
                     break
 
@@ -155,22 +186,36 @@ class ConversationEvaluator:
                     "turn_number": i + 1,
                     "speaker": speaker,
                     "intended": intended,
+                    "minimally_corrected": minimally_corrected,
+                    "fully_corrected": fully_corrected,
                     "noisy": noisy,
                     "corrections": [
                         {"correction": corr, "score": score}
                         for corr, score in corrections
                     ],
-                    "correct_at_1": correct_at_1,
-                    "correct_at_n": correct_at_n,
+                    "correct_at_1_intended": correct_at_1_intended,
+                    "correct_at_n_intended": correct_at_n_intended,
+                    "correct_at_1_minimal": correct_at_1_minimal,
+                    "correct_at_n_minimal": correct_at_n_minimal,
+                    "correct_at_1_full": correct_at_1_full,
+                    "correct_at_n_full": correct_at_n_full,
                     "correct_rank": correct_rank,
                     "context": list(context),  # Make a copy of the context
                 }
             )
 
+            # Use minimally corrected as the primary evaluation target
+            # Fall back to intended if minimally corrected is not available
+            primary_correct_at_1 = correct_at_1_minimal
+
             # Update metrics
-            results["metrics"]["turn_level_accuracy"].append(correct_at_1)
-            results["metrics"]["accuracy_by_position"][i + 1].append(correct_at_1)
-            results["metrics"]["accuracy_by_speaker"][speaker].append(correct_at_1)
+            results["metrics"]["turn_level_accuracy"].append(primary_correct_at_1)
+            results["metrics"]["accuracy_by_position"][i + 1].append(
+                primary_correct_at_1
+            )
+            results["metrics"]["accuracy_by_speaker"][speaker].append(
+                primary_correct_at_1
+            )
 
             # Track accuracy trend (moving average)
             if i >= 2:
@@ -376,9 +421,13 @@ class ConversationEvaluator:
             for turn in conversation["turns"][:5]:  # Show first 5 turns
                 print(f"  Speaker: {turn['speaker']}")
                 print(f"  Intended: {turn['intended']}")
+                print(f"  Minimally Corrected: {turn['minimally_corrected']}")
+                print(f"  Fully Corrected: {turn['fully_corrected']}")
                 print(f"  Noisy: {turn['noisy']}")
                 print(f"  Corrected: {turn['corrections'][0]['correction']}")
-                print(f"  Correct: {turn['correct_at_1']}")
+                print(f"  Correct (vs Intended): {turn['correct_at_1_intended']}")
+                print(f"  Correct (vs Minimally): {turn['correct_at_1_minimal']}")
+                print(f"  Correct (vs Fully): {turn['correct_at_1_full']}")
                 print()
 
             if len(conversation["turns"]) > 5:

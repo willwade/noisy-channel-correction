@@ -140,6 +140,26 @@ def add_noise(
     return noise_model.apply(text)
 
 
+def generate_noisy_text(
+    text: str,
+    noise_type: str = "qwerty",
+    noise_level: str = "moderate",
+) -> str:
+    """
+    Generate a noisy version of the input text.
+    This is a convenience function that wraps add_noise.
+
+    Args:
+        text: The clean input text
+        noise_type: Type of noise ('qwerty', 'abc', or 'frequency')
+        noise_level: Level of noise ('minimal', 'light', 'moderate', or 'severe')
+
+    Returns:
+        The noisy output text
+    """
+    return add_noise(text, noise_type, noise_level)
+
+
 def generate_noisy_pairs(
     texts: List[str],
     noise_type: str = "qwerty",

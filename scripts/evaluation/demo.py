@@ -249,6 +249,8 @@ def process_examples(
                 "scene": example.get("scene"),
                 "speaker": example.get("speaker"),
                 "utterance_intended": example.get("utterance_intended"),
+                "minimally_corrected": example.get("minimally_corrected"),
+                "fully_corrected": example.get("fully_corrected"),
                 "noisy_utterance": noisy,
                 "corrections": [
                     {"correction": corr, "score": score} for corr, score in corrections

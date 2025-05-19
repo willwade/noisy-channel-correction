@@ -12,6 +12,7 @@ import logging
 from typing import List, Dict, Tuple, Any, Optional
 import json
 import random
+import re
 
 # Add the parent directory to the Python path
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,6 +43,42 @@ except ImportError:
 # Noise types and levels
 NOISE_TYPES = ["qwerty", "abc", "frequency"]
 NOISE_LEVELS = ["minimal", "light", "moderate", "severe"]
+
+
+def normalize_text(text: str) -> str:
+    """
+    Normalize text for comparison by removing punctuation and lowercasing.
+
+    Args:
+        text: The text to normalize
+
+    Returns:
+        Normalized text
+    """
+    # Remove punctuation
+    text = re.sub(r"[^\w\s]", "", text)
+
+    # Convert to lowercase
+    text = text.lower()
+
+    # Remove extra whitespace
+    text = " ".join(text.split())
+
+    return text
+
+
+def texts_essentially_equal(text1: str, text2: str) -> bool:
+    """
+    Check if two texts are essentially equal after normalization.
+
+    Args:
+        text1: First text
+        text2: Second text
+
+    Returns:
+        True if texts are essentially equal, False otherwise
+    """
+    return normalize_text(text1) == normalize_text(text2)
 
 
 def load_aac_conversations(
@@ -85,6 +122,8 @@ def get_noisy_utterance(
 ) -> str:
     """
     Get the noisy utterance from an example based on noise type and level.
+    If the noisy utterance is essentially the same as the intended utterance,
+    generate a noisy version using the noise simulator.
 
     Args:
         example: Dataset example
@@ -105,7 +144,33 @@ def get_noisy_utterance(
 
     # Get the noisy utterance
     key = f"noisy_{noise_type}_{noise_level}"
-    return example.get(key, example.get("utterance", ""))
+    noisy = example.get(key, example.get("utterance", ""))
+
+    # Get the intended utterance
+    intended = example.get("utterance_intended", example.get("utterance", ""))
+    minimally_corrected = example.get("minimally_corrected", intended)
+
+    # Check if the noisy utterance is essentially the same as the intended utterance
+    # or minimally corrected utterance (after normalization)
+    if texts_essentially_equal(noisy, intended) or texts_essentially_equal(
+        noisy, minimally_corrected
+    ):
+        # Try to import the noise simulator utilities
+        try:
+            from scripts.evaluation.noise_simulator_utils import generate_noisy_text
+
+            # Generate a noisy version of the intended utterance
+            logger.info(
+                f"Generating noisy version of '{intended}' with {noise_type} {noise_level} noise"
+            )
+            noisy = generate_noisy_text(intended, noise_type, noise_level)
+            logger.info(f"Generated noisy text: '{noisy}'")
+        except ImportError:
+            logger.warning(
+                "Could not import noise simulator utilities. Using original text."
+            )
+
+    return noisy
 
 
 def get_random_examples(
@@ -194,8 +259,10 @@ def prepare_conversation_for_evaluation(
     prepared_conversation = []
 
     for turn in conversation:
-        # Get the intended and noisy utterances
+        # Get the intended, minimally corrected, fully corrected, and noisy utterances
         intended = turn.get("utterance_intended", turn.get("utterance", ""))
+        minimally_corrected = turn.get("minimally_corrected", turn.get("utterance", ""))
+        fully_corrected = turn.get("fully_corrected", turn.get("utterance", ""))
         noisy = get_noisy_utterance(turn, noise_type, noise_level)
 
         # Prepare the turn
@@ -204,6 +271,8 @@ def prepare_conversation_for_evaluation(
             "turn_number": turn.get("turn_number", 0),
             "speaker": turn.get("speaker", "Unknown"),
             "utterance_intended": intended,
+            "minimally_corrected": minimally_corrected,
+            "fully_corrected": fully_corrected,
             "noisy_utterance": noisy,
             "language_code": turn.get("language_code", "en"),
             "context_speakers": turn.get("context_speakers", []),
@@ -345,7 +414,13 @@ def format_example_for_display(
         formatted += "\n"
 
     # Add the utterances
-    formatted += f"Original: {example.get('utterance_intended', 'N/A')}\n"
+    formatted += f"Original (Intended): {example.get('utterance_intended', 'N/A')}\n"
+    formatted += (
+        f"Original (Minimally Corrected): {example.get('minimally_corrected', 'N/A')}\n"
+    )
+    formatted += (
+        f"Original (Fully Corrected): {example.get('fully_corrected', 'N/A')}\n"
+    )
     formatted += f"Noisy ({noise_type}, {noise_level}): {noisy}\n"
 
     # Add the corrections if provided

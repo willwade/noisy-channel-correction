@@ -40,7 +40,7 @@ class ImprovedCandidateGenerator(CandidateGenerator):
         self,
         lexicon: Optional[Set[str]] = None,
         max_candidates: int = 30,
-        max_edits: int = 20000,
+        max_edits: int = 200,  # Reduced from 20000 to 200
         keyboard_boost: float = 0.3,
         strict_filtering: bool = True,
         smart_filtering: bool = True,
@@ -52,7 +52,7 @@ class ImprovedCandidateGenerator(CandidateGenerator):
         Args:
             lexicon: Set of valid words to use for filtering candidates
             max_candidates: Maximum number of candidates to return
-            max_edits: Maximum number of edit candidates to generate
+            max_edits: Maximum number of edit candidates to generate (default: 200)
             keyboard_boost: Boost factor for keyboard-adjacent substitutions
             strict_filtering: Whether to strictly filter candidates by lexicon
             smart_filtering: Whether to use smart filtering for candidates
@@ -154,9 +154,11 @@ class ImprovedCandidateGenerator(CandidateGenerator):
                     # Add to the overall set
                     edits2.update(edit1_candidates)
 
-                    # If we've generated a very large number of candidates, stop
-                    if len(edits2) > self.max_edits * 2:
-                        logger.info(f"Generated sufficient candidates: {len(edits2)}")
+                    # If we've generated enough candidates, stop early
+                    if len(edits2) > self.max_edits:
+                        logger.info(
+                            f"Early stopping: Generated sufficient candidates ({len(edits2)})"
+                        )
                         break
 
             return edits2
@@ -179,8 +181,9 @@ class ImprovedCandidateGenerator(CandidateGenerator):
                         # Add to the overall set
                         new_candidates.update(candidate_edits)
 
-                        # If we've generated a very large number of candidates, stop
-                        if len(new_candidates) > self.max_edits * 2:
+                        # If we've generated enough candidates, stop early
+                        if len(new_candidates) > self.max_edits:
+                            logger.info(f"Early stopping at edit distance {_+2}")
                             break
 
                 candidates = new_candidates
