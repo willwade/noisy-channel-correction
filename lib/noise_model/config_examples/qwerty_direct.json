@@ -1,0 +1,25 @@
+{
+  "type": "composite",
+  "models": [
+    {
+      "type": "keyboard",
+      "layout_name": "en",
+      "input_method": "direct",
+      "error_rates": {
+        "proximity": 0.05,
+        "deletion": 0.0,
+        "insertion": 0.0,
+        "transposition": 0.0
+      }
+    },
+    {
+      "type": "dwell",
+      "deletion_rate": 0.03,
+      "insertion_rate": 0.02
+    },
+    {
+      "type": "transposition",
+      "transposition_rate": 0.01
+    }
+  ]
+}
