@@ -127,7 +127,7 @@ def test_keyboard_matrices():
             print(f"  Clean: {clean} -> Noisy: {noisy}")
 
     # Load the keyboard confusion matrices if they exist
-    matrices_path = "models/keyboard_confusion_matrices.json"
+    matrices_path = "../../models/keyboard_confusion_matrices.json"
     if os.path.exists(matrices_path):
         print(f"\nLoading keyboard confusion matrices from {matrices_path}...")
         matrices = KeyboardConfusionMatrix.load(matrices_path)

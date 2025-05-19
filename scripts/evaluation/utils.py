@@ -18,6 +18,21 @@ import re
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(parent_dir)
 
+# Import the common configuration
+from lib.config import (
+    DEFAULT_PPM_MODEL_PATH,
+    DEFAULT_WORD_NGRAM_MODEL_PATH,
+    DEFAULT_CONFUSION_MATRIX_PATH,
+    DEFAULT_LEXICON_PATH,
+    DEFAULT_MAX_CANDIDATES,
+    DEFAULT_MAX_EDIT_DISTANCE,
+    DEFAULT_NOISE_TYPE,
+    DEFAULT_NOISE_LEVEL,
+    NOISE_TYPES,
+    NOISE_LEVELS,
+    resolve_path,
+)
+
 # Import the corrector
 from lib.corrector.corrector import NoisyChannelCorrector
 
@@ -40,9 +55,7 @@ except ImportError:
     DATASETS_AVAILABLE = False
 
 
-# Noise types and levels
-NOISE_TYPES = ["qwerty", "abc", "frequency"]
-NOISE_LEVELS = ["minimal", "light", "moderate", "severe"]
+# Noise types and levels are now imported from lib.config
 
 
 def normalize_text(text: str) -> str:
@@ -285,11 +298,11 @@ def prepare_conversation_for_evaluation(
 
 
 def load_corrector(
-    ppm_model_path: Optional[str] = None,
-    confusion_matrix_path: Optional[str] = None,
-    word_ngram_model_path: Optional[str] = None,
-    lexicon_path: Optional[str] = None,
-    max_candidates: int = 5,
+    ppm_model_path: Optional[str] = DEFAULT_PPM_MODEL_PATH,
+    confusion_matrix_path: Optional[str] = DEFAULT_CONFUSION_MATRIX_PATH,
+    word_ngram_model_path: Optional[str] = DEFAULT_WORD_NGRAM_MODEL_PATH,
+    lexicon_path: Optional[str] = DEFAULT_LEXICON_PATH,
+    max_candidates: int = DEFAULT_MAX_CANDIDATES,
 ) -> NoisyChannelCorrector:
     """
     Load the noisy channel corrector with the specified models.
@@ -309,35 +322,35 @@ def load_corrector(
 
     # Load the PPM model if provided
     if ppm_model_path:
-        logger.info(f"Loading PPM model from {ppm_model_path}")
-        success = corrector.load_ppm_model(ppm_model_path)
+        resolved_path = resolve_path(ppm_model_path)
+        logger.info(f"Loading PPM model from {resolved_path}")
+        success = corrector.load_ppm_model(resolved_path)
         if not success:
-            logger.warning(f"Failed to load PPM model from {ppm_model_path}")
+            logger.warning(f"Failed to load PPM model from {resolved_path}")
 
     # Load the confusion matrix if provided
     if confusion_matrix_path:
-        logger.info(f"Loading confusion matrix from {confusion_matrix_path}")
-        success = corrector.load_confusion_model(confusion_matrix_path)
+        resolved_path = resolve_path(confusion_matrix_path)
+        logger.info(f"Loading confusion matrix from {resolved_path}")
+        success = corrector.load_confusion_model(resolved_path)
         if not success:
-            logger.warning(
-                f"Failed to load confusion matrix from {confusion_matrix_path}"
-            )
+            logger.warning(f"Failed to load confusion matrix from {resolved_path}")
 
     # Load the word n-gram model if provided
     if word_ngram_model_path:
-        logger.info(f"Loading word n-gram model from {word_ngram_model_path}")
-        success = corrector.load_word_ngram_model(word_ngram_model_path)
+        resolved_path = resolve_path(word_ngram_model_path)
+        logger.info(f"Loading word n-gram model from {resolved_path}")
+        success = corrector.load_word_ngram_model(resolved_path)
         if not success:
-            logger.warning(
-                f"Failed to load word n-gram model from {word_ngram_model_path}"
-            )
+            logger.warning(f"Failed to load word n-gram model from {resolved_path}")
 
     # Load the lexicon if provided
     if lexicon_path:
-        logger.info(f"Loading lexicon from {lexicon_path}")
-        success = corrector.load_lexicon_from_file(lexicon_path)
+        resolved_path = resolve_path(lexicon_path)
+        logger.info(f"Loading lexicon from {resolved_path}")
+        success = corrector.load_lexicon_from_file(resolved_path)
         if not success:
-            logger.warning(f"Failed to load lexicon from {lexicon_path}")
+            logger.warning(f"Failed to load lexicon from {resolved_path}")
 
     # Update the models_ready flag
     corrector.models_ready = (
@@ -357,30 +370,33 @@ def save_results(results: List[Dict[str, Any]], output_path: str) -> bool:
 
     Args:
         results: List of correction results
-        output_path: Path to save the results
+        output_path: Path to save the results (can be relative to project root)
 
     Returns:
         True if successful, False otherwise
     """
     try:
+        # Resolve the path
+        resolved_path = resolve_path(output_path)
+
         # Create the directory if it doesn't exist
-        os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
+        os.makedirs(os.path.dirname(os.path.abspath(resolved_path)), exist_ok=True)
 
         # Save the results
-        with open(output_path, "w") as f:
+        with open(resolved_path, "w") as f:
             json.dump(results, f, indent=2)
 
-        logger.info(f"Saved results to {output_path}")
+        logger.info(f"Saved results to {resolved_path}")
         return True
     except Exception as e:
-        logger.error(f"Error saving results to {output_path}: {e}")
+        logger.error(f"Error saving results to {resolved_path}: {e}")
         return False
 
 
 def format_example_for_display(
     example: Dict[str, Any],
-    noise_type: str = "qwerty",
-    noise_level: str = "moderate",
+    noise_type: str = DEFAULT_NOISE_TYPE,
+    noise_level: str = DEFAULT_NOISE_LEVEL,
     corrections: Optional[List[Tuple[str, float]]] = None,
 ) -> str:
     """

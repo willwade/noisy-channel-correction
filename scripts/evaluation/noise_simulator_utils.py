@@ -12,6 +12,9 @@ from typing import List, Dict, Any
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# Import path utilities from config
+from lib.config import resolve_path
+
 # Import noise simulator models
 from lib.noise_model.noise_model import (
     KeyboardNoiseModel,
@@ -203,18 +206,24 @@ def load_wordlist(file_path: str) -> List[str]:
     Load a wordlist from a file.
 
     Args:
-        file_path: Path to the wordlist file
+        file_path: Path to the wordlist file (can be relative to project root, data dir, or absolute)
 
     Returns:
         List of words
     """
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
+        # Resolve the path to ensure it's correctly found
+        resolved_path = resolve_path(file_path)
+        logger.info(f"Resolving wordlist path: {file_path} -> {resolved_path}")
+
+        with open(resolved_path, "r", encoding="utf-8") as f:
             words = [line.strip() for line in f if line.strip()]
 
-        logger.info(f"Loaded {len(words)} words from {file_path}")
+        logger.info(f"Loaded {len(words)} words from {resolved_path}")
         return words
 
     except Exception as e:
-        logger.error(f"Error loading wordlist from {file_path}: {e}")
+        logger.error(
+            f"Error loading wordlist from {file_path} (resolved to {resolve_path(file_path)}): {e}"
+        )
         return []

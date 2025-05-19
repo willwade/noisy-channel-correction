@@ -18,6 +18,21 @@ import random
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(parent_dir)
 
+# Import the common configuration
+from lib.config import (
+    DEFAULT_PPM_MODEL_PATH,
+    DEFAULT_WORD_NGRAM_MODEL_PATH,
+    DEFAULT_CONFUSION_MATRIX_PATH,
+    DEFAULT_LEXICON_PATH,
+    DEFAULT_MAX_CANDIDATES,
+    DEFAULT_MAX_EDIT_DISTANCE,
+    DEFAULT_NOISE_TYPE,
+    DEFAULT_NOISE_LEVEL,
+    NOISE_TYPES,
+    NOISE_LEVELS,
+    resolve_path,
+)
+
 # Import the corrector
 from lib.corrector.corrector import NoisyChannelCorrector
 from scripts.evaluation.utils import (
@@ -27,8 +42,6 @@ from scripts.evaluation.utils import (
     load_corrector,
     save_results,
     format_example_for_display,
-    NOISE_TYPES,
-    NOISE_LEVELS,
 )
 
 # Import noise simulator utilities
@@ -59,7 +72,7 @@ def parse_args():
     parser.add_argument(
         "--wordlist",
         type=str,
-        default="../data/wordlist.txt",
+        default=DEFAULT_LEXICON_PATH,
         help="Path to the wordlist file for the noise simulator",
     )
 
@@ -81,14 +94,14 @@ def parse_args():
     parser.add_argument(
         "--noise-type",
         type=str,
-        default="qwerty",
+        default=DEFAULT_NOISE_TYPE,
         choices=NOISE_TYPES,
         help="Type of noise to use",
     )
     parser.add_argument(
         "--noise-level",
         type=str,
-        default="moderate",
+        default=DEFAULT_NOISE_LEVEL,
         choices=NOISE_LEVELS,
         help="Level of noise to use",
     )
@@ -108,25 +121,25 @@ def parse_args():
     parser.add_argument(
         "--ppm-model",
         type=str,
-        default="models/ppm_model.pkl",
+        default=DEFAULT_PPM_MODEL_PATH,
         help="Path to the PPM model file",
     )
     parser.add_argument(
         "--confusion-matrix",
         type=str,
-        default="models/confusion_matrix.json",
+        default=DEFAULT_CONFUSION_MATRIX_PATH,
         help="Path to the confusion matrix file",
     )
     parser.add_argument(
         "--word-ngram-model",
         type=str,
-        default="models/word_ngram_model.pkl",
+        default=DEFAULT_WORD_NGRAM_MODEL_PATH,
         help="Path to the word n-gram model file",
     )
     parser.add_argument(
         "--lexicon",
         type=str,
-        default="data/wordlist.txt",
+        default=DEFAULT_LEXICON_PATH,
         help="Path to the lexicon file",
     )
 
@@ -134,13 +147,13 @@ def parse_args():
     parser.add_argument(
         "--max-candidates",
         type=int,
-        default=5,
+        default=DEFAULT_MAX_CANDIDATES,
         help="Maximum number of candidates to return",
     )
     parser.add_argument(
         "--max-edit-distance",
         type=int,
-        default=2,
+        default=DEFAULT_MAX_EDIT_DISTANCE,
         help="Maximum edit distance to consider",
     )
     parser.add_argument(
@@ -269,10 +282,12 @@ def process_noise_simulator_examples(
     """Process examples using the noise simulator."""
     results = []
 
-    # Load the wordlist
-    words = load_wordlist(args.wordlist)
+    # Load the wordlist (resolve the path first)
+    wordlist_path = resolve_path(args.wordlist)
+    logger.info(f"Using wordlist at {wordlist_path}")
+    words = load_wordlist(wordlist_path)
     if not words:
-        logger.error(f"No words loaded from {args.wordlist}. Exiting.")
+        logger.error(f"No words loaded from {wordlist_path}. Exiting.")
         return []
 
     # Set random seed if provided

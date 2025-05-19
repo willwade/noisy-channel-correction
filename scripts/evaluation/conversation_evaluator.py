@@ -19,6 +19,24 @@ from collections import defaultdict
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# Import the common configuration
+from lib.config import (
+    DEFAULT_PPM_MODEL_PATH,
+    DEFAULT_WORD_NGRAM_MODEL_PATH,
+    DEFAULT_CONFUSION_MATRIX_PATH,
+    DEFAULT_LEXICON_PATH,
+    DEFAULT_MAX_CANDIDATES,
+    DEFAULT_MAX_EDIT_DISTANCE,
+    DEFAULT_NOISE_TYPE,
+    DEFAULT_NOISE_LEVEL,
+    DEFAULT_CONTEXT_WINDOW_SIZE,
+    DEFAULT_CONTEXT_WEIGHT,
+    DEFAULT_KEYBOARD_LAYOUT,
+    NOISE_TYPES,
+    NOISE_LEVELS,
+    resolve_path,
+)
+
 # Import the corrector and utilities
 from lib.corrector.corrector import NoisyChannelCorrector
 from scripts.evaluation.utils import (
@@ -47,8 +65,8 @@ class ConversationEvaluator:
         self,
         corrector: NoisyChannelCorrector,
         use_gold_context: bool = False,
-        context_window_size: int = 3,
-        max_candidates: int = 5,
+        context_window_size: int = DEFAULT_CONTEXT_WINDOW_SIZE,
+        max_candidates: int = DEFAULT_MAX_CANDIDATES,
     ):
         """
         Initialize a conversation evaluator.
@@ -68,8 +86,8 @@ class ConversationEvaluator:
     def process_conversation(
         self,
         conversation: List[Dict[str, Any]],
-        noise_type: str = "qwerty",
-        noise_level: str = "moderate",
+        noise_type: str = DEFAULT_NOISE_TYPE,
+        noise_level: str = DEFAULT_NOISE_LEVEL,
     ) -> Dict[str, Any]:
         """
         Process a conversation turn by turn with context.
@@ -254,8 +272,8 @@ class ConversationEvaluator:
         self,
         dataset: Any,
         num_conversations: Optional[int] = None,
-        noise_type: str = "qwerty",
-        noise_level: str = "moderate",
+        noise_type: str = DEFAULT_NOISE_TYPE,
+        noise_level: str = DEFAULT_NOISE_LEVEL,
     ) -> Dict[str, Any]:
         """
         Process multiple conversations from a dataset.
@@ -352,14 +370,17 @@ class ConversationEvaluator:
 
         Args:
             results: The results to save
-            output_path: Path to save the results
+            output_path: Path to save the results (can be relative to project root)
 
         Returns:
             True if successful, False otherwise
         """
         try:
+            # Resolve the path
+            resolved_path = resolve_path(output_path)
+
             # Create the output directory if it doesn't exist
-            os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
+            os.makedirs(os.path.dirname(os.path.abspath(resolved_path)), exist_ok=True)
 
             # Convert defaultdicts to regular dicts for JSON serialization
             serializable_results = json.loads(
@@ -370,13 +391,13 @@ class ConversationEvaluator:
             )
 
             # Save the results
-            with open(output_path, "w", encoding="utf-8") as f:
+            with open(resolved_path, "w", encoding="utf-8") as f:
                 json.dump(serializable_results, f, indent=2)
 
-            logger.info(f"Saved evaluation results to {output_path}")
+            logger.info(f"Saved evaluation results to {resolved_path}")
             return True
         except Exception as e:
-            logger.error(f"Error saving evaluation results: {e}")
+            logger.error(f"Error saving evaluation results to {resolved_path}: {e}")
             return False
 
     def print_summary(self, results: Dict[str, Any]) -> None:
@@ -444,28 +465,28 @@ def main():
     parser.add_argument(
         "--ppm-model",
         type=str,
-        default="models/ppm_model.pkl",
+        default=DEFAULT_PPM_MODEL_PATH,
         help="Path to the PPM model file",
     )
 
     parser.add_argument(
         "--confusion-matrix",
         type=str,
-        default="models/confusion_matrix.json",
+        default=DEFAULT_CONFUSION_MATRIX_PATH,
         help="Path to the confusion matrix file",
     )
 
     parser.add_argument(
         "--word-ngram-model",
         type=str,
-        default="models/word_ngram_model.pkl",
+        default=DEFAULT_WORD_NGRAM_MODEL_PATH,
         help="Path to the word n-gram model file",
     )
 
     parser.add_argument(
         "--lexicon",
         type=str,
-        default="data/wordlist.txt",
+        default=DEFAULT_LEXICON_PATH,
         help="Path to the lexicon file",
     )
 
@@ -493,28 +514,28 @@ def main():
     parser.add_argument(
         "--context-window",
         type=int,
-        default=3,
+        default=DEFAULT_CONTEXT_WINDOW_SIZE,
         help="Number of previous turns to use as context",
     )
 
     parser.add_argument(
         "--noise-type",
-        choices=["qwerty", "abc", "frequency"],
-        default="qwerty",
+        choices=NOISE_TYPES,
+        default=DEFAULT_NOISE_TYPE,
         help="Type of noise to use from the dataset",
     )
 
     parser.add_argument(
         "--noise-level",
-        choices=["minimal", "light", "moderate", "severe"],
-        default="moderate",
+        choices=NOISE_LEVELS,
+        default=DEFAULT_NOISE_LEVEL,
         help="Level of noise to use from the dataset",
     )
 
     parser.add_argument(
         "--keyboard-layout",
-        choices=["qwerty", "abc", "frequency"],
-        default="qwerty",
+        choices=NOISE_TYPES,  # Keyboard layouts match noise types
+        default=DEFAULT_KEYBOARD_LAYOUT,
         help="Keyboard layout to use for confusion matrix",
     )
 
@@ -548,52 +569,64 @@ def main():
 
     # Create the corrector
     corrector = NoisyChannelCorrector(
-        max_candidates=5,
+        max_candidates=DEFAULT_MAX_CANDIDATES,
         context_window_size=args.context_window,
-        context_weight=0.7,
+        context_weight=DEFAULT_CONTEXT_WEIGHT,
         keyboard_layout=args.keyboard_layout,
     )
 
-    # Load the PPM model if it exists
-    if os.path.exists(args.ppm_model):
-        corrector.load_ppm_model(args.ppm_model)
+    # Load the PPM model
+    ppm_path = resolve_path(args.ppm_model)
+    if os.path.exists(ppm_path):
+        corrector.load_ppm_model(ppm_path)
+        logger.info(f"Loaded PPM model from {ppm_path}")
     else:
-        logger.warning(f"PPM model file not found: {args.ppm_model}")
+        logger.warning(f"PPM model file not found: {ppm_path}")
 
-    # Load the confusion matrix if it exists
-    if os.path.exists(args.confusion_matrix):
+    # Load the confusion matrix
+    confusion_path = resolve_path(args.confusion_matrix)
+    if os.path.exists(confusion_path):
         # If using keyboard-specific matrices, check if the file exists
         if args.use_keyboard_matrices:
             keyboard_matrix_path = os.path.join(
-                os.path.dirname(args.confusion_matrix),
+                os.path.dirname(confusion_path),
                 "keyboard_confusion_matrices.json",
             )
+            keyboard_matrix_path = resolve_path(keyboard_matrix_path)
+
             if os.path.exists(keyboard_matrix_path):
                 corrector.load_confusion_model(
                     keyboard_matrix_path, args.keyboard_layout
                 )
+                logger.info(
+                    f"Loaded keyboard-specific confusion matrix from {keyboard_matrix_path}"
+                )
             else:
                 # Fall back to standard confusion matrix
-                corrector.load_confusion_model(
-                    args.confusion_matrix, args.keyboard_layout
-                )
+                corrector.load_confusion_model(confusion_path, args.keyboard_layout)
+                logger.info(f"Loaded standard confusion matrix from {confusion_path}")
         else:
             # Use standard confusion matrix
-            corrector.load_confusion_model(args.confusion_matrix, args.keyboard_layout)
+            corrector.load_confusion_model(confusion_path, args.keyboard_layout)
+            logger.info(f"Loaded standard confusion matrix from {confusion_path}")
     else:
-        logger.warning(f"Confusion matrix file not found: {args.confusion_matrix}")
+        logger.warning(f"Confusion matrix file not found: {confusion_path}")
 
-    # Load the word n-gram model if it exists
-    if os.path.exists(args.word_ngram_model):
-        corrector.load_word_ngram_model(args.word_ngram_model)
+    # Load the word n-gram model
+    ngram_path = resolve_path(args.word_ngram_model)
+    if os.path.exists(ngram_path):
+        corrector.load_word_ngram_model(ngram_path)
+        logger.info(f"Loaded word n-gram model from {ngram_path}")
     else:
-        logger.warning(f"Word n-gram model file not found: {args.word_ngram_model}")
+        logger.warning(f"Word n-gram model file not found: {ngram_path}")
 
-    # Load the lexicon if it exists
-    if os.path.exists(args.lexicon):
-        corrector.load_lexicon_from_file(args.lexicon)
+    # Load the lexicon
+    lexicon_path = resolve_path(args.lexicon)
+    if os.path.exists(lexicon_path):
+        corrector.load_lexicon_from_file(lexicon_path)
+        logger.info(f"Loaded lexicon from {lexicon_path}")
     else:
-        logger.warning(f"Lexicon file not found: {args.lexicon}")
+        logger.warning(f"Lexicon file not found: {lexicon_path}")
 
     # Update the models_ready flag using the dedicated method
     if corrector.update_models_ready_status():
@@ -611,7 +644,7 @@ def main():
         corrector=corrector,
         use_gold_context=args.use_gold_context,
         context_window_size=args.context_window,
-        max_candidates=5,
+        max_candidates=DEFAULT_MAX_CANDIDATES,
     )
 
     # Load the dataset
