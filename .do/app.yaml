@@ -1,0 +1,16 @@
+name: aac-noisy-input-correction
+services:
+- name: web
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: willwade/noisy-channel-correction
+  build_command: pip install -r requirements.txt
+  run_command: python demo/web/app.py --port ${PORT}
+  envs:
+  - key: HUGGINGFACE_TOKEN
+    scope: RUN_TIME
+    type: SECRET
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xs

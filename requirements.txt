@@ -8,3 +8,4 @@ scikit-learn>=0.24.0
 streamlit>=1.0.0
 datasets>=2.0.0
 huggingface_hub>=0.0.19
+gradio>=3.50.0
