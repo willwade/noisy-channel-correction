@@ -355,23 +355,25 @@ class EnhancedPPMPredictor:
             # Tokenize the text
             words = self._tokenize(text)
 
-            # If no words, return most common words
+            # If no words, return most common words from the model
             if not words:
+                # Use the model's learned word frequencies
                 return [
                     word
                     for word, _ in self.word_frequencies.most_common(num_predictions)
                 ]
 
             # Get the last word
-            last_word = words[-1]
+            last_word = words[-1].lower()  # Convert to lowercase for better matching
 
             # Get the second last word if available
-            second_last_word = words[-2] if len(words) > 1 else None
+            second_last_word = words[-2].lower() if len(words) > 1 else None
 
             # Combine different prediction methods with weights
             predictions: Dict[str, float] = {}
 
             # 1. Trigram predictions (highest weight)
+            trigram_found = False
             if second_last_word and last_word:
                 # Check if the trigram exists
                 if (
@@ -382,22 +384,43 @@ class EnhancedPPMPredictor:
                         last_word
                     ].items():
                         predictions[word] = predictions.get(word, 0) + count * 4
+                        trigram_found = True
 
             # 2. Bigram predictions (high weight)
+            bigram_found = False
             if last_word:
+                # Try both exact case and lowercase
                 for word, count in self.bigrams[last_word].items():
                     predictions[word] = predictions.get(word, 0) + count * 2
+                    bigram_found = True
 
             # 3. Context predictions (medium weight)
+            context_found = False
             if last_word:
                 for word, count in self.word_contexts[last_word].items():
                     predictions[word] = predictions.get(word, 0) + count
+                    context_found = True
 
-            # 4. Frequency predictions (low weight)
-            for word, count in self.word_frequencies.most_common(20):
-                predictions[word] = predictions.get(word, 0) + count * 0.1
+            # 4. Use word contexts for additional predictions
+            # This uses the model's learned contexts rather than hardcoded patterns
+            for word, count in self.word_contexts.items():
+                if word.lower() == last_word:
+                    # Add top context words with medium weight
+                    for context_word, context_count in count.most_common(5):
+                        if context_word not in predictions:
+                            predictions[context_word] = context_count * 0.5
 
-            # 5. Recency bias (boost recently used words)
+            # 5. If no context-specific predictions found, add some variety
+            if (
+                not (trigram_found or bigram_found or context_found)
+                or len(predictions) < num_predictions
+            ):
+                # Add some common words with low weight
+                for word, count in self.word_frequencies.most_common(20):
+                    if word not in predictions:
+                        predictions[word] = count * 0.1
+
+            # 6. Recency bias (boost recently used words)
             current_time = time.time()
             for word, last_time in self.word_recency.items():
                 if word in predictions:
@@ -414,9 +437,27 @@ class EnhancedPPMPredictor:
             )
 
             # Return top predictions
-            return [word for word, _ in sorted_predictions[:num_predictions]]
+            result = [word for word, _ in sorted_predictions[:num_predictions]]
+
+            # If we still don't have enough predictions, add more from word frequencies
+            if len(result) < num_predictions:
+                # Get more words from the model's learned frequencies
+                for word, _ in self.word_frequencies.most_common(num_predictions * 2):
+                    if word not in result:
+                        result.append(word)
+                        if len(result) >= num_predictions:
+                            break
+
+            return result
         except Exception as e:
             logger.error(f"Error predicting next words: {e}")
+            # Fallback to basic predictions from word frequencies if available
+            if self.word_frequencies:
+                return [
+                    word
+                    for word, _ in self.word_frequencies.most_common(num_predictions)
+                ]
+            # Ultimate fallback if word frequencies aren't available
             return []
 
     def predict_word_completions(
@@ -562,8 +603,8 @@ class EnhancedPPMPredictor:
     ) -> List[Tuple[str, float]]:
         """Predict next words with awareness of word boundaries.
 
-        This method enhances prediction by giving special consideration to word boundaries,
-        which improves integration with word-level models.
+        This method enhances prediction by giving special consideration to word boundaries.
+        This improves integration with word-level models.
 
         Args:
             text: The text typed so far
