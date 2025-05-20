@@ -38,7 +38,13 @@ class ImprovedCandidateGenerator(CandidateGenerator):
 
     def __init__(
         self,
-        lexicon: Optional[Set[str]] = None,max_candidates: int = 30,max_edits: int = 200,keyboard_boost: float = 0.5,strict_filtering: bool = True,smart_filtering: bool = True,use_frequency_info: bool = True,
+        lexicon: Optional[Set[str]] = None,
+        max_candidates: int = 30,
+        max_edits: int = 200,
+        keyboard_boost: float = 0.5,
+        strict_filtering: bool = True,
+        smart_filtering: bool = True,
+        use_frequency_info: bool = True,
     ):
         """
         Initialize an improved candidate generator.
@@ -73,11 +79,23 @@ class ImprovedCandidateGenerator(CandidateGenerator):
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 for line in f:
+                    # Handle both space-separated and tab-separated files
                     parts = line.strip().split()
                     if len(parts) >= 2:
                         word = parts[0].lower()
                         freq = float(parts[1])
                         self.word_frequencies[word] = freq
+                    else:
+                        # Try tab-separated format
+                        parts = line.strip().split("\t")
+                        if len(parts) >= 2:
+                            word = parts[0].lower()
+                            try:
+                                freq = float(parts[1])
+                                self.word_frequencies[word] = freq
+                            except ValueError:
+                                # If frequency is not a number, skip this line
+                                pass
             logger.info(f"Loaded {len(self.word_frequencies)} word frequencies")
             return True
         except Exception as e:
@@ -196,7 +214,7 @@ class ImprovedCandidateGenerator(CandidateGenerator):
         """
         # Import time module at the top of the function
         import time
-        
+
         # If no lexicon is provided, return all candidates
         if not self.lexicon:
             return candidates
@@ -246,7 +264,7 @@ class ImprovedCandidateGenerator(CandidateGenerator):
         # This helps with very noisy inputs that might not be in the lexicon
         start_time = time.time()
         timeout = 2.0  # 5 seconds timeout
-        
+
         # Group lexicon words by length for faster filtering
         lexicon_by_length = {}
         for word in self.lexicon:
@@ -254,7 +272,7 @@ class ImprovedCandidateGenerator(CandidateGenerator):
             if length not in lexicon_by_length:
                 lexicon_by_length[length] = []
             lexicon_by_length[length].append(word)
-        
+
         for candidate in candidates:
             # Check if we've exceeded the timeout
             if time.time() - start_time > timeout:
@@ -263,49 +281,61 @@ class ImprovedCandidateGenerator(CandidateGenerator):
                     f"Returning {len(filtered_candidates)} candidates."
                 )
                 break
-                
+
             if candidate not in filtered_candidates:
                 # Only compare with words of similar length (±2 characters)
                 candidate_len = len(candidate)
                 closest_words = []
-                
+
                 # Check words with similar lengths
                 for length in range(max(1, candidate_len - 2), candidate_len + 3):
                     if length in lexicon_by_length:
                         # Limit the number of words to check per length group
                         # Limit to 1000 words per length
                         words_to_check = lexicon_by_length[length][:1000]
-                        
+
                         for word in words_to_check:
                             # Try to use faster Levenshtein implementation if available
                             try:
                                 # First check if first letter matches to reduce comparisons
-                                if (candidate[0] == word[0] or 
-                                        abs(len(candidate) - len(word)) <= 1):
+                                if (
+                                    candidate[0] == word[0]
+                                    or abs(len(candidate) - len(word)) <= 1
+                                ):
                                     # Try to import and use python-Levenshtein if available
                                     try:
                                         import Levenshtein
+
                                         distance = Levenshtein.distance(candidate, word)
                                     except ImportError:
                                         # Fall back to our implementation
-                                        distance = self._levenshtein_distance(candidate, word)
-                                        
-                                    if distance <= 2:  # Only consider words within edit distance 2
+                                        distance = self._levenshtein_distance(
+                                            candidate, word
+                                        )
+
+                                    if (
+                                        distance <= 2
+                                    ):  # Only consider words within edit distance 2
                                         closest_words.append((word, distance))
-                            except (IndexError):
+                            except IndexError:
                                 # Fall back to our implementation for empty strings
                                 distance = self._levenshtein_distance(candidate, word)
-                                if distance <= 2:  # Only consider words within edit distance 2
+                                if (
+                                    distance <= 2
+                                ):  # Only consider words within edit distance 2
                                     closest_words.append((word, distance))
-                            
+
                             # Check for timeout periodically
-                            if len(closest_words) % 100 == 0 and time.time() - start_time > timeout:
+                            if (
+                                len(closest_words) % 100 == 0
+                                and time.time() - start_time > timeout
+                            ):
                                 logging.warning(
                                     "Filtering candidates timed out during word "
                                     f"comparison after {timeout} seconds."
                                 )
                                 break
-                
+
                 # Sort by distance (closest first)
                 closest_words.sort(key=lambda x: x[1])
 
@@ -369,6 +399,8 @@ class ImprovedCandidateGenerator(CandidateGenerator):
         if noisy_input in self.lexicon:
             return [(noisy_input, 1.0)]
 
+        # No special cases - rely on our data-driven approach
+
         candidates = set()
 
         # Generate candidates based on edit distance
@@ -380,29 +412,40 @@ class ImprovedCandidateGenerator(CandidateGenerator):
         if use_keyboard_adjacency:
             adjacency_candidates = self._get_keyboard_adjacency_candidates(noisy_input)
             candidates.update(adjacency_candidates)
-            
-        # Add common words that are within edit distance 2 of the input
-        # This ensures common words like "hello" are always considered
-        common_words = {"hello", "world", "the", "and", "that", "have", "for", "not", "with", "you"}
-        for word in common_words:
-            if word in self.lexicon and self._levenshtein_distance(noisy_input, word) <= 2:
-                candidates.add(word)
-                
-        # For specific common misspellings, add the correct form
-        common_corrections = {
-            "hella": "hello",
-            "wrold": "world",
-            "teh": "the",
-            "nad": "and",
-            "taht": "that",
-            "ahve": "have",
-            "fro": "for",
-            "nto": "not",
-            "wiht": "with",
-            "yuo": "you"
-        }
-        if noisy_input in common_corrections and common_corrections[noisy_input] in self.lexicon:
-            candidates.add(common_corrections[noisy_input])
+
+        # Use frequency information to prioritize common words
+        # This is a more principled approach than hardcoding specific words
+        if self.use_frequency_info and self.word_frequencies:
+            # Get the top N most frequent words from our frequency data
+            top_common_words = sorted(
+                self.word_frequencies.items(), key=lambda x: x[1], reverse=True
+            )[
+                :100
+            ]  # Consider top 100 most frequent words
+
+            for word, _ in top_common_words:
+                if (
+                    word in self.lexicon
+                    and self._levenshtein_distance(noisy_input, word) <= 2
+                ):
+                    candidates.add(word)
+
+        # If we don't have frequency data, fall back to considering words in the lexicon
+        # that are close to the input
+        elif self.lexicon:
+            # Find words in the lexicon that are close to the input
+            # This is more scalable than hardcoding specific words
+            for word in self.lexicon:
+                # Optimization: only check words of similar length
+                if abs(len(word) - len(noisy_input)) <= 2:
+                    # Only check words that share the first letter (common in typos)
+                    if (
+                        len(word) > 0
+                        and len(noisy_input) > 0
+                        and word[0] == noisy_input[0]
+                    ):
+                        if self._levenshtein_distance(noisy_input, word) <= 2:
+                            candidates.add(word)
 
         # Filter candidates to only include valid words
         filtered_candidates = self._filter_candidates(candidates)
@@ -430,11 +473,9 @@ class ImprovedCandidateGenerator(CandidateGenerator):
         Returns:
             List of (candidate, score) tuples, sorted by score (highest first)
         """
-        # Special case handling for common phrases
-        if len(words) == 2 and words[0] == "hella" and words[1] == "world":
-            # Explicitly handle "hella world" -> "hello world"
-            return [("hello world", 1.5)]
-            
+        # Handle multi-word phrases in a principled way
+        # No special cases - rely on our data-driven approach
+
         # Correct each word separately
         word_corrections = []
         for word in words:
@@ -443,35 +484,48 @@ class ImprovedCandidateGenerator(CandidateGenerator):
                 word_corrections.append([(word, 1.0)])
                 continue
 
-            # Handle common word corrections directly
-            common_corrections = {
-                "hella": "hello",
-                "wrold": "world",
-                "teh": "the",
-                "nad": "and",
-                "taht": "that",
-                "ahve": "have",
-                "fro": "for",
-                "nto": "not",
-                "wiht": "with",
-                "yuo": "you"
-            }
-            
-            if word in common_corrections and common_corrections[word] in self.lexicon:
-                word_corrections.append([(common_corrections[word], 1.3)])
-                continue
+            # For each word, generate single-word candidates
+            # This avoids the recursive call to generate_candidates which can cause issues
+            candidates = set()
 
-            # Generate candidates for this word
-            candidates = self.generate_candidates(
-                word, max_edit_distance, use_keyboard_adjacency
-            )
+            # Generate candidates based on edit distance
+            for distance in range(1, max_edit_distance + 1):
+                edit_candidates = self._get_edit_distance_candidates(word, distance)
+                candidates.update(edit_candidates)
+
+            # Generate candidates based on keyboard adjacency
+            if use_keyboard_adjacency:
+                adjacency_candidates = self._get_keyboard_adjacency_candidates(word)
+                candidates.update(adjacency_candidates)
+
+            # Use frequency information to prioritize common words
+            if self.use_frequency_info and self.word_frequencies:
+                # Check if this word is close to any frequent words
+                for freq_word, _ in sorted(
+                    self.word_frequencies.items(), key=lambda x: x[1], reverse=True
+                )[
+                    :100
+                ]:  # Consider top 100 most frequent words
+                    if (
+                        freq_word in self.lexicon
+                        and self._levenshtein_distance(word, freq_word) <= 2
+                    ):
+                        candidates.add(freq_word)
+
+            # Filter candidates to only include valid words
+            filtered_candidates = self._filter_candidates(candidates)
+
+            # Rank candidates by likelihood
+            ranked_candidates = self._rank_candidates(filtered_candidates, word)
 
             # If no candidates were found, use the original word
-            if not candidates:
+            if not ranked_candidates:
                 word_corrections.append([(word, 1.0)])
             else:
                 # Ensure all candidates are actually in the lexicon
-                valid_candidates = [(c, s) for c, s in candidates if c in self.lexicon]
+                valid_candidates = [
+                    (c, s) for c, s in ranked_candidates if c in self.lexicon
+                ]
                 if valid_candidates:
                     word_corrections.append(valid_candidates)
                 else:
@@ -619,26 +673,43 @@ class ImprovedCandidateGenerator(CandidateGenerator):
                 and noisy_input[-1] == candidate[-1]
             ):
                 score += 0.1  # Boost for preserving first and last letters
-                
+
             # Boost score for common words based on word frequency
             # This helps prioritize common words like "hello" over less common words
             if self.use_frequency_info and candidate in self.word_frequencies:
                 # Get the frequency of the word
                 freq = self.word_frequencies.get(candidate, 0)
-                
+
                 # Calculate the maximum frequency in the lexicon
-                max_freq = max(self.word_frequencies.values()) if self.word_frequencies else 1.0
-                
+                max_freq = (
+                    max(self.word_frequencies.values())
+                    if self.word_frequencies
+                    else 1.0
+                )
+
                 # Normalize frequency to a value between 0 and 0.5
                 freq_boost = 0.5 * min(freq / max_freq, 1.0)
-                
+
                 # Apply the frequency boost
                 score += freq_boost
-            
-            # Special case for common words that might not be in the frequency list
-            common_words = {"hello", "world", "the", "and", "that", "have", "for", "not", "with", "you"}
-            if candidate.lower() in common_words:
-                score += 0.3  # Significant boost for very common words
+
+            # Boost score for words that are in the top N most frequent words
+            # This is more principled than hardcoding specific common words
+            if self.use_frequency_info and self.word_frequencies:
+                # Get the frequency rank of the word (if available)
+                # Sort words by frequency and find the rank of this word
+                sorted_words = sorted(
+                    self.word_frequencies.keys(),
+                    key=lambda w: self.word_frequencies[w],
+                    reverse=True,
+                )
+
+                # Check if the word is in the top 100 most frequent words
+                if candidate in sorted_words[:100]:
+                    # The higher the rank, the bigger the boost
+                    rank = sorted_words.index(candidate)
+                    rank_boost = 0.3 * (1.0 - (rank / 100))  # Scale from 0.3 to 0.0
+                    score += rank_boost
 
             scored_candidates.append((candidate, score))
 

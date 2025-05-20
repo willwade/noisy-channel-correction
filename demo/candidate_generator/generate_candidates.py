@@ -55,6 +55,11 @@ def main():
         action="store_true",
         help="Disable keyboard adjacency for candidate generation",
     )
+    parser.add_argument(
+        "--word-frequencies",
+        type=str,
+        help="Path to word frequencies file (format: word frequency)",
+    )
     args = parser.parse_args()
 
     # Create a candidate generator
@@ -70,6 +75,20 @@ def main():
     if not generator.load_lexicon_from_file(lexicon_path):
         logger.error(f"Failed to load lexicon from {lexicon_path}")
         return 1
+
+    # Load word frequencies if provided
+    if args.word_frequencies:
+        freq_path = os.path.abspath(args.word_frequencies)
+        if not os.path.exists(freq_path):
+            logger.error(f"Word frequencies file not found: {freq_path}")
+            return 1
+
+        logger.info(f"Loading word frequencies from {freq_path}")
+        if not generator.load_word_frequencies(freq_path):
+            logger.error(f"Failed to load word frequencies from {freq_path}")
+            logger.warning("Continuing without word frequencies")
+        else:
+            logger.info(f"Loaded {len(generator.word_frequencies)} word frequencies")
 
     # Generate candidates
     logger.info(f"Generating candidates for '{args.input}'")

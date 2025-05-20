@@ -61,7 +61,13 @@ class CandidateGenerator:
         """
         try:
             with open(file_path, "r") as f:
-                self.lexicon = set(line.strip().lower() for line in f if line.strip())
+                # Handle tab-separated files (word\tfrequency) by taking just the word
+                self.lexicon = set()
+                for line in f:
+                    if line.strip():
+                        # Split by tab and take the first part (the word)
+                        word = line.strip().split("\t")[0].lower()
+                        self.lexicon.add(word)
             logger.info(
                 f"Loaded lexicon with {len(self.lexicon)} words from {file_path}"
             )
