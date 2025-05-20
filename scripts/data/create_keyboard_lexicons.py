@@ -24,7 +24,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Import utilities
-from scripts.evaluation.utils import resolve_path, load_aac_conversations
+from scripts.evaluation.utils import load_aac_conversations
 
 
 def load_lexicon(file_path: str) -> Tuple[Set[str], Dict[str, int]]:
