@@ -1,4 +1,4 @@
-# Module 4: Correction Engine (Noisy Channel Model)
+# Correction Engine (Noisy Channel Model)
 
 This module implements a noisy channel model for correcting noisy AAC input. It combines a PPM language model for P(intended) and a confusion matrix for P(noisy | intended) to rank candidate corrections.
 
@@ -31,7 +31,7 @@ And returns the top-N candidates with the highest scores.
 ### Python API
 
 ```python
-from module4.corrector import NoisyChannelCorrector
+from lib.corrector.corrector import NoisyChannelCorrector
 
 # Create a corrector
 corrector = NoisyChannelCorrector()
@@ -51,19 +51,19 @@ for correction, score in corrections:
 
 ```bash
 # Basic usage
-python module4/correct.py --input "thes is a tst"
+python scripts/correction_engine/correct.py --input "thes is a tst"
 
 # Specify models and lexicon
-python module4/correct.py --input "thes is a tst" --ppm-model path/to/ppm_model.pkl --confusion-matrix path/to/confusion_matrix.json --lexicon path/to/lexicon.txt
+python scripts/correction_engine/correct.py --input "thes is a tst" --ppm-model path/to/ppm_model.pkl --confusion-matrix path/to/confusion_matrix.json --lexicon path/to/lexicon.txt
 
 # Save the top correction to a file
-python module4/correct.py --input "thes is a tst" --output corrected.txt
+python scripts/correction_engine/correct.py --input "thes is a tst" --output corrected.txt
 
 # Customize correction parameters
-python module4/correct.py --input "thes is a tst" --max-candidates 10 --max-edit-distance 3 --no-keyboard-adjacency
+python scripts/correction_engine/correct.py --input "thes is a tst" --max-candidates 10 --max-edit-distance 3 --no-keyboard-adjacency
 
 # Provide context for the PPM model
-python module4/correct.py --input "thes is a tst" --context "I think that"
+python scripts/correction_engine/correct.py --input "thes is a tst" --context "I think that"
 ```
 
 ## Implementation Details
@@ -84,23 +84,23 @@ The correction process involves:
 
 ### PPM Language Model
 
-The PPM (Prediction by Partial Matching) language model is used to estimate P(intended). It is implemented in the `module4/ppm/enhanced_ppm_predictor.py` file. The model uses a combination of character-level prediction, word completion, and word prediction to estimate the probability of a given text.
+The PPM (Prediction by Partial Matching) language model is used to estimate P(intended). It is implemented in the `lib/corrector/ppm/enhanced_ppm_predictor.py` file. The model uses a combination of character-level prediction, word completion, and word prediction to estimate the probability of a given text.
 
 ### Confusion Matrix
 
-The confusion matrix is used to estimate P(noisy | intended). It is implemented in the `module2/confusion_matrix.py` file. The matrix represents the probability of observing a noisy character given an intended character, and supports various types of errors (substitutions, deletions, insertions, transpositions).
+The confusion matrix is used to estimate P(noisy | intended). It is implemented in the `lib/confusion_matrix/confusion_matrix.py` file. The matrix represents the probability of observing a noisy character given an intended character, and supports various types of errors (substitutions, deletions, insertions, transpositions).
 
 ### Candidate Generator
 
-The candidate generator is used to generate plausible corrections for a noisy input. It is implemented in the `module3/candidate_generator.py` file. The generator uses edit distance, keyboard adjacency, and lexicon-based filtering to generate and rank candidates.
+The candidate generator is used to generate plausible corrections for a noisy input. It is implemented in the `lib/candidate_generator/candidate_generator.py` file. The generator uses edit distance, keyboard adjacency, and lexicon-based filtering to generate and rank candidates.
 
 ## Integration with Other Modules
 
 The correction engine integrates with:
 
-1. Module 2 (Confusion Matrix Builder) for the error model
-2. Module 3 (Candidate Generator) for generating plausible corrections
-3. Module 4/ppm (PPM Language Model) for estimating the probability of intended text
+1. Confusion Matrix Builder (`lib/confusion_matrix`) for the error model
+2. Candidate Generator (`lib/candidate_generator`) for generating plausible corrections
+3. PPM Language Model (`lib/corrector/ppm`) for estimating the probability of intended text
 
 ## Future Enhancements
 

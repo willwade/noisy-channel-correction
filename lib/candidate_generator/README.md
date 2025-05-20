@@ -20,7 +20,7 @@ The candidate generator is a key component of the noisy channel correction syste
 ### Basic Usage
 
 ```python
-from module3.candidate_generator import CandidateGenerator
+from lib.candidate_generator.candidate_generator import CandidateGenerator
 
 # Create a candidate generator with a lexicon
 generator = CandidateGenerator(lexicon={"hello", "world", "test"})

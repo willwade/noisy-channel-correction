@@ -13,7 +13,7 @@ The confusion matrix captures different types of errors:
 ## Usage
 
 ```python
-from module2.confusion_matrix import build_confusion_matrix, get_error_probability
+from confusion_matrix.confusion_matrix import build_confusion_matrix, get_error_probability
 
 # Load pairs of (intended, noisy) text
 pairs = [
