@@ -6,3 +6,18 @@ The Candidate Generator module is responsible for:
 - Generating plausible correction candidates for noisy input
 - Using edit distance and keyboard adjacency to find candidates
 - Filtering candidates using a lexicon
+
+## Usage
+
+```bash
+uv run demo/candidate_generator/generate_candidates.py --input "hella world" --lexicon data/keyboard_lexicons_en_gb/qwerty_lexicon.txt
+```
+NB: Use the correct lexicon for the correct language!
+
+This will output the following:
+
+```bash
+Candidates for 'hella world':
+----------------------------------------
+1. hello world (score: 1.5000)
+```

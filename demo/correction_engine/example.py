@@ -15,7 +15,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import the corrector
 from lib.corrector.corrector import NoisyChannelCorrector
-from module4.ppm.enhanced_ppm_predictor import EnhancedPPMPredictor
+from lib.corrector.enhanced_ppm_predictor import EnhancedPPMPredictor
 from lib.confusion_matrix.confusion_matrix import build_confusion_matrix
 
 # Configure logging

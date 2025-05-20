@@ -593,6 +593,13 @@ def main():
         default="data/wordlist.txt",
         help="Path to the lexicon file",
     )
+    
+    parser.add_argument(
+        "--language",
+        type=str,
+        default="en-GB",
+        help="Language code (e.g., 'en-GB', 'en-US')",
+    )
 
     parser.add_argument(
         "--max-candidates",
@@ -694,51 +701,103 @@ def main():
         context_weight=args.context_weight,
     )
 
-    # Load the PPM model if it exists
-    if os.path.exists(args.ppm_model):
+    # Try to load language-specific models first, then fall back to default models
+    language_code = args.language.lower()
+    language_path = language_code.replace('-', '_')
+    
+    # Load the PPM model
+    # Check for language-specific PPM model first
+    language_ppm_model = os.path.join(
+        os.path.dirname(args.ppm_model),
+        f"ppm_model_{language_path}.pkl"
+    )
+    if os.path.exists(language_ppm_model):
+        corrector.load_ppm_model(language_ppm_model)
+        logger.info(f"Loaded language-specific PPM model for {language_code}")
+    elif os.path.exists(args.ppm_model):
         corrector.load_ppm_model(args.ppm_model)
+        logger.info("Using default PPM model")
     else:
         logger.warning(f"PPM model file not found: {args.ppm_model}")
 
-    # Load the confusion matrix if it exists
-    if os.path.exists(args.confusion_matrix):
-        # Check if we should use keyboard-specific matrices
-        if args.use_keyboard_matrices:
-            # Try to load keyboard-specific matrices first
-            keyboard_matrix_path = os.path.join(
-                os.path.dirname(args.confusion_matrix),
-                "keyboard_confusion_matrices.json",
+    # Load the confusion matrix
+    # Check if we should use keyboard-specific matrices
+    if args.use_keyboard_matrices:
+        # Try to load language-specific keyboard matrices first
+        language_keyboard_matrix = os.path.join(
+            os.path.dirname(args.confusion_matrix),
+            f"keyboard_confusion_matrices_{language_path}.json"
+        )
+        if os.path.exists(language_keyboard_matrix):
+            corrector.load_confusion_model(
+                language_keyboard_matrix, args.keyboard_layout
             )
-            if os.path.exists(keyboard_matrix_path):
+            logger.info(
+                f"Using language-specific keyboard matrix for {language_code} ({args.keyboard_layout} layout)"
+            )
+        else:
+            # Try default keyboard matrices
+            default_keyboard_matrix = os.path.join(
+                os.path.dirname(args.confusion_matrix),
+                "keyboard_confusion_matrices.json"
+            )
+            if os.path.exists(default_keyboard_matrix):
                 corrector.load_confusion_model(
-                    keyboard_matrix_path, args.keyboard_layout
+                    default_keyboard_matrix, args.keyboard_layout
                 )
                 logger.info(
-                    f"Using keyboard-specific confusion matrix for {args.keyboard_layout} layout"
+                    f"Using default keyboard matrix for {args.keyboard_layout} layout"
                 )
-            else:
+            elif os.path.exists(args.confusion_matrix):
                 # Fall back to standard confusion matrix
                 corrector.load_confusion_model(
                     args.confusion_matrix, args.keyboard_layout
                 )
-                logger.info(
-                    "Keyboard-specific matrices not found, using standard confusion matrix"
-                )
-        else:
-            # Use standard confusion matrix
-            corrector.load_confusion_model(args.confusion_matrix, args.keyboard_layout)
+                logger.info("Using standard confusion matrix")
+            else:
+                logger.warning(f"Confusion matrix file not found: {args.confusion_matrix}")
     else:
-        logger.warning(f"Confusion matrix file not found: {args.confusion_matrix}")
+        # Try to load language-specific standard confusion matrix
+        language_confusion_matrix = os.path.join(
+            os.path.dirname(args.confusion_matrix),
+            f"confusion_matrix_{language_path}.json"
+        )
+        if os.path.exists(language_confusion_matrix):
+            corrector.load_confusion_model(language_confusion_matrix, args.keyboard_layout)
+            logger.info(f"Using language-specific confusion matrix for {language_code}")
+        elif os.path.exists(args.confusion_matrix):
+            corrector.load_confusion_model(args.confusion_matrix, args.keyboard_layout)
+            logger.info("Using default confusion matrix")
+        else:
+            logger.warning(f"Confusion matrix file not found: {args.confusion_matrix}")
 
-    # Load the word n-gram model if it exists
-    if os.path.exists(args.word_ngram_model):
+    # Load the word n-gram model
+    # Check for language-specific n-gram model first
+    language_ngram_model = os.path.join(
+        os.path.dirname(args.word_ngram_model),
+        f"word_ngram_model_{language_path}.pkl"
+    )
+    if os.path.exists(language_ngram_model):
+        corrector.load_word_ngram_model(language_ngram_model)
+        logger.info(f"Loaded language-specific word n-gram model for {language_code}")
+    elif os.path.exists(args.word_ngram_model):
         corrector.load_word_ngram_model(args.word_ngram_model)
+        logger.info("Using default word n-gram model")
     else:
         logger.warning(f"Word n-gram model file not found: {args.word_ngram_model}")
 
-    # Load the lexicon if it exists
-    if os.path.exists(args.lexicon):
+    # Load the lexicon
+    # Check for language-specific lexicon first
+    language_lexicon = os.path.join(
+        os.path.dirname(args.lexicon),
+        f"aac_lexicon_{language_path}.txt"
+    )
+    if os.path.exists(language_lexicon):
+        corrector.load_lexicon_from_file(language_lexicon)
+        logger.info(f"Loaded language-specific lexicon for {language_code}")
+    elif os.path.exists(args.lexicon):
         corrector.load_lexicon_from_file(args.lexicon)
+        logger.info("Using default lexicon")
     else:
         logger.warning(f"Lexicon file not found: {args.lexicon}")
 

@@ -3,7 +3,8 @@
 Build keyboard-specific confusion matrices from noisy text data.
 
 This script builds keyboard-specific confusion matrices for different keyboard layouts
-(QWERTY, ABC, frequency-based) from pairs of (intended, noisy) text data.
+(QWERTY, ABC, frequency-based) from pairs of (intended, noisy) text data,
+with support for language-specific customization (default: en-GB).
 """
 
 import os
@@ -11,26 +12,25 @@ import sys
 import json
 import argparse
 import logging
+import random
 from typing import List, Tuple, Dict
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import the keyboard confusion matrix
+# Import the keyboard confusion matrix and keyboard layout model
 from lib.confusion_matrix.keyboard_confusion_matrix import (
     KeyboardConfusionMatrix,
     build_keyboard_confusion_matrices,
-    get_keyboard_error_probability,
 )
-
-# Import the keyboard noise model
 from lib.noise_model.noise_model import KeyboardNoiseModel
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
 
 
 def load_noisy_pairs(input_path: str) -> List[Tuple[str, str]]:
@@ -57,170 +57,121 @@ def load_noisy_pairs(input_path: str) -> List[Tuple[str, str]]:
         return []
 
 
-def generate_synthetic_data(num_pairs: int = 1000) -> List[Tuple[str, str]]:
+def load_language_lexicon(language: str, layout: str) -> List[str]:
+    """
+    Load a language-specific lexicon for a specific keyboard layout.
+
+    Args:
+        language: Language code (e.g., "en-GB", "en-US")
+        layout: Keyboard layout (e.g., "qwerty", "abc", "frequency")
+
+    Returns:
+        List of words in the lexicon
+    """
+    # Normalize the language code to use in the file path
+    language_path = language.lower().replace("-", "_")
+
+    # Define the path to the lexicon file
+    lexicon_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        "data",
+        f"keyboard_lexicons_{language_path}",
+        f"{layout}_lexicon.txt",
+    )
+
+    # Check if the lexicon file exists
+    if not os.path.exists(lexicon_path):
+        logger.warning(f"Lexicon file not found: {lexicon_path}")
+        logger.warning("Falling back to default lexicon")
+
+        # Fall back to the default lexicon
+        lexicon_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+            "data",
+            "keyboard_lexicons",
+            f"{layout}_lexicon.txt",
+        )
+
+    # Load the lexicon
+    words = []
+    try:
+        with open(lexicon_path, "r") as f:
+            for line in f:
+                parts = line.strip().split()
+                if parts:
+                    word = parts[0].strip()
+                    if word and not word.isdigit():
+                        words.append(word)
+        logger.info(f"Loaded {len(words)} words from {lexicon_path}")
+    except Exception as e:
+        logger.error(f"Error loading lexicon: {e}")
+
+    return words
+
+
+def generate_synthetic_data(num_pairs: int = 1000, language: str = "en-GB") -> List[Tuple[str, str]]:
     """
     Generate synthetic noisy pairs for testing.
 
     Args:
         num_pairs: Number of pairs to generate
+        language: Language code (e.g., "en-GB", "en-US")
 
     Returns:
         List of (clean, noisy) text pairs
     """
-    import random
+    # Generate synthetic noisy pairs
+    pairs = []
+    pairs_per_layout = num_pairs // 3
 
-    # Sample words
-    words = [
-        "the",
-        "be",
-        "to",
-        "of",
-        "and",
-        "a",
-        "in",
-        "that",
-        "have",
-        "I",
-        "it",
-        "for",
-        "not",
-        "on",
-        "with",
-        "he",
-        "as",
-        "you",
-        "do",
-        "at",
-        "this",
-        "but",
-        "his",
-        "by",
-        "from",
-        "they",
-        "we",
-        "say",
-        "her",
-        "she",
-        "or",
-        "an",
-        "will",
-        "my",
-        "one",
-        "all",
-        "would",
-        "there",
-        "their",
-        "what",
-        "so",
-        "up",
-        "out",
-        "if",
-        "about",
-        "who",
-        "get",
-        "which",
-        "go",
-        "me",
-        "when",
-        "make",
-        "can",
-        "like",
-        "time",
-        "no",
-        "just",
-        "him",
-        "know",
-        "take",
-        "people",
-        "into",
-        "year",
-        "your",
-        "good",
-        "some",
-        "could",
-        "them",
-        "see",
-        "other",
-        "than",
-        "then",
-        "now",
-        "look",
-        "only",
-        "come",
-        "its",
-        "over",
-        "think",
-        "also",
-        "back",
-        "after",
-        "use",
-        "two",
-        "how",
-        "our",
-        "work",
-        "first",
-        "well",
-        "way",
-        "even",
-        "new",
-        "want",
-        "because",
-        "any",
-        "these",
-        "give",
-        "day",
-        "most",
-        "us",
-    ]
-
-    # Create keyboard noise models for different layouts
-    keyboard_models = {
-        "qwerty": KeyboardNoiseModel(
-            layout_name="en",
-            error_rates={
-                "proximity": 0.05,
-                "deletion": 0.03,
-                "insertion": 0.02,
-                "transposition": 0.01,
-            },
-        ),
-        "abc": KeyboardNoiseModel(
-            layout_name="abc",  # Use the ABC layout
-            error_rates={
-                "proximity": 0.05,
-                "deletion": 0.03,
-                "insertion": 0.02,
-                "transposition": 0.01,
-            },
-        ),
-        "frequency": KeyboardNoiseModel(
-            layout_name="frequency",  # Use the frequency layout
-            error_rates={
-                "proximity": 0.05,
-                "deletion": 0.03,
-                "insertion": 0.02,
-                "transposition": 0.01,
-            },
-        ),
+    # Define layout-specific error patterns
+    layout_error_rates = {
+        "qwerty": {
+            "proximity": 0.08,    # QWERTY has more proximity errors due to key arrangement
+            "deletion": 0.03,
+            "insertion": 0.02,
+            "transposition": 0.02,
+        },
+        "abc": {
+            "proximity": 0.05,    # ABC has fewer proximity errors but more insertions
+            "deletion": 0.03,
+            "insertion": 0.06,    # Higher insertion rate for ABC layout
+            "transposition": 0.01,
+        },
+        "frequency": {
+            "proximity": 0.04,    # Frequency layout has fewer proximity errors
+            "deletion": 0.05,    # But more deletions and transpositions
+            "insertion": 0.02,
+            "transposition": 0.04, # Higher transposition rate for frequency layout
+        },
     }
 
-    # Generate pairs
-    pairs = []
-    for _ in range(num_pairs):
-        # Select a random word
-        clean = random.choice(words)
+    # Generate data for each layout
+    for layout, error_rates in layout_error_rates.items():
+        # Load layout-specific lexicon
+        words = load_language_lexicon(language, layout)
+        
+        # Create keyboard noise model for this layout
+        model = KeyboardNoiseModel(
+            layout_name=layout,
+            error_rates=error_rates,
+            input_method="direct",
+        )
+        
+        layout_pairs = []
+        for _ in range(pairs_per_layout):
+            # Select a random word
+            word = random.choice(words)
 
-        # Select a random keyboard model
-        layout = random.choice(list(keyboard_models.keys()))
-        model = keyboard_models[layout]
+            # Generate a noisy version of the word
+            noisy = model.apply(word)
 
-        # Generate a noisy version
-        noisy = model.apply(clean)
+            # Add the pair to the list
+            layout_pairs.append((word, noisy))
 
-        # Add to pairs
-        pairs.append((clean, noisy))
+        logger.info(f"Generated {len(layout_pairs)} pairs for {layout} layout")
+        pairs.extend(layout_pairs)
 
-    logger.info(f"Generated {len(pairs)} synthetic noisy pairs")
     return pairs
 
 
@@ -232,36 +183,17 @@ def visualize_matrices(matrices: KeyboardConfusionMatrix) -> None:
         matrices: The keyboard confusion matrices to visualize
     """
     # Print statistics for each layout
-    print("\n=== Keyboard Confusion Matrix Statistics ===")
-    for layout, stats in matrices.get_stats().items():
+    for layout in matrices.matrices.keys():
         print(f"\n{layout.upper()} Layout:")
-        print(f"  Total pairs: {stats['total']}")
-        print(
-            f"  Correct: {stats['correct']} ({stats['correct']/stats['total']*100:.2f}%)"
-        )
-        print(
-            f"  Substitutions: {stats['substitutions']} ({stats['substitutions']/stats['total']*100:.2f}%)"
-        )
-        print(
-            f"  Deletions: {stats['deletions']} ({stats['deletions']/stats['total']*100:.2f}%)"
-        )
-        print(
-            f"  Insertions: {stats['insertions']} ({stats['insertions']/stats['total']*100:.2f}%)"
-        )
-        print(
-            f"  Transpositions: {stats['transpositions']} ({stats['transpositions']/stats['total']*100:.2f}%)"
-        )
+        stats = matrices.get_stats(layout)
+        total = stats["total"]
 
-    # Print a sample of the matrices
-    print("\n=== Sample Confusion Probabilities ===")
-    sample_chars = ["a", "e", "i", "o", "u", "t", "n", "s", "r", "h"]
-    for layout in matrices.matrices:
-        print(f"\n{layout.upper()} Layout:")
-        for intended in sample_chars:
-            for noisy in sample_chars:
-                prob = matrices.get_probability(intended, noisy, layout)
-                if prob > 0.01:  # Only show significant probabilities
-                    print(f"  P(noisy='{noisy}' | intended='{intended}') = {prob:.4f}")
+        if total > 0:
+            print(f"  Total pairs: {total}")
+            for key, value in stats.items():
+                print(f"  {key.capitalize()}: {value} ({value / total * 100:.2f}%)")
+        else:
+            print("  No data available")
 
 
 def test_matrices(
@@ -277,27 +209,27 @@ def test_matrices(
     Returns:
         Dictionary of performance metrics for each layout
     """
-    # Initialize metrics
-    metrics = {
-        "qwerty": {"total": 0, "correct": 0, "log_likelihood": 0.0},
-        "abc": {"total": 0, "correct": 0, "log_likelihood": 0.0},
-        "frequency": {"total": 0, "correct": 0, "log_likelihood": 0.0},
-    }
+    # Initialize metrics for each layout
+    metrics = {}
+    for layout in matrices.matrices.keys():
+        metrics[layout] = {
+            "total": 0,
+            "correct": 0,
+            "log_likelihood": 0.0,
+            "avg_log_likelihood": 0.0,
+        }
 
     # Test each pair
-    for intended, noisy in test_pairs:
-        # Test each layout
-        for layout in metrics:
-            # Calculate probability
-            prob = get_keyboard_error_probability(noisy, intended, matrices, layout)
+    for clean, noisy in test_pairs:
+        for layout in matrices.matrices.keys():
+            # Calculate the log likelihood of the noisy text given the clean text
+            log_likelihood = matrices.get_log_likelihood(clean, noisy, layout)
 
             # Update metrics
             metrics[layout]["total"] += 1
-            metrics[layout]["log_likelihood"] += (
-                math.log(prob) if prob > 0 else -float("inf")
-            )
+            metrics[layout]["log_likelihood"] += log_likelihood
 
-            # Check if the most likely correction is correct
+            # Check if the noisy text is correctly predicted
             # (This would require implementing a correction function)
 
     # Calculate average log likelihood
@@ -347,6 +279,14 @@ def main():
     )
 
     parser.add_argument(
+        "--language",
+        "-l",
+        type=str,
+        default="en-GB",
+        help="Language code for language-specific customization (default: en-GB)",
+    )
+
+    parser.add_argument(
         "--visualize",
         "-v",
         action="store_true",
@@ -355,21 +295,72 @@ def main():
 
     args = parser.parse_args()
 
-    # Load or generate noisy pairs
-    if args.synthetic:
-        pairs = generate_synthetic_data(args.num_pairs)
-    elif args.input:
-        pairs = load_noisy_pairs(args.input)
-    else:
-        logger.error("Either --input or --synthetic must be specified")
-        return
+    # Create a keyboard confusion matrix to store all layouts
+    keyboard_matrix = KeyboardConfusionMatrix()
 
-    # Build the keyboard confusion matrices
-    matrices = build_keyboard_confusion_matrices(pairs)
+    # Define layout-specific error patterns
+    layout_error_rates = {
+        "qwerty": {
+            "proximity": 0.08,    # QWERTY has more proximity errors due to key arrangement
+            "deletion": 0.03,
+            "insertion": 0.02,
+            "transposition": 0.02,
+        },
+        "abc": {
+            "proximity": 0.05,    # ABC has fewer proximity errors but more insertions
+            "deletion": 0.03,
+            "insertion": 0.06,    # Higher insertion rate for ABC layout
+            "transposition": 0.01,
+        },
+        "frequency": {
+            "proximity": 0.04,    # Frequency layout has fewer proximity errors
+            "deletion": 0.05,    # But more deletions and transpositions
+            "insertion": 0.02,
+            "transposition": 0.04, # Higher transposition rate for frequency layout
+        },
+    }
+
+    # Process each layout separately
+    for layout, error_rates in layout_error_rates.items():
+        logger.info(f"Processing {layout.upper()} layout")
+
+        # Generate layout-specific pairs
+        if args.synthetic:
+            # Load layout-specific lexicon
+            words = load_language_lexicon(args.language, layout)
+            
+            # Create keyboard noise model for this layout
+            model = KeyboardNoiseModel(
+                layout_name=layout,
+                error_rates=error_rates,
+                input_method="direct",
+            )
+            
+            # Generate pairs for this layout
+            layout_pairs = []
+            for _ in range(args.num_pairs // 3):
+                word = random.choice(words)
+                noisy = model.apply(word)
+                layout_pairs.append((word, noisy))
+                
+            logger.info(f"Generated {len(layout_pairs)} pairs for {layout} layout")
+        elif args.input:
+            layout_pairs = load_noisy_pairs(args.input)
+            logger.info(f"Loaded {len(layout_pairs)} pairs for {layout} layout")
+        else:
+            logger.error("Either --input or --synthetic must be specified")
+            return
+
+        # Build confusion matrix for this layout only
+        layout_matrix = build_keyboard_confusion_matrices(layout_pairs)
+        
+        # Copy the matrix for this layout to the combined matrix
+        keyboard_matrix.matrices[layout] = layout_matrix.matrices[layout]
+        keyboard_matrix.stats[layout] = layout_matrix.stats[layout]
 
     # Visualize the matrices if requested
     if args.visualize:
-        visualize_matrices(matrices)
+        visualize_matrices(keyboard_matrix)
 
     # Save the matrices
     if args.output:
@@ -377,7 +368,7 @@ def main():
         os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)
 
         # Save the matrices
-        success = matrices.save(args.output)
+        success = keyboard_matrix.save(args.output)
 
         if success:
             logger.info(f"Saved keyboard confusion matrices to {args.output}")
@@ -386,6 +377,4 @@ def main():
 
 
 if __name__ == "__main__":
-    import math  # Import here to avoid circular import
-
     main()
