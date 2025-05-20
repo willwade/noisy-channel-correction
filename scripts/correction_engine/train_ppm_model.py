@@ -23,11 +23,16 @@ sys.path.append(os.path.join(module4_dir, "ngram"))
 
 # Import the PPM predictor
 try:
-    from module4.ppm.enhanced_ppm_predictor import EnhancedPPMPredictor
-    from module4.ngram.word_ngram_model import WordNGramModel
+    from lib.corrector.enhanced_ppm_predictor import EnhancedPPMPredictor
+    from lib.corrector.word_ngram_model import WordNGramModel
 except ImportError:
-    from ppm.enhanced_ppm_predictor import EnhancedPPMPredictor
-    from ngram.word_ngram_model import WordNGramModel
+    # Fallback imports if the lib structure is different
+    try:
+        from ppm.enhanced_ppm_predictor import EnhancedPPMPredictor
+        from ngram.word_ngram_model import WordNGramModel
+    except ImportError:
+        print("Error: Could not import required modules. Make sure the library structure is correct.")
+        sys.exit(1)
 
 # Configure logging
 logging.basicConfig(

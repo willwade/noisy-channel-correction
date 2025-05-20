@@ -111,8 +111,8 @@ class NoisyChannelCorrector:
         self.candidate_generator = ImprovedCandidateGenerator(
             lexicon=self.lexicon,
             max_candidates=max_candidates,
-            max_edits=20000,  # Increased from 5000
-            keyboard_boost=0.3,  # Increased from 0.2
+            max_edits=200,  # Reduced from 20000 to 200
+            keyboard_boost=0.5,  # Increased from 0.3 to 0.5
             strict_filtering=True,  # Use strict filtering
             smart_filtering=True,  # Enable smart filtering
             use_frequency_info=True,  # Use word frequency information
@@ -281,8 +281,17 @@ class NoisyChannelCorrector:
             True if successful, False otherwise
         """
         try:
+            # Check if an enhanced lexicon exists
+            enhanced_path = file_path.replace("aac_lexicon", "enhanced_lexicon")
+            if os.path.exists(enhanced_path):
+                logger.info(f"Found enhanced lexicon at {enhanced_path}")
+                file_path = enhanced_path
+
+            # Load the lexicon
             with open(file_path, "r") as f:
-                self.lexicon = set(line.strip().lower() for line in f if line.strip())
+                self.lexicon = set(
+                    line.strip().split()[0].lower() for line in f if line.strip()
+                )
 
             # Update the candidate generator's lexicon
             self.candidate_generator.lexicon = self.lexicon

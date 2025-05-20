@@ -1,11 +1,11 @@
 [
   {
     "clean": "hello",
-    "noisy": "hello"
+    "noisy": "helll"
   },
   {
     "clean": "world",
-    "noisy": "wold"
+    "noisy": "world"
   },
   {
     "clean": "testing",
@@ -13,55 +13,55 @@
   },
   {
     "clean": "computer",
-    "noisy": "computer"
+    "noisy": "cmputer"
   },
   {
     "clean": "keyboard",
-    "noisy": "keboard"
+    "noisy": "keyoarr"
   },
   {
     "clean": "language",
-    "noisy": "language"
+    "noisy": "languxge"
   },
   {
     "clean": "communication",
-    "noisy": "comhunicaiton"
+    "noisy": "vomumnication"
   },
   {
     "clean": "augmentative",
-    "noisy": "augmentatkve"
+    "noisy": "cugmentative"
   },
   {
     "clean": "alternative",
-    "noisy": "alternattive"
+    "noisy": "slternatise"
   },
   {
     "clean": "system",
-    "noisy": "sytem"
+    "noisy": "sgstem"
   },
   {
     "clean": "input",
-    "noisy": "inou"
+    "noisy": "input"
   },
   {
     "clean": "output",
-    "noisy": "ourout"
+    "noisy": "outputt"
   },
   {
     "clean": "error",
-    "noisy": "error"
+    "noisy": "errog"
   },
   {
     "clean": "correction",
-    "noisy": "corection"
+    "noisy": "correction"
   },
   {
     "clean": "model",
-    "noisy": "modell"
+    "noisy": "mledl"
   },
   {
     "clean": "prediction",
-    "noisy": "predjction"
+    "noisy": "lreditcjon"
   },
   {
     "clean": "typing",
@@ -69,63 +69,63 @@
   },
   {
     "clean": "scanning",
-    "noisy": "canningg"
+    "noisy": "scabnninng"
   },
   {
     "clean": "eyegaze",
-    "noisy": "ehegaze"
+    "noisy": "dyegaze"
   },
   {
     "clean": "switch",
-    "noisy": "switch"
+    "noisy": "switc"
   },
   {
     "clean": "access",
-    "noisy": "sccess"
+    "noisy": "access"
   },
   {
     "clean": "device",
-    "noisy": "device"
+    "noisy": "deviice"
   },
   {
     "clean": "interface",
-    "noisy": "interfcxe"
+    "noisy": "interface"
   },
   {
     "clean": "user",
-    "noisy": "user"
+    "noisy": "jser"
   },
   {
     "clean": "experience",
-    "noisy": "experiennce"
+    "noisy": "eexperience"
   },
   {
     "clean": "design",
-    "noisy": "design"
+    "noisy": "desig"
   },
   {
     "clean": "development",
-    "noisy": "developmdnt"
+    "noisy": "developmebt"
   },
   {
     "clean": "implementation",
-    "noisy": "implementation"
+    "noisy": "kmplementation"
   },
   {
     "clean": "algorithm",
-    "noisy": "algorrithh"
+    "noisy": "algorjthm"
   },
   {
     "clean": "probability",
-    "noisy": "pgobabiiltiy"
+    "noisy": "probability"
   },
   {
     "clean": "frequency",
-    "noisy": "frequenc"
+    "noisy": "freuency"
   },
   {
     "clean": "context",
-    "noisy": "ckntext"
+    "noisy": "coobtext"
   },
   {
     "clean": "word",
@@ -137,19 +137,19 @@
   },
   {
     "clean": "character",
-    "noisy": "chaarater"
+    "noisy": "character"
   },
   {
     "clean": "symbol",
-    "noisy": "symboz"
+    "noisy": "symbol"
   },
   {
     "clean": "space",
-    "noisy": "spsce"
+    "noisy": "space"
   },
   {
     "clean": "punctuation",
-    "noisy": "upnctuation"
+    "noisy": "punctuation"
   },
   {
     "clean": "sentence",
@@ -157,7 +157,7 @@
   },
   {
     "clean": "phrase",
-    "noisy": "phrase"
+    "noisy": "phrasf"
   },
   {
     "clean": "text",
@@ -165,15 +165,15 @@
   },
   {
     "clean": "message",
-    "noisy": "messgae"
+    "noisy": "messags"
   },
   {
     "clean": "conversation",
-    "noisy": "aonveersation"
+    "noisy": "conversation"
   },
   {
     "clean": "dialogue",
-    "noisy": "dialogue"
+    "noisy": "diallgue"
   },
   {
     "clean": "speech",
@@ -185,23 +185,23 @@
   },
   {
     "clean": "recognition",
-    "noisy": "recongition"
+    "noisy": "recognition"
   },
   {
     "clean": "synthesis",
-    "noisy": "syntevis"
+    "noisy": "synfhesis"
   },
   {
     "clean": "assistive",
-    "noisy": "assistive"
+    "noisy": "wssisitde"
   },
   {
     "clean": "technology",
-    "noisy": "technology"
+    "noisy": "tecchnology"
   },
   {
     "clean": "disability",
-    "noisy": "disabiligy"
+    "noisy": "dissbiljty"
   },
   {
     "clean": "inclusion",
@@ -209,47 +209,47 @@
   },
   {
     "clean": "accessibility",
-    "noisy": "accessiblity"
+    "noisy": "accessibility"
   },
   {
     "clean": "support",
-    "noisy": "suppport"
+    "noisy": "support"
   },
   {
     "clean": "help",
-    "noisy": "hel"
+    "noisy": "help"
   },
   {
     "clean": "learn",
-    "noisy": "lrarn"
+    "noisy": "learn"
   },
   {
     "clean": "adapt",
-    "noisy": "adat"
+    "noisy": "adap"
   },
   {
     "clean": "customize",
-    "noisy": "customizr"
+    "noisy": "cjctohize"
   },
   {
     "clean": "configure",
-    "noisy": "cknfiure"
+    "noisy": "configue"
   },
   {
     "clean": "setting",
-    "noisy": "serting"
+    "noisy": "setting"
   },
   {
     "clean": "option",
-    "noisy": "optiom"
+    "noisy": "option"
   },
   {
     "clean": "feature",
-    "noisy": "feaure"
+    "noisy": "frature"
   },
   {
     "clean": "function",
-    "noisy": "fugction"
+    "noisy": "fuuncgiln"
   },
   {
     "clean": "module",
@@ -257,55 +257,55 @@
   },
   {
     "clean": "component",
-    "noisy": "commponnt"
+    "noisy": "component"
   },
   {
     "clean": "integration",
-    "noisy": "interation"
+    "noisy": "intdgration"
   },
   {
     "clean": "interaction",
-    "noisy": "ineraction"
+    "noisy": "interaction"
   },
   {
     "clean": "feedback",
-    "noisy": "feedbakc"
+    "noisy": "reedbcak"
   },
   {
     "clean": "response",
-    "noisy": "response"
+    "noisy": "respinse"
   },
   {
     "clean": "display",
-    "noisy": "dislay"
+    "noisy": "dosplay"
   },
   {
     "clean": "screen",
-    "noisy": "wcrern"
+    "noisy": "ddreen"
   },
   {
     "clean": "button",
-    "noisy": "buttoon"
+    "noisy": "bufptn"
   },
   {
     "clean": "control",
-    "noisy": "control"
+    "noisy": "contrpl"
   },
   {
     "clean": "navigation",
-    "noisy": "nadigtion"
+    "noisy": "navigation"
   },
   {
     "clean": "selection",
-    "noisy": "seleation"
+    "noisy": "selectioh"
   },
   {
     "clean": "confirmation",
-    "noisy": "cogfitmation"
+    "noisy": "nofirmtion"
   },
   {
     "clean": "cancellation",
-    "noisy": "canceellation"
+    "noisy": "cancelltiion"
   },
   {
     "clean": "undo",
@@ -317,11 +317,11 @@
   },
   {
     "clean": "save",
-    "noisy": "save"
+    "noisy": "sav"
   },
   {
     "clean": "load",
-    "noisy": "llad"
+    "noisy": "load"
   },
   {
     "clean": "export",
@@ -329,63 +329,63 @@
   },
   {
     "clean": "import",
-    "noisy": "immport"
+    "noisy": "import"
   },
   {
     "clean": "data",
-    "noisy": "dta"
+    "noisy": "dt"
   },
   {
     "clean": "information",
-    "noisy": "information"
+    "noisy": "informxtionn"
   },
   {
     "clean": "knowledge",
-    "noisy": "_nowledge"
+    "noisy": "knoege"
   },
   {
     "clean": "understanding",
-    "noisy": "undershading"
+    "noisy": "understaning"
   },
   {
     "clean": "meaning",
-    "noisy": "geaanning"
+    "noisy": "meaning"
   },
   {
     "clean": "intent",
-    "noisy": "inteent"
+    "noisy": "intnt"
   },
   {
     "clean": "purpose",
-    "noisy": "purppose"
+    "noisy": "purloose"
   },
   {
     "clean": "goal",
-    "noisy": "gosl"
+    "noisy": "goal"
   },
   {
     "clean": "task",
-    "noisy": "task"
+    "noisy": "tsak"
   },
   {
     "clean": "activity",
-    "noisy": "activigy"
+    "noisy": "aactivity"
   },
   {
     "clean": "performance",
-    "noisy": "zerforrmance"
+    "noisy": "erfornanae"
   },
   {
     "clean": "efficiency",
-    "noisy": "efficiency"
+    "noisy": "effiicency"
   },
   {
     "clean": "accuracy",
-    "noisy": "accuracy"
+    "noisy": "accueeacy"
   },
   {
     "clean": "speed",
-    "noisy": "coee"
+    "noisy": "speed"
   },
   {
     "clean": "rate",
@@ -397,11 +397,11 @@
   },
   {
     "clean": "duration",
-    "noisy": "duratio"
+    "noisy": "duration"
   },
   {
     "clean": "session",
-    "noisy": "session"
+    "noisy": "vvession"
   },
   {
     "clean": "profile",
@@ -409,7 +409,7 @@
   },
   {
     "clean": "account",
-    "noisy": "accojnt"
+    "noisy": "account"
   },
   {
     "clean": "user",
@@ -421,51 +421,51 @@
   },
   {
     "clean": "individual",
-    "noisy": "idividual"
+    "noisy": "individual"
   },
   {
     "clean": "group",
-    "noisy": "ggriu"
+    "noisy": "ggroup"
   },
   {
     "clean": "community",
-    "noisy": "vommuniith"
+    "noisy": "comnunit"
   },
   {
     "clean": "society",
-    "noisy": "society"
+    "noisy": "qcoiety"
   },
   {
     "clean": "world",
-    "noisy": "world"
+    "noisy": "worzd"
   },
   {
     "clean": "global",
-    "noisy": "glkbal"
+    "noisy": "lobal"
   },
   {
     "clean": "local",
-    "noisy": "loal"
+    "noisy": "local"
   },
   {
     "clean": "regional",
-    "noisy": "regiogal"
+    "noisy": "regional"
   },
   {
     "clean": "national",
-    "noisy": "nationsl"
+    "noisy": "national"
   },
   {
     "clean": "international",
-    "noisy": "internagional"
+    "noisy": "internatkal"
   },
   {
     "clean": "standard",
-    "noisy": "stanward"
+    "noisy": "sttandard"
   },
   {
     "clean": "protocol",
-    "noisy": "rpotppcol"
+    "noisy": "protoclo"
   },
   {
     "clean": "format",
@@ -473,23 +473,23 @@
   },
   {
     "clean": "structure",
-    "noisy": "structure"
+    "noisy": "sttructure"
   },
   {
     "clean": "organization",
-    "noisy": "organjzatio"
+    "noisy": "organizatiin"
   },
   {
     "clean": "management",
-    "noisy": "management"
+    "noisy": "managemnt"
   },
   {
     "clean": "administration",
-    "noisy": "administratini"
+    "noisy": "administartion"
   },
   {
     "clean": "configuration",
-    "noisy": "confirgatoin"
+    "noisy": "coonfiguration"
   },
   {
     "clean": "installation",
@@ -501,7 +501,7 @@
   },
   {
     "clean": "maintenance",
-    "noisy": "maintenannc"
+    "noisy": "maintenance"
   },
   {
     "clean": "update",
@@ -513,35 +513,35 @@
   },
   {
     "clean": "version",
-    "noisy": "cersoin"
+    "noisy": "evrrsion"
   },
   {
     "clean": "release",
-    "noisy": "release"
+    "noisy": "reease"
   },
   {
     "clean": "build",
-    "noisy": "build"
+    "noisy": "buikd"
   },
   {
     "clean": "development",
-    "noisy": "ffvelolment"
+    "noisy": "development"
   },
   {
     "clean": "testing",
-    "noisy": "teating"
+    "noisy": "testing"
   },
   {
     "clean": "validation",
-    "noisy": "validation"
+    "noisy": "vaidation"
   },
   {
     "clean": "verification",
-    "noisy": "verfiication"
+    "noisy": "verificatiog"
   },
   {
     "clean": "evaluation",
-    "noisy": "evaluaion"
+    "noisy": "evaluation"
   },
   {
     "clean": "assessment",
@@ -565,7 +565,7 @@
   },
   {
     "clean": "result",
-    "noisy": "rredult"
+    "noisy": "rwsult"
   },
   {
     "clean": "outcome",
@@ -573,23 +573,23 @@
   },
   {
     "clean": "conclusion",
-    "noisy": "conclusiion"
+    "noisy": "convlusion"
   },
   {
     "clean": "recommendation",
-    "noisy": "recommndatioon"
+    "noisy": "recomgendstion"
   },
   {
     "clean": "suggestion",
-    "noisy": "suggextion"
+    "noisy": "subgestikn"
   },
   {
     "clean": "advice",
-    "noisy": "advicee"
+    "noisy": "advice"
   },
   {
     "clean": "guidance",
-    "noisy": "guidance"
+    "noisy": "guidwnce"
   },
   {
     "clean": "instruction",
@@ -597,47 +597,47 @@
   },
   {
     "clean": "direction",
-    "noisy": "direclon"
+    "noisy": "directiog"
   },
   {
     "clean": "orientation",
-    "noisy": "oruenntahin"
+    "noisy": "oriengatjon"
   },
   {
     "clean": "position",
-    "noisy": "position"
+    "noisy": "positiob"
   },
   {
     "clean": "location",
-    "noisy": "location"
+    "noisy": "locaction"
   },
   {
     "clean": "movement",
-    "noisy": "mivement"
+    "noisy": "moement"
   },
   {
     "clean": "action",
-    "noisy": "action"
+    "noisy": "vttion"
   },
   {
     "clean": "behavior",
-    "noisy": "behaivor"
+    "noisy": "behhavior"
   },
   {
     "clean": "response",
-    "noisy": "ersponse"
+    "noisy": "reslonse"
   },
   {
     "clean": "reaction",
-    "noisy": "resctiiin"
+    "noisy": "ractkon"
   },
   {
     "clean": "stimulus",
-    "noisy": "stimulus"
+    "noisy": "stimuls"
   },
   {
     "clean": "input",
-    "noisy": "innput"
+    "noisy": "input"
   },
   {
     "clean": "output",
@@ -645,23 +645,23 @@
   },
   {
     "clean": "process",
-    "noisy": "proceddq"
+    "noisy": "process"
   },
   {
     "clean": "procedure",
-    "noisy": "procedure"
+    "noisy": "przcedure"
   },
   {
     "clean": "method",
-    "noisy": "method"
+    "noisy": "ethod"
   },
   {
     "clean": "technique",
-    "noisy": "technique"
+    "noisy": "techinque"
   },
   {
     "clean": "approach",
-    "noisy": "aapproach"
+    "noisy": "appproacy"
   },
   {
     "clean": "strategy",
@@ -673,19 +673,19 @@
   },
   {
     "clean": "design",
-    "noisy": "wesign"
+    "noisy": "design"
   },
   {
     "clean": "architecture",
-    "noisy": "architecture"
+    "noisy": "srchitecutre"
   },
   {
     "clean": "framework",
-    "noisy": "frmaework"
+    "noisy": "framswork"
   },
   {
     "clean": "structure",
-    "noisy": "structure"
+    "noisy": "strructure"
   },
   {
     "clean": "pattern",
@@ -697,15 +697,15 @@
   },
   {
     "clean": "model",
-    "noisy": "model"
+    "noisy": "mmodel"
   },
   {
     "clean": "example",
-    "noisy": "example"
+    "noisy": "examplle"
   },
   {
     "clean": "sample",
-    "noisy": "sample"
+    "noisy": "sampe"
   },
   {
     "clean": "instance",
@@ -717,11 +717,11 @@
   },
   {
     "clean": "scenario",
-    "noisy": "scenario"
+    "noisy": "sceennari"
   },
   {
     "clean": "situation",
-    "noisy": "situation"
+    "noisy": "siuation"
   },
   {
     "clean": "condition",
@@ -729,107 +729,107 @@
   },
   {
     "clean": "state",
-    "noisy": "sate"
+    "noisy": "state"
   },
   {
     "clean": "status",
-    "noisy": "status"
+    "noisy": "satus"
   },
   {
     "clean": "mode",
-    "noisy": "mode"
+    "noisy": "mobe"
   },
   {
     "clean": "level",
-    "noisy": "leel"
+    "noisy": "lfvel"
   },
   {
     "clean": "degree",
-    "noisy": "begree"
+    "noisy": "degref"
   },
   {
     "clean": "extent",
-    "noisy": "extent"
+    "noisy": "extftn"
   },
   {
     "clean": "amount",
-    "noisy": "aamount"
+    "noisy": "amount"
   },
   {
     "clean": "quantity",
-    "noisy": "quantity"
+    "noisy": "quanyity"
   },
   {
     "clean": "quality",
-    "noisy": "qyality"
+    "noisy": "quualiry"
   },
   {
     "clean": "attribute",
-    "noisy": "attributte"
+    "noisy": "attribute"
   },
   {
     "clean": "property",
-    "noisy": "property"
+    "noisy": "proerty"
   },
   {
     "clean": "characteristic",
-    "noisy": "characteristic"
+    "noisy": "characterrsitic"
   },
   {
     "clean": "feature",
-    "noisy": "feature"
+    "noisy": "featyre"
   },
   {
     "clean": "aspect",
-    "noisy": "aspect"
+    "noisy": "asspect"
   },
   {
     "clean": "dimension",
-    "noisy": "dimensioon"
+    "noisy": "diefxiom"
   },
   {
     "clean": "factor",
-    "noisy": "factorr"
+    "noisy": "fatcor"
   },
   {
     "clean": "variable",
-    "noisy": "varibel"
+    "noisy": "variabrl"
   },
   {
     "clean": "parameter",
-    "noisy": "pparxmeter"
+    "noisy": "pcameterr"
   },
   {
     "clean": "constraint",
-    "noisy": "constrain"
+    "noisy": "aonstraint"
   },
   {
     "clean": "limitation",
-    "noisy": "limitatkon"
+    "noisy": "limitation"
   },
   {
     "clean": "restriction",
-    "noisy": "restrticto"
+    "noisy": "reshrictio"
   },
   {
     "clean": "requirement",
-    "noisy": "requorement"
+    "noisy": "rwquiremenh"
   },
   {
     "clean": "specification",
-    "noisy": "dpecification"
+    "noisy": "speciffication"
   },
   {
     "clean": "definition",
-    "noisy": "definition"
+    "noisy": "dfinitioh"
   },
   {
     "clean": "description",
-    "noisy": "descriptiob"
+    "noisy": "description"
   },
   {
     "clean": "explanation",
-    "noisy": "explanatikn"
+    "noisy": "explanation"
   },
   {
     "clean": "clarification",
@@ -837,46 +837,46 @@
   },
   {
     "clean": "illustration",
-    "noisy": "lllusrtion"
+    "noisy": "ilusstration"
   },
   {
     "clean": "demonstration",
-    "noisy": "demonstratiog"
+    "noisy": "demonstratino"
   },
   {
     "clean": "presentation",
-    "noisy": "prfsetnation"
+    "noisy": "prresenyafion"
   },
   {
     "clean": "visualization",
-    "noisy": "visualization"
+    "noisy": "bixualization"
   },
   {
     "clean": "representation",
-    "noisy": "representaton"
+    "noisy": "represegation"
   },
   {
     "clean": "abstraction",
-    "noisy": "abstrqction"
+    "noisy": "bstrwctionn"
   },
   {
     "clean": "conceptualization",
-    "noisy": "conepalizqtion"
+    "noisy": "conceptualization"
   },
   {
     "clean": "formulation",
-    "noisy": "formulaagion"
+    "noisy": "flrmulation"
   },
   {
     "clean": "articulation",
-    "noisy": "articulation"
+    "noisy": "qrticulation"
   },
   {
     "clean": "expression",
-    "noisy": "exlresslon"
+    "noisy": "expression"
   },
   {
     "clean": "communication",
-    "noisy": "commbication"
+    "noisy": "communiaation"
   }
 ]

@@ -1,0 +1,20 @@
+{
+  "max_candidates": 30,
+  "max_edits": 200,
+  "keyboard_boost": 0.5,
+  "strict_filtering": true,
+  "smart_filtering": true,
+  "use_frequency_info": true,
+  "timeout": 2.0,
+  "max_edit_distance": 1,
+  "early_stopping": {
+    "enabled": true,
+    "min_candidates": 100,
+    "max_candidates": 1000
+  },
+  "filtering": {
+    "max_words_per_length": 500,
+    "prioritize_first_letter": true,
+    "max_distance": 1
+  }
+}

@@ -72,36 +72,32 @@ def add_noise_to_conversation(
     Returns:
         List of conversation turns with noise added
     """
-    import random
 
-    # Try to import from lib.noise_simulator first
-    try:
-        from lib.noise_simulator.noise_simulator import add_noise
+    # Import noise models from lib.noise_model
+    from lib.noise_model.noise_model import (
+        KeyboardNoiseModel,
+        DwellNoiseModel,
+        TranspositionNoiseModel,
+        CompositeNoiseModel,
+    )
 
-        logger.info("Using lib.noise_simulator for noise generation")
-    except ImportError:
-        # Fallback to a simple noise generator if the module is not available
-        logger.warning("lib.noise_simulator not found, using simple noise generator")
+    logger.info("Using lib.noise_model for noise generation")
 
-        def add_noise(text, noise_level=0.3, keyboard_layout=None, seed=None):
-            """Simple fallback noise generator."""
-            if seed is not None:
-                random.seed(seed)
+    # Create a composite noise model with moderate error rates
+    keyboard_model = KeyboardNoiseModel(
+        layout_name="qwerty",
+        error_rates={"proximity": 0.1, "deletion": 0.0, "insertion": 0.0},
+        input_method="direct",
+    )
 
-            chars = list(text)
-            # Randomly modify some characters
-            for i in range(len(chars)):
-                if random.random() < noise_level:
-                    # 33% chance to replace with adjacent character
-                    if random.random() < 0.33:
-                        chars[i] = random.choice("abcdefghijklmnopqrstuvwxyz")
-                    # 33% chance to delete
-                    elif random.random() < 0.5:
-                        chars[i] = ""
-                    # 33% chance to insert
-                    else:
-                        chars.insert(i, random.choice("abcdefghijklmnopqrstuvwxyz"))
-            return "".join(chars)
+    dwell_model = DwellNoiseModel(deletion_rate=0.05, insertion_rate=0.05)
+
+    transposition_model = TranspositionNoiseModel(transposition_rate=0.03)
+
+    # Combine the models
+    noise_model = CompositeNoiseModel(
+        models=[keyboard_model, dwell_model, transposition_model]
+    )
 
     noisy_conversation = []
 
@@ -111,13 +107,8 @@ def add_noise_to_conversation(
 
         # Only add noise to user utterances (not system or other speakers)
         if speaker.lower() in ["user", "aac user"]:
-            # Add noise with a moderate level
-            noisy_utterance = add_noise(
-                utterance,
-                noise_level=0.3,
-                keyboard_layout="qwerty",
-                seed=random.randint(1, 1000),
-            )
+            # Add noise with the noise model
+            noisy_utterance = noise_model.apply(utterance)
         else:
             # No noise for non-user utterances
             noisy_utterance = utterance
