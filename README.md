@@ -10,6 +10,10 @@ It leverages a high-performance **PPM language model** to score intended inputs 
 
 AAC users often make input errors due to physical or interface constraints. This project helps correct such errors in real time or during post-processing, improving intelligibility and user experience without requiring a neural network.
 
+It also aims to be a best-in-class prediction system. 
+
+Note: AAC users have typically short utterances and high repeatability. If we knew the context of both sides of the conversation can we help improve prediction and correction? Thats what we are trying to understand with this code
+
 ---
 
 ## 🔧 Architecture

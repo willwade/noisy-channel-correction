@@ -1,13 +1,25 @@
-# Module 5: Interface and Evaluation
+# Evaluation Tools for AAC Noisy Input Correction Engine
 
-This module provides a CLI demo and evaluation tools for the AAC Noisy Input Correction Engine. It uses the AACConversations dataset from Hugging Face to demonstrate and evaluate the correction capabilities of the system.
+This directory provides evaluation tools for the AAC Noisy Input Correction Engine. It uses the AACConversations dataset from Hugging Face to demonstrate and evaluate the correction capabilities of the system.
 
-## Features
+## Directory Structure
 
-- **CLI Demo**: Interactive command-line interface for testing the correction engine
-- **Evaluation Tools**: Scripts for measuring accuracy and performance
-- **Dataset Integration**: Seamless integration with the AACConversations dataset
-- **Configurable Noise**: Support for different noise types and levels
+The evaluation tools are organized into the following categories:
+
+### Core Evaluation Scripts
+
+- **demo.py**: Interactive CLI demo for testing the correction engine
+- **eval.py**: Basic evaluation script for measuring correction accuracy
+- **conversation_level_evaluation.py**: Comprehensive conversation-level evaluation with context-aware correction
+- **compare_correction_methods.py**: Compare different correction methods on the same conversations
+- **synthetic_conversation_evaluator.py**: Evaluate correction on synthetic conversations
+
+### Utility Scripts
+
+- **utils.py**: Common utilities for evaluation
+- **noise_simulator_utils.py**: Utilities for noise simulation
+- **filter_english_data.py**: Filters dataset for English data
+- **visualize_conversation_results.py**: Visualizes evaluation results
 
 ## Getting Started
 
@@ -30,41 +42,79 @@ huggingface-cli login
 
 ## Usage
 
-### CLI Demo
+### Interactive Demo
 
-Run the CLI demo to test the correction engine on random examples from the dataset:
-
-```bash
-python demo.py --ppm-model ../data/ppm_model.json --confusion-matrix ../data/confusion_matrix.json --lexicon ../data/lexicon.txt
-```
-
-#### Options
-
-- `--noise-type`: Type of noise to use (`qwerty`, `abc`, or `frequency`)
-- `--noise-level`: Level of noise to use (`minimal`, `light`, `moderate`, or `severe`)
-- `--num-examples`: Number of examples to sample
-- `--interactive`: Run in interactive mode for custom input testing
-
-### Evaluation
-
-Evaluate the correction engine on the dataset:
+Run the interactive demo to test the correction engine:
 
 ```bash
-python eval.py --ppm-model ../data/ppm_model.json --confusion-matrix ../data/confusion_matrix.json --lexicon ../data/lexicon.txt --output eval_results.json
+python demo.py --interactive --ppm-model models/ppm_model.pkl --confusion-matrix models/confusion_matrix.json --word-ngram-model models/word_ngram_model.pkl --lexicon data/wordlist.txt
 ```
 
-#### Options
+### Basic Evaluation
 
-- `--noise-types`: Noise types to evaluate
-- `--noise-levels`: Noise levels to evaluate
-- `--num-examples`: Number of examples to evaluate
-- `--seed`: Random seed for reproducibility
+Evaluate the correction engine on random examples from the dataset:
+
+```bash
+python eval.py --ppm-model models/ppm_model.pkl --confusion-matrix models/confusion_matrix.json --lexicon data/wordlist.txt --output eval_results.json
+```
+
+### Conversation-Level Evaluation
+
+Evaluate the correction engine on entire conversations:
+
+```bash
+python conversation_level_evaluation.py --ppm-model models/ppm_model.pkl --confusion-matrix models/confusion_matrix.json --word-ngram-model models/word_ngram_model.pkl --lexicon data/wordlist.txt --keyboard-layouts qwerty --noise-levels minimal
+```
+
+#### Using Synthetic Conversations
+
+You can also evaluate using synthetic conversations instead of the AACConversations dataset:
+
+```bash
+python conversation_level_evaluation.py --synthetic --ppm-model models/ppm_model.pkl --confusion-matrix models/confusion_matrix.json --word-ngram-model models/word_ngram_model.pkl --lexicon data/wordlist.txt --num-conversations 5 --num-turns 10 --error-rate 0.2
+```
+
+Alternatively, you can use the dedicated synthetic conversation evaluator:
+
+```bash
+python synthetic_conversation_evaluator.py --ppm-model models/ppm_model.pkl --confusion-matrix models/confusion_matrix.json --word-ngram-model models/word_ngram_model.pkl --lexicon data/wordlist.txt --num-conversations 5 --num-turns 10 --error-rate 0.2
+```
+
+### Method Comparison
+
+Compare different correction methods on the same conversations:
+
+```bash
+python compare_correction_methods.py --ppm-model models/ppm_model.pkl --confusion-matrix models/confusion_matrix.json --word-ngram-model models/word_ngram_model.pkl --lexicon data/wordlist.txt --methods baseline context-aware keyboard-specific combined
+```
+
+## Key Parameters
+
+### Common Parameters
+- **--ppm-model**: Path to the PPM model file
+- **--confusion-matrix**: Path to the confusion matrix file
+- **--word-ngram-model**: Path to the word n-gram model file
+- **--lexicon**: Path to the lexicon file
+- **--keyboard-layouts**: Keyboard layouts to evaluate (qwerty, abc, frequency)
+- **--noise-levels**: Noise levels to evaluate (minimal, light, moderate, severe)
+
+### Dataset Parameters
+- **--language-code**: Language code to filter by (e.g., en-GB)
+- **--max-conversations**: Maximum number of conversations to evaluate
+- **--target-field**: Field to use as the target for evaluation (minimally_corrected, fully_corrected, utterance_intended)
+
+### Synthetic Conversation Parameters
+- **--synthetic**: Use synthetic conversations instead of the dataset
+- **--num-conversations**: Number of synthetic conversations to generate
+- **--num-turns**: Number of turns per synthetic conversation
+- **--vocabulary-size**: Size of the vocabulary for synthetic conversations
+- **--error-rate**: Error rate for synthetic conversations
 
 ## Dataset
 
 The AACConversations dataset contains conversations with AAC users, including:
 
-- Original intended utterances
+- Original intended utterances. note: these will be quite different from the utterances in the dataset as they are imagined utterances
 - Noisy versions with different types and levels of noise
 - Conversation context
 - Scene information
@@ -107,10 +157,22 @@ Each example in the dataset has the following structure:
 
 ## Evaluation Metrics
 
-The evaluation script calculates the following metrics:
+The evaluation scripts calculate the following metrics:
 
 - **Accuracy@1**: Percentage of examples where the top correction matches the intended utterance
 - **Accuracy@N**: Percentage of examples where any of the top N corrections matches the intended utterance
 - **Average Correction Time**: Average time taken to correct an utterance (in milliseconds)
+- **Context Improvement**: Improvement in accuracy when using context-aware correction
+- **Keyboard-Specific Accuracy**: Accuracy for different keyboard layouts
 
 Results are broken down by noise type and level for detailed analysis.
+
+## Deprecated Scripts
+
+The following scripts have been moved to the deprecated_scripts directory:
+
+- **conversation_evaluator.py**: Use conversation_level_evaluation.py instead
+- **evaluate_english_conversations.py**: Use conversation_level_evaluation.py with --language-code en-GB instead
+- **simple_conversation_evaluator.py**: Use conversation_level_evaluation.py instead
+- **simple_compare_methods.py**: Use compare_correction_methods.py instead
+- **context_aware_evaluation.py**: Use conversation_level_evaluation.py with appropriate context parameters instead
