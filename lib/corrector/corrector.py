@@ -296,12 +296,42 @@ class NoisyChannelCorrector:
             # Update the candidate generator's lexicon
             self.candidate_generator.lexicon = self.lexicon
 
+            # Check if a word frequencies file exists
+            word_freq_path = os.path.join(
+                os.path.dirname(file_path), "word_frequencies_en_gb.txt"
+            )
+            if os.path.exists(word_freq_path):
+                logger.info(f"Found word frequencies file at {word_freq_path}")
+                self._load_word_frequencies(word_freq_path)
+
             logger.info(
                 f"Loaded lexicon with {len(self.lexicon)} words from {file_path}"
             )
             return True
         except Exception as e:
             logger.error(f"Error loading lexicon from {file_path}: {e}")
+            return False
+
+    def _load_word_frequencies(self, file_path: str) -> bool:
+        """
+        Load word frequencies from a file.
+
+        Args:
+            file_path: Path to the word frequencies file
+
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            # Load the word frequencies into the candidate generator
+            if self.candidate_generator.load_word_frequencies(file_path):
+                logger.info(f"Loaded word frequencies from {file_path}")
+                return True
+            else:
+                logger.warning(f"Failed to load word frequencies from {file_path}")
+                return False
+        except Exception as e:
+            logger.error(f"Error loading word frequencies: {e}")
             return False
 
     def correct(

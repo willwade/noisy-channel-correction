@@ -7,3 +7,13 @@ The Evaluation module is responsible for:
 - Providing interactive demos for testing
 - Comparing different correction methods
 - Processing conversations from the AACConversations dataset
+
+## Usage
+
+```bash
+uv run demo/evaluation/demo.py --interactive --verbose
+
+uv run demo/evaluation/demo.py
+```
+
+etc

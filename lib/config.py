@@ -13,16 +13,18 @@ DATA_DIR = os.path.join(ROOT_DIR, "data")
 MODELS_DIR = os.path.join(ROOT_DIR, "models")
 
 # Model paths
-DEFAULT_PPM_MODEL_PATH = os.path.join(MODELS_DIR, "ppm_model.pkl")
-DEFAULT_WORD_NGRAM_MODEL_PATH = os.path.join(MODELS_DIR, "word_ngram_model.pkl")
-DEFAULT_CONFUSION_MATRIX_PATH = os.path.join(MODELS_DIR, "confusion_matrix.json")
+DEFAULT_PPM_MODEL_PATH = os.path.join(MODELS_DIR, "ppm_model_en_gb.pkl")
+DEFAULT_WORD_NGRAM_MODEL_PATH = os.path.join(MODELS_DIR, "word_ngram_model_en_gb.pkl")
+DEFAULT_CONFUSION_MATRIX_PATH = os.path.join(MODELS_DIR, "confusion_matrix_en_gb.json")
 DEFAULT_KEYBOARD_CONFUSION_MATRIX_PATH = os.path.join(
-    MODELS_DIR, "keyboard_confusion_matrices.json"
+    MODELS_DIR, "keyboard_confusion_matrices_en_gb.json"
 )
 
 # Lexicon paths
-DEFAULT_LEXICON_PATH = os.path.join(DATA_DIR, "wordlist.txt")
-DEFAULT_COMPREHENSIVE_LEXICON_PATH = os.path.join(DATA_DIR, "comprehensive_lexicon.txt")
+DEFAULT_LEXICON_PATH = os.path.join(DATA_DIR, "enhanced_lexicon_en_gb.txt")
+DEFAULT_COMPREHENSIVE_LEXICON_PATH = os.path.join(
+    DATA_DIR, "comprehensive_lexicon_en_gb.txt"
+)
 
 # Dataset paths
 DEFAULT_ENGLISH_CONVERSATIONS_PATH = os.path.join(

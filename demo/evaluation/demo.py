@@ -59,7 +59,7 @@ def parse_args():
     parser.add_argument(
         "--wordlist",
         type=str,
-        default="data/wordlist.txt",
+        default="data/enhanced_lexicon_en_gb.txt",
         help="Path to the wordlist file for the noise simulator",
     )
 
@@ -108,25 +108,25 @@ def parse_args():
     parser.add_argument(
         "--ppm-model",
         type=str,
-        default="models/ppm_model.pkl",
+        default="models/ppm_model_en_gb.pkl",
         help="Path to the PPM model file",
     )
     parser.add_argument(
         "--confusion-matrix",
         type=str,
-        default="models/confusion_matrix.json",
+        default="models/confusion_matrix_en_gb.json",
         help="Path to the confusion matrix file",
     )
     parser.add_argument(
         "--word-ngram-model",
         type=str,
-        default="models/word_ngram_model.pkl",
+        default="models/word_ngram_model_en_gb.pkl",
         help="Path to the word n-gram model file",
     )
     parser.add_argument(
         "--lexicon",
         type=str,
-        default="data/wordlist.txt",
+        default="data/enhanced_lexicon_en_gb.txt",
         help="Path to the lexicon file",
     )
 
