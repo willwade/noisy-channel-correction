@@ -146,7 +146,11 @@ def group_by_conversation(dataset: Any) -> Dict[int, List[Dict]]:
 
 
 def get_sample_conversations(
-    dataset: Any, num_samples: int = 5, language_code: str = "en-GB"
+    dataset: Any,
+    num_samples: int = 5,
+    language_code: str = "en-GB",
+    noise_level: str = "minimal",
+    noise_type: str = "qwerty",
 ) -> List[Dict]:
     """
     Get a sample of conversations from the dataset.
@@ -155,6 +159,8 @@ def get_sample_conversations(
         dataset: The dataset to sample from
         num_samples: Number of conversations to sample
         language_code: Language code to filter by
+        noise_level: Noise level to filter by (minimal, moderate, heavy)
+        noise_type: Noise type to filter by (qwerty, cognitive, motor, etc.)
 
     Returns:
         List of sampled conversations
@@ -167,15 +173,36 @@ def get_sample_conversations(
         # Filter by language code
         filtered_dataset = filter_english_data(dataset, language_code)
 
+        # Filter by noise level and type if specified
+        if noise_level or noise_type:
+            filtered_dataset = filtered_dataset.filter(
+                lambda example: (
+                    (not noise_level or example.get("noise_level") == noise_level)
+                    and (not noise_type or example.get("noise_type") == noise_type)
+                )
+            )
+            logger.info(
+                f"Filtered dataset to examples with noise level '{noise_level}' and noise type '{noise_type}'"
+            )
+
         # Group by conversation
         conversations = group_by_conversation(filtered_dataset)
 
-        # Sample conversations
-        conv_ids = list(conversations.keys())
-        if len(conv_ids) <= num_samples:
-            sampled_ids = conv_ids
+        # Sample conversations with at least 2 turns and at least one AAC User turn
+        valid_conv_ids = []
+        for conv_id, turns in conversations.items():
+            if len(turns) >= 2 and any(
+                turn.get("speaker") == "AAC User" for turn in turns
+            ):
+                valid_conv_ids.append(conv_id)
+
+        logger.info(f"Found {len(valid_conv_ids)} valid conversations")
+
+        # Sample from valid conversations
+        if len(valid_conv_ids) <= num_samples:
+            sampled_ids = valid_conv_ids
         else:
-            sampled_ids = random.sample(conv_ids, num_samples)
+            sampled_ids = random.sample(valid_conv_ids, num_samples)
 
         sampled_conversations = [conversations[conv_id] for conv_id in sampled_ids]
         logger.info(f"Sampled {len(sampled_conversations)} conversations")
@@ -297,12 +324,40 @@ class CorrectionDemo:
                 logger.error("Failed to load dataset")
                 return
 
-            # Get sample conversations
+            # Try to get conversations with minimal noise and qwerty errors
             self.conversations = get_sample_conversations(
                 self.dataset,
                 num_samples=10,
                 language_code="en-GB",
+                noise_level="minimal",
+                noise_type="qwerty",
             )
+
+            # If no conversations found, try with just qwerty errors
+            if not self.conversations:
+                logger.info(
+                    "No conversations with minimal noise and qwerty errors found. Trying with any noise level."
+                )
+                self.conversations = get_sample_conversations(
+                    self.dataset,
+                    num_samples=10,
+                    language_code="en-GB",
+                    noise_level=None,
+                    noise_type="qwerty",
+                )
+
+            # If still no conversations, try with any noise type
+            if not self.conversations:
+                logger.info(
+                    "No conversations with qwerty errors found. Trying with any noise type."
+                )
+                self.conversations = get_sample_conversations(
+                    self.dataset,
+                    num_samples=10,
+                    language_code="en-GB",
+                    noise_level=None,
+                    noise_type=None,
+                )
 
             if self.conversations:
                 self.current_conversation = self.conversations[0]
@@ -542,7 +597,7 @@ def create_gradio_interface(demo: CorrectionDemo):
             with gr.TabItem("Conversation Simulation"):
                 gr.Markdown("## Conversation Simulation")
                 gr.Markdown(
-                    "Simulate a conversation from the AACConversations dataset."
+                    "Simulate a conversation from the AACConversations dataset to see how context affects correction."
                 )
 
                 with gr.Row():
@@ -558,6 +613,9 @@ def create_gradio_interface(demo: CorrectionDemo):
 
                         conv_info = gr.Markdown("### Conversation Information")
 
+                        # Add conversation history display
+                        conversation_history = gr.Markdown("### Conversation History")
+
                         next_turn_btn = gr.Button("Next Turn")
 
                     with gr.Column(scale=2):
@@ -566,15 +624,22 @@ def create_gradio_interface(demo: CorrectionDemo):
                         with gr.Row():
                             with gr.Column(scale=1):
                                 noisy_text = gr.Textbox(
-                                    label="Noisy Text", lines=3, interactive=False
+                                    label="Noisy Text (What was typed)",
+                                    lines=3,
+                                    interactive=False,
                                 )
 
                             with gr.Column(scale=1):
                                 intended_text = gr.Textbox(
-                                    label="Intended Text", lines=3, interactive=False
+                                    label="Intended Text (What was meant)",
+                                    lines=3,
+                                    interactive=False,
                                 )
 
                         turn_info = gr.Markdown("### Turn Information")
+
+                        # Add context information
+                        context_info = gr.Markdown("### Context Used for Correction")
 
                         corrections_display = gr.Markdown("### Corrections")
 
@@ -582,11 +647,19 @@ def create_gradio_interface(demo: CorrectionDemo):
                     # Extract the index from the string
                     try:
                         conv_index = int(conv_index_str.split(" ")[1]) - 1
-                    except:
+                    except ValueError:
                         conv_index = 0
 
                     # Select the conversation
                     info = demo.select_conversation(conv_index)
+
+                    # Reset the conversation history
+                    history_html = "<div style='padding: 10px; background-color: #f8f8f8; border-radius: 5px;'>"
+                    history_html += "<h3>Conversation History</h3>"
+                    history_html += (
+                        "<p>Click 'Next Turn' to start the conversation.</p>"
+                    )
+                    history_html += "</div>"
 
                     # Reset the display
                     return (
@@ -595,6 +668,8 @@ def create_gradio_interface(demo: CorrectionDemo):
                         "",
                         "",
                         "### Turn Information",
+                        history_html,
+                        "### Context Used for Correction",
                         "### Corrections",
                     )
 
@@ -610,20 +685,57 @@ def create_gradio_interface(demo: CorrectionDemo):
                     # Update the turn info
                     turn_info_html = f"### Turn Information: {turn_info_text}"
 
+                    # Build conversation history display
+                    history_html = "<div style='padding: 10px; background-color: #f8f8f8; border-radius: 5px;'>"
+                    history_html += "<h3>Conversation History</h3>"
+
+                    if not demo.conversation_context:
+                        history_html += "<p>No conversation history yet.</p>"
+                    else:
+                        history_html += (
+                            "<div style='max-height: 200px; overflow-y: auto;'>"
+                        )
+                        # Show the last 5 turns or all turns if less than 5
+                        for i, text in enumerate(demo.conversation_context[-5:]):
+                            turn_num = len(demo.conversation_context) - 5 + i + 1
+                            # Determine if this was an AAC User or Communication Partner turn
+                            if turn_num <= len(demo.current_conversation):
+                                turn_speaker = demo.current_conversation[
+                                    turn_num - 1
+                                ].get("speaker", "Unknown")
+                                history_html += f"<p><b>Turn {turn_num} ({turn_speaker}):</b> {text}</p>"
+                            else:
+                                history_html += f"<p><b>Turn {turn_num}:</b> {text}</p>"
+                        history_html += "</div>"
+
+                    history_html += "</div>"
+
+                    # Get context information
+                    context_html = "<div style='padding: 10px; background-color: #f8f8f8; border-radius: 5px;'>"
+                    context_html += "<h3>Context Used for Correction</h3>"
+
+                    # Get context from previous turns
+                    context = None
+                    if demo.conversation_context:
+                        context = (
+                            demo.conversation_context[-1]
+                            if len(demo.conversation_context) > 0
+                            else None
+                        )
+                        if context:
+                            context_html += f"<p>{context}</p>"
+                        else:
+                            context_html += "<p>No context available.</p>"
+                    else:
+                        context_html += "<p>No context available.</p>"
+
+                    context_html += "</div>"
+
                     # Get corrections if this is an AAC User turn
                     corrections_html = "<div style='padding: 10px; background-color: #f5f5f5; border-radius: 5px;'>"
                     corrections_html += "<h3>Corrections:</h3>"
 
                     if speaker == "AAC User" and noisy:
-                        # Get context from previous turns
-                        context = None
-                        if demo.conversation_context:
-                            context = (
-                                demo.conversation_context[-1]
-                                if len(demo.conversation_context) > 0
-                                else None
-                            )
-
                         # Get corrections
                         corrections = demo.correct_text(noisy, context)
 
@@ -658,6 +770,8 @@ def create_gradio_interface(demo: CorrectionDemo):
                         noisy,
                         intended,
                         turn_info_html,
+                        history_html,
+                        context_html,
                         corrections_html,
                     )
 
@@ -671,6 +785,8 @@ def create_gradio_interface(demo: CorrectionDemo):
                         noisy_text,
                         intended_text,
                         turn_info,
+                        conversation_history,
+                        context_info,
                         corrections_display,
                     ],
                 )
@@ -684,6 +800,8 @@ def create_gradio_interface(demo: CorrectionDemo):
                         noisy_text,
                         intended_text,
                         turn_info,
+                        conversation_history,
+                        context_info,
                         corrections_display,
                     ],
                 )
@@ -767,7 +885,8 @@ def create_gradio_interface(demo: CorrectionDemo):
         # Add footer
         gr.Markdown("### About")
         gr.Markdown(
-            "This demo showcases the AAC Noisy Input Correction Engine, which uses a noisy channel model to correct typing errors in AAC communication."
+            "This demo showcases the AAC Noisy Input Correction Engine, "
+            "which uses a noisy channel model to correct typing errors in AAC communication."
         )
 
     return interface
