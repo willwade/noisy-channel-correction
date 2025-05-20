@@ -6,6 +6,10 @@ It leverages a high-performance **PPM language model** to score intended inputs 
 
 ---
 
+
+https://github.com/user-attachments/assets/b2bb8bff-9a08-401e-8167-0fd296291481
+
+
 ## 💡 Use Case
 
 AAC users often make input errors due to physical or interface constraints. This project helps correct such errors in real time or during post-processing, improving intelligibility and user experience without requiring a neural network.
