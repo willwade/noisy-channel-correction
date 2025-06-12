@@ -14,7 +14,7 @@ https://github.com/user-attachments/assets/b2bb8bff-9a08-401e-8167-0fd296291481
 
 AAC users often make input errors due to physical or interface constraints. This project helps correct such errors in real time or during post-processing, improving intelligibility and user experience without requiring a neural network.
 
-It also aims to be a best-in-class prediction system. 
+It also aims to be a prediction system. 
 
 Note: AAC users have typically short utterances and high repeatability. If we knew the context of both sides of the conversation can we help improve prediction and correction? Thats what we are trying to understand with this code
 
