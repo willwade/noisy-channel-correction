@@ -2,7 +2,7 @@
 
 A lightweight, interpretable correction system for noisy AAC (Augmentative and Alternative Communication) input. This system uses a **Noisy Channel Model** framework to correct user-generated text errors commonly seen in switch-access, eyegaze, dwell typing, and other AAC modalities.
 
-It leverages a high-performance **PPM language model** to score intended inputs (`P(intended)`) and a configurable **error model** to estimate `P(noisy | intended)` based on simulated input errors.
+It leverages a  **PPM language model** to score intended inputs (`P(intended)`) and a configurable **error model** to estimate `P(noisy | intended)` based on simulated input errors.
 
 ---
 
@@ -22,7 +22,7 @@ Note: AAC users have typically short utterances and high repeatability. If we kn
 
 ## 🔧 Architecture
 
-The system is modular and easy to customize or expand:
+The system is modular :
 
 ```
 noisy-channel-correction/
